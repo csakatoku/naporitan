@@ -1,14 +1,14 @@
-<h2>{{ chapter_name }}</h2>
-{{#missions}}
+<h2><%= chapter.get("name") %></h2>
+<% missions.forEach(function(mission) { %>
 <div class="job">
-  <a href="#!/mission/do/id/{{ id }}">{{ name }}</a>
+  <a href="#!/mission/do/id/{{ id }}"><%= mission.get("name") %></a>
   <ul>
-    <li>消費エナジー: {{ energy }}</li>
-    <li>獲得経験値: {{ xp }}</li>
-    <li>獲得コイン: {{ minCoins }} 〜 {{ maxCoins }}</li>
+    <li>消費エナジー: <%= mission.get("energy") %></li>
+    <li>獲得経験値: <%= mission.get("xp") %></li>
+    <li>獲得コイン: <%= mission.get("minCoins") %> 〜 <%= mission.get("maxCoins") %></li>
   </ul>
 </div>
-{{/missions}}
+<% }); %>
 <nav>
   <ul>
     <li><a href="#/chapter">チャプター一覧へ</a></li>

@@ -6,8 +6,11 @@
             "/home"   : "home",
             "/mission": "missionList",
             "/mission/:id": "missionExecute",
-            "/chapter": "chapter",
-            "/gacha"  : "gacha",
+            "/chapter": "chapterList",
+            "/gacha/result/:id"  : "gachaResult",
+            "/gacha"  : "gachaList",
+            "/crew/sell"   : "crewSell",
+            "/crew/merge"  : "crewMerge",
             "/crew"   : "crew",
             "/"       : "top",
             ""        : "top"
@@ -28,23 +31,39 @@
             view.render();
         },
 
-        chapter: function() {
-            var view = new app.views.ChapterView();
+        chapterList: function() {
+            var view = new app.views.ChapterListView();
             view.render();
         },
 
-        gacha: function() {
-            var view = new app.views.GachaView();
+        gachaList: function() {
+            var view = new app.views.GachaListView();
+            view.render();
+        },
+
+        gachaResult: function() {
+            var view = new app.views.GachaResultView();
             view.render();
         },
 
         crew: function() {
-            var view = new app.views.CrewView();
+            var view = new app.views.CrewListView();
+            view.render();
+        },
+
+        crewMerge: function() {
+            var view = new app.views.CrewMergeListView();
+            view.render();
+        },
+
+        crewSell: function() {
+            var view = new app.views.CrewSellListView();
             view.render();
         },
 
         top: function() {
-            //
+            var view = new app.views.TopView();
+            view.render();
         }
     });
 }(App));

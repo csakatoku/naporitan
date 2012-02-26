@@ -1,15 +1,17 @@
 (function(app, undef) {
     "use strict";
 
-    app.views.CrewView = Backbone.View.extend({
+    app.views.GachaListView = Backbone.View.extend({
         el: $("#container"),
+
+        template: app.template('gacha/index'),
 
         initialize: function() {
             //
         },
 
         render: function() {
-            $(this.el).html("<h1>Crew</h1>");
+            $(this.el).html(this.template({}));
             return this;
         }
     });

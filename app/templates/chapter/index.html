@@ -1,11 +1,11 @@
 <h2>Chapters</h2>
-{{#chapters}}
+<% items.forEach(function(item) { %>
 <div class="row">
-  <h3>{{ name }}</h3>
+  <h3><%= item.get("name") %></h3>
   <div>達成率: --%</div>
   <a href="#!/mission/index/chapter/{{ id }}">このチャプターへ</a>
 </div>
-{{/chapters}}
+<% }); %>
 <nav>
   <ul>
     <li><a href="#!/home">マイページへ</a></li>

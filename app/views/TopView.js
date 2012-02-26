@@ -1,15 +1,17 @@
 (function(app, undef) {
     "use strict";
 
-    app.views.GachaView = Backbone.View.extend({
+    app.views.TopView = Backbone.View.extend({
         el: $("#container"),
+
+        template: app.template('top/index'),
 
         initialize: function() {
             //
         },
 
         render: function() {
-            $(this.el).html("<h1>Gacha</h1>");
+            $(this.el).html(this.template({}));
             return this;
         }
     });
