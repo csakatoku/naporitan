@@ -1,18 +1,19 @@
 (function(app, undef) {
     "use strict";
 
-    app.views.CrewMergeListView = Backbone.View.extend({
+    app.views.CrewDetailView = Backbone.View.extend({
         el: $("#container"),
 
-        template: app.template('crew/merge'),
+        template: app.template('crew/detail'),
 
         initialize: function() {
-            this.crews = app.getPlayer().getCrews();
+            var crews = app.getPlayer().getCrews();
+            this.crew = crews.get(1);
         },
 
         render: function() {
             $(this.el).html(this.template({
-                crews: this.crews
+                crew: this.crew
             }));
             return this;
         }

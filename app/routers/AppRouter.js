@@ -10,10 +10,27 @@
             "/gacha/result/:id"  : "gachaResult",
             "/gacha"  : "gachaList",
             "/crew/sell"   : "crewSell",
+            "/crew/sell_confirm"   : "crewSellConfirm",
             "/crew/merge"  : "crewMerge",
+            "/crew/merge_select"  : "crewMerge",
+            "/crew/:id"    : "crewDetail",
             "/crew"   : "crew",
             "/"       : "top",
             ""        : "top"
+        },
+
+        reverse: function(name, args) {
+            var buf = [];
+            for (var k in args) {
+                if (args.hasOwnProperty(k)) {
+                    buf.push(k + "=" + args[k]);
+                }
+            }
+            if (buf.length) {
+                return '#/' + name + "/" + (buf.join('&'));
+            } else {
+                return '#/' + name;
+            }
         },
 
         home: function() {
@@ -56,8 +73,23 @@
             view.render();
         },
 
+        crewMergeSelect: function() {
+            var view = new app.views.CrewMergeSelectView();
+            view.render();
+        },
+
         crewSell: function() {
             var view = new app.views.CrewSellListView();
+            view.render();
+        },
+
+        crewSellConfirm: function() {
+            var view = new app.views.CrewSellView();
+            view.render();
+        },
+
+        crewDetail: function() {
+            var view = new app.views.CrewDetailView();
             view.render();
         },
 

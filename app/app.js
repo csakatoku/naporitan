@@ -11,7 +11,12 @@
         templates: {},
 
         template: function(name) {
-            return _.template(this.templates[name]);
+            var tmpl = _.template(this.templates[name]);
+            var app = this;
+            return function(args) {
+                args._path = app.router.reverse;
+                return tmpl(args);
+            };
         },
 
         getPlayer: function() {

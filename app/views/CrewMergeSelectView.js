@@ -4,7 +4,7 @@
     app.views.CrewMergeListView = Backbone.View.extend({
         el: $("#container"),
 
-        template: app.template('crew/merge'),
+        template: app.template('crew/merge_select'),
 
         initialize: function() {
             this.crews = app.getPlayer().getCrews();

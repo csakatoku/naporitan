@@ -1,0 +1,14 @@
+<h2>仲間詳細</h2>
+<h3><%= crew.get("name") %></h3>
+<div>
+  <ul>
+    <li>攻撃力: <%= crew.get("attack") %></li>
+    <li>防御力: <%= crew.get("defence") %></li>
+    <li>必要統率力: <%= crew.get("cost") %></li>
+  </ul>
+</div>
+<nav>
+  <ul>
+    <li><a href="<%= _path('crew_index') %>">仲間一覧</a></li>
+  </ul>
+</nav>

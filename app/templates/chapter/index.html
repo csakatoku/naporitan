@@ -3,11 +3,11 @@
 <div class="row">
   <h3><%= item.get("name") %></h3>
   <div>達成率: --%</div>
-  <a href="#!/mission/index/chapter/{{ id }}">このチャプターへ</a>
+  <a href="<%= _path('chapter_detail', { id: item.get('id') }) %>">このチャプターへ</a>
 </div>
 <% }); %>
 <nav>
   <ul>
-    <li><a href="#!/home">マイページへ</a></li>
+    <li><a href="<%= _path('home') %>">マイページへ</a></li>
   </ul>
 </nav>

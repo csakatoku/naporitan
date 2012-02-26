@@ -1,13 +1,13 @@
 <h2>売却確認</h2>
 <p>
-  {{ crews.length }}名の仲間を売却します。
+  <%= crews.length %>名の仲間を売却します。
 </p>
 <div>
-  <a href="#!/crew/sell_execute" data-outlet="1">売却する</a>
+  <button id="crew_sell_execute">売却する</button>
 </div>
 
 <nav>
   <ul>
-    <li><a href="#!/crew/sell">選び直す</a></li>
+    <li><a href="<%= _path('crew_sell') %>">選び直す</a></li>
   </ul>
 </nav>
