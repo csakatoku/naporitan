@@ -8,7 +8,7 @@ BUILD_DIR   = os.path.join(PROJECT_DIR, 'build')
 
 def template():
     templates = []
-    ext = ".mustache"
+    ext = ".html"
 
     template_dir = os.path.abspath(os.path.join(PROJECT_DIR, 'app', 'templates'))
     for parent, _, filenames in os.walk(template_dir):
