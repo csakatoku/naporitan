@@ -32,12 +32,14 @@ task :template => [BUILD_DIR] do
       jsstr = content.to_json
 
       buf.push("// #{filename}")
-      buf.push("App.templates['#{template_name}'] = #{jsstr};")
+      buf.push("T['#{template_name}'] = #{jsstr};")
     end
   end
 
+  template_str = buf.join("\n")
+
   out = File.open("#{BUILD_DIR}/templates.js", "w:UTF-8")
-  out.puts(buf.join("\n"))
+  out.puts("(function(app) { var T = app.templates; #{template_str} }(App));")
   out.close()
 end
 
