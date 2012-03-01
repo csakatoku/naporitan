@@ -23,6 +23,17 @@
     app.collections.CrewCollection = Backbone.Collection.extend({
         model: app.models.Crew,
 
+        filterByCategory: function(category) {
+            category = ~~category;
+            if (category === 0) {
+                return this;
+            } else {
+                return new app.collections.CrewCollection(this.filter(function(x) {
+                    return x.get("category") === category;
+                }));
+            }
+        },
+
         sortByType: function(type) {
             type = ~~type;
             var order = type < 0 ? -1 : 1;

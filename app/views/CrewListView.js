@@ -7,21 +7,29 @@
         template: app.template('crew/index'),
 
         events: {
-            "change .sort": "onChangeSort"
+            "change .sort": "onChangeSort",
+            "click [data-action='filter-crew']": "onChangeFilter"
         },
 
         initialize: function() {
             this.sortType = 0;
-            this.crews = app.getPlayer().getCrews();
-            this.bind('all', this.render, this);
+            this.filterCategory = 0;
         },
 
         render: function() {
-            var crews = this.crews.sortByType(this.sortType);
+            var crews = app.getPlayer().getCrews()
+                .filterByCategory(this.filterCategory)
+                .sortByType(this.sortType);
             $(this.el).html(this.template({
                 crews: crews
             }));
             return this;
+        },
+
+        onChangeFilter: function(e) {
+            this.filterCategory = $(e.target).data("filter");
+            this.render();
+            return false;
         },
 
         onChangeSort: function(e) {
