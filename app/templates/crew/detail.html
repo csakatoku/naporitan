@@ -5,6 +5,9 @@
     <li>攻撃力: <%= crew.get("attack") %></li>
     <li>防御力: <%= crew.get("defence") %></li>
     <li>必要統率力: <%= crew.get("cost") %></li>
+    <li>
+      SK:<span class="<%= crew.getSkillLevelStarClass() %>"><%= crew.getSkillLevelStars() %></span>
+    </li>
   </ul>
 </div>
 <nav>

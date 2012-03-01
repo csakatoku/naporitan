@@ -5,9 +5,15 @@ require "rake/clean"
 
 JS_DIR = "app"
 TEMPLATE_DIR = "#{JS_DIR}/templates"
+CSS_DIR = "css"
+
 BUILD_DIR = "build"
+BUILD_JS_DIR = "#{BUILD_DIR}/js"
+BUILD_CSS_DIR = "#{BUILD_DIR}/css"
 
 directory BUILD_DIR
+directory BUILD_JS_DIR
+directory BUILD_CSS_DIR
 
 CLEAN.include("#{BUILD_DIR}/**/*")
 
@@ -16,6 +22,8 @@ task :default do
   Rake::Task['template'].invoke
   Rake::Task['concat'].invoke
   Rake::Task['minifyjs'].invoke
+  Rake::Task['less'].invoke
+  Rake::Task['release'].invoke
 end
 
 desc 'Compile Templates'
@@ -78,7 +86,20 @@ task :concat => [:template] do
 end
 
 desc 'Minify JS'
-task :minifyjs => [:concat] do
-  `uglifyjs -nm -nmf -b -d __DEBUG__=1 -o build/app.debug.js build/app.js`
-  `uglifyjs -d __DEBUG__=0 -o build/app.prod.js build/app.js`
+task :minifyjs => [:concat, BUILD_JS_DIR] do
+  `uglifyjs -nm -nmf -b -d __DEBUG__=1 -o #{BUILD_JS_DIR}/app.debug.js build/app.js`
+  `uglifyjs -d __DEBUG__=0 -o #{BUILD_JS_DIR}/app.prod.js build/app.js`
+end
+
+desc 'Compile less to CSS'
+task :less => [BUILD_CSS_DIR] do
+  `lessc #{CSS_DIR}/app.less #{BUILD_CSS_DIR}/app.css`
+end
+
+task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less] do
+  cp "index.html", BUILD_DIR
+
+  Dir["#{JS_DIR}/libs/*.js"].each do |filename|
+    cp filename, BUILD_JS_DIR
+  end
 end
