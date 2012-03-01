@@ -1,3 +1,16 @@
+<div class="home">
+<ul class="character">
+  <% crews.forEach(function(crew) { %>
+    <li>
+      <% if (crew) { %>
+        <img src="<%= crew.getPortraitPictureURL() %>" />
+      <% } else { %>
+        仲間を追加しよう
+      <% } %>
+    </li>
+  <% }); %>
+</ul>
+
 <nav>
   <ul>
     <li><a href="<%= _path('mission_list') %>">ミッション</a></li>
@@ -6,3 +19,4 @@
     <li><a href="<%= _path('crew_merge_list') %>">合成</a></li>
   </ul>
 </nav>
+</div>

@@ -13,11 +13,13 @@
         initialize: function() {
             var missionId = 1;
             this.mission = app.missions.get(missionId);
+            this.crew = app.getPlayer().getCrews().get(1);
         },
 
         render: function() {
             $(this.el).html(this.template({
-                mission: this.mission
+                mission: this.mission,
+                crew: this.crew
             }));
             return this;
         },

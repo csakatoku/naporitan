@@ -1,6 +1,7 @@
 <h2>仲間詳細</h2>
 <h3><%= crew.get("name") %></h3>
 <div>
+  <img src="<%= crew.getLargePictureURL() %>" />
   <ul>
     <li>攻撃力: <%= crew.get("attack") %></li>
     <li>防御力: <%= crew.get("defence") %></li>
