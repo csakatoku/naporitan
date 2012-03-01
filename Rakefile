@@ -22,7 +22,7 @@ desc 'Compile Templates'
 task :template => [BUILD_DIR] do
   buf = []
 
-  pattern = Regexp.compile("#{TEMPLATE_DIR}/(.+?)\.mustache$")
+  pattern = Regexp.compile("#{TEMPLATE_DIR}/(.+?)\.html$")
   Find.find(TEMPLATE_DIR) do |filename|
     matcher = pattern.match(filename)
     if matcher
