@@ -85,15 +85,44 @@ task :concat => [:template] do
   out.close()
 end
 
+desc 'Concat model classes'
+task :server_build do
+  jsfiles = []
+  packages = [
+          'models',
+          'collections',
+         ]
+
+  packages.each do |package|
+    Dir["#{JS_DIR}/#{package}/*.js"].each do |filename|
+      jsfiles.push(filename)
+    end
+  end
+
+  buf = []
+  jsfiles.each do |filename|
+    content = File.read(filename)
+    buf.push("// #{filename}")
+    buf.push(content)
+  end
+
+  out = File.open("#{BUILD_DIR}/js/server-models.js", "w:UTF-8")
+  out.puts(buf.join("\n"))
+  out.close()
+
+  cp "#{JS_DIR}/app.js", "#{BUILD_DIR}/js/server-app.js"
+  cp "#{JS_DIR}/server.js", "#{BUILD_DIR}/js/server.js"
+end
+
 desc 'Minify JS'
 task :minifyjs => [:concat, BUILD_JS_DIR] do
-  `uglifyjs -nm -nmf -b -d __DEBUG__=1 -o #{BUILD_JS_DIR}/app.debug.js build/app.js`
-  `uglifyjs -d __DEBUG__=0 -o #{BUILD_JS_DIR}/app.prod.js build/app.js`
+  `node_modules/uglify-js/bin/uglifyjs -nm -nmf -b -d __DEBUG__=1 -o #{BUILD_JS_DIR}/app.debug.js build/app.js`
+  `node_modules/uglify-js/bin/uglifyjs -d __DEBUG__=0 -o #{BUILD_JS_DIR}/app.prod.js build/app.js`
 end
 
 desc 'Compile less to CSS'
 task :less => [BUILD_CSS_DIR] do
-  `lessc #{CSS_DIR}/app.less #{BUILD_CSS_DIR}/app.css`
+  `node_modules/less/bin/lessc #{CSS_DIR}/app.less #{BUILD_CSS_DIR}/app.css`
 end
 
 task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less] do

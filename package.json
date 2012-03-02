@@ -1,0 +1,30 @@
+{
+    "name": "royale",
+    "version": "0.0.1",
+    "description": "Backbone Royale",
+    "keywords": ["backbone.js", "game"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/csakatoku/royale"
+    },
+    "author": "Chihiro SAKATOKU <csakatoku@gmail.com>",
+    "contributors": [
+    ],
+    "dependencies": {
+    },
+    "devDependencies": {
+        "backbone": ">=0.9.1",
+        "express": ">=2.5.0",
+        "less": ">=1.2.2",
+        "uglify-js": ">=1.2.5"
+    },
+    "main": "index",
+    "engines": {
+        "node": "~0.6"
+    },
+    "scripts": {
+    },
+    "bugs": {
+        "url": "https://github.com/csakatoku/royale/issues"
+    }
+}
