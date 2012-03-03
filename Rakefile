@@ -131,7 +131,13 @@ end
 task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less] do
   cp "index.html", BUILD_DIR
 
-  Dir["#{JS_DIR}/libs/*.js"].each do |filename|
+  libs = [
+          "node_modules/underscore/underscore-min.js",
+          "node_modules/backbone/backbone-min.js",
+          "#{JS_DIR}/libs/zepto.min.js"
+         ]
+
+  libs.each do |filename|
     cp filename, BUILD_JS_DIR
   end
 end
