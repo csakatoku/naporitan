@@ -11,10 +11,11 @@
     "contributors": [
     ],
     "dependencies": {
+        "underscore": ">=0.9.1",
+        "backbone": ">=0.9.1",
+        "express": ">=2.5.0"
     },
     "devDependencies": {
-        "backbone": ">=0.9.1",
-        "express": ">=2.5.0",
         "less": ">=1.2.2",
         "uglify-js": ">=1.2.5"
     },

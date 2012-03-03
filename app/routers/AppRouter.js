@@ -3,99 +3,94 @@
 
     app.routers.AppRouter = Backbone.Router.extend({
         routes: {
-            "/home"   : "home",
-            "/mission": "missionList",
-            "/mission/:id": "missionExecute",
-            "/chapter": "chapterList",
-            "/gacha/result/:id"  : "gachaResult",
-            "/gacha"  : "gachaList",
-            "/crew/sell"   : "crewSell",
-            "/crew/sell_confirm"   : "crewSellConfirm",
-            "/crew/merge"  : "crewMerge",
-            "/crew/merge_select"  : "crewMerge",
-            "/crew/:id"    : "crewDetail",
-            "/crew"   : "crew",
-            "/"       : "top",
-            ""        : "top"
+            "*location": "dispatch"
+        },
+
+        dispatch: function(location) {
+            // For backward compatibility
+            if (location.indexOf("!") === 0) {
+                location = location.substr(1);
+            }
+
+            var routeAndAction, params;
+            var pos = location.indexOf("/-/");
+            if (pos >= 0) {
+                routeAndAction = location.substr(0, pos);
+                params = location.substr(pos + 3).split("/");
+            } else {
+                routeAndAction = location;
+                params = {};
+            }
+
+            var components = routeAndAction.split("/").filter(function(x) {
+                return x.length > 0;
+            });
+            var length = components.length;
+            var route, action;
+            if (length > 1) {
+                route = components[0];
+                action = components[1];
+            } else if (length > 0) {
+                route = components[0];
+            }
+
+            var args = {};
+            for (var i = 0; i < params.length; i += 2) {
+                var k = params[i];
+                var v = params[i + 1];
+                args[k] = v;
+            }
+
+            this._dispatch(route, action, args);
+        },
+
+        _dispatch: function(router, action, args) {
+            var routerName, actionName, klass, instance;
+            router = app.utils.snakeToPascal(router || "top");
+            action = app.utils.snakeToCamel(action || "default");
+
+            routerName = router + "Router";
+            actionName = action + "Action";
+
+            klass = app.routers[routerName];
+            if (klass) {
+                instance = new klass();
+                if (actionName in instance) {
+                    instance[actionName].apply(instance, args);
+                    return;
+                }
+            }
+
+            alert("大変です!" + routerName + "." + actionName + "が存在しません!");
         },
 
         reverse: function(name, args) {
+            var matcher, router, action;
+            if (name.indexOf('_') === -1) {
+                router = name;
+                action = "default";
+            } else {
+                matcher = name.match(/([a-zA-Z0-9]+)_(.+)/);
+                if (matcher) {
+                    router = matcher[1];
+                    action = matcher[2];
+                } else {
+                    router = "top";
+                    action = "default";
+                }
+            }
+
             var buf = [];
             for (var k in args) {
                 if (args.hasOwnProperty(k)) {
-                    buf.push(k + "=" + args[k]);
+                    buf.push(k + "/" + args[k]);
                 }
             }
             if (buf.length) {
-                return '#/' + name + "/" + (buf.join('&'));
+                return '#/' + router + "/" + action  + "/-/" + (buf.join(''));
             } else {
-                return '#/' + name;
+                return '#/' + router ; "/" + action;
             }
-        },
-
-        home: function() {
-            var view = new app.views.HomeView();
-            view.render();
-        },
-
-        missionList: function() {
-            var view = new app.views.MissionListView();
-            view.render();
-        },
-
-        missionExecute: function() {
-            var view = new app.views.MissionExecuteView();
-            view.render();
-        },
-
-        chapterList: function() {
-            var view = new app.views.ChapterListView();
-            view.render();
-        },
-
-        gachaList: function() {
-            var view = new app.views.GachaListView();
-            view.render();
-        },
-
-        gachaResult: function() {
-            var view = new app.views.GachaResultView();
-            view.render();
-        },
-
-        crew: function() {
-            var view = new app.views.CrewListView();
-            view.render();
-        },
-
-        crewMerge: function() {
-            var view = new app.views.CrewMergeListView();
-            view.render();
-        },
-
-        crewMergeSelect: function() {
-            var view = new app.views.CrewMergeSelectView();
-            view.render();
-        },
-
-        crewSell: function() {
-            var view = new app.views.CrewSellListView();
-            view.render();
-        },
-
-        crewSellConfirm: function() {
-            var view = new app.views.CrewSellView();
-            view.render();
-        },
-
-        crewDetail: function() {
-            var view = new app.views.CrewDetailView();
-            view.render();
-        },
-
-        top: function() {
-            var view = new app.views.TopView();
-            view.render();
         }
     });
 }(App));

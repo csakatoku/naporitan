@@ -53,10 +53,11 @@ end
 
 desc 'Concat all JavaScript files and templates'
 task :concat => [:template] do
-  jsfiles = []
-
-  jsfiles.push("#{JS_DIR}/app.js")
-  jsfiles.push("#{BUILD_DIR}/templates.js")
+  jsfiles = [
+             "#{JS_DIR}/app.js",
+             "#{BUILD_DIR}/templates.js",
+             "#{JS_DIR}/utils/strings.js",
+            ]
 
   packages = [
           'models',
@@ -87,7 +88,9 @@ end
 
 desc 'Concat model classes'
 task :server_build do
-  jsfiles = []
+  jsfiles = [
+             "#{JS_DIR}/utils/strings.js",
+            ]
   packages = [
           'models',
           'collections',

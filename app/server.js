@@ -1,8 +1,9 @@
 var express = require('express');
+var underscore = require('underscore');
 var backbone = require('backbone');
 
+GLOBAL._ = underscore;
 GLOBAL.Backbone = backbone;
-
 var serverapp = require('./server-app.js');
 GLOBAL.App = serverapp.App;
 var models = require('./server-models.js');

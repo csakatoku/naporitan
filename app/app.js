@@ -4,6 +4,7 @@
     globals.App = {
         _player: undef,
 
+        utils: {},
         views: {},
         models: {},
         collections: {},
