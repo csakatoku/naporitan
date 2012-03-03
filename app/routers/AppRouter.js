@@ -1,17 +1,15 @@
 (function(app, undef) {
     "use strict";
 
+    var DEFAULT_ROUTER = 'top';
+    var DEFAULT_ACTION = 'default';
+
     app.routers.AppRouter = Backbone.Router.extend({
         routes: {
             "*location": "dispatch"
         },
 
         dispatch: function(location) {
-            // For backward compatibility
-            if (location.indexOf("!") === 0) {
-                location = location.substr(1);
-            }
-
             var routeAndAction, params;
             var pos = location.indexOf("/-/");
             if (pos >= 0) {
@@ -46,8 +44,8 @@
 
         _dispatch: function(router, action, args) {
             var routerName, actionName, klass, instance;
-            router = app.utils.snakeToPascal(router || "top");
-            action = app.utils.snakeToCamel(action || "default");
+            router = app.utils.snakeToPascal(router || DEFAULT_ROUTER);
+            action = app.utils.snakeToCamel(action || DEFAULT_ACTION);
 
             routerName = router + "Router";
             actionName = action + "Action";
@@ -56,7 +54,7 @@
             if (klass) {
                 instance = new klass();
                 if (actionName in instance) {
-                    instance[actionName].apply(instance, args);
+                    instance[actionName].call(instance, args);
                     return;
                 }
             }
@@ -66,31 +64,30 @@
 
         reverse: function(name, args) {
             var matcher, router, action;
-            if (name.indexOf('_') === -1) {
-                router = name;
-                action = "default";
-            } else {
-                matcher = name.match(/([a-zA-Z0-9]+)_(.+)/);
-                if (matcher) {
-                    router = matcher[1];
-                    action = matcher[2];
-                } else {
-                    router = "top";
-                    action = "default";
-                }
-            }
+
+            var components = name.split('/');
+            router = components[0];
+            action = (components[1] === DEFAULT_ACTION) ? null : components[1];
 
             var buf = [];
             for (var k in args) {
                 if (args.hasOwnProperty(k)) {
-                    buf.push(k + "/" + args[k]);
+                    buf.push(k);
+                    buf.push(args[k]);
                 }
             }
+
             if (buf.length) {
-                return '#/' + router + "/" + action  + "/-/" + (buf.join(''));
-            } else {
-                return '#/' + router ; "/" + action;
+                buf.unshift('-');
             }
+
+            if (action) {
+                buf.unshift(action);
+            }
+
+            buf.unshift(router);
+
+            return '#/' + (buf.join('/'));
         }
     });
 }(App));

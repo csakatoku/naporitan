@@ -10,10 +10,10 @@
             "click #mission-execute": "execute"
         },
 
-        initialize: function() {
-            var missionId = 1;
-            this.mission = app.missions.get(missionId);
-            this.crew = app.getPlayer().getCrews().get(1);
+        initialize: function(player, mission) {
+            this.mission = mission;
+            this.player = player;
+            this.crew = player.getCrews().get(1);
         },
 
         render: function() {
@@ -25,7 +25,7 @@
         },
 
         execute: function(e) {
-            app.getPlayer().executeMission(this.mission);
+            this.player.executeMission(this.mission);
         }
     });
 }(App));

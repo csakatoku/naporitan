@@ -2,13 +2,16 @@
     "use strict";
 
     app.routers.MissionRouter = Backbone.Router.extend({
-        defaultAction: function() {
+        defaultAction: function(args) {
             var view = new app.views.MissionListView();
             view.render();
         },
 
-        executeAction: function() {
-            var view = new app.views.MissionExecuteView();
+        executeAction: function(args) {
+            var missionId = ~~(args.id || 1);
+            var mission = app.missions.get(missionId);
+            var player = app.getPlayer();
+            var view = new app.views.MissionExecuteView(player, mission);
             view.render();
         }
     });
