@@ -1,19 +1,27 @@
 # -*- mode: ruby -*-
 require "find"
 require "json"
+require "fileutils"
 require "rake/clean"
 
-JS_DIR = "app"
+ASSET_URL = '../asset'
+
+TOP_DIR = File.dirname(__FILE__)
+
+JS_DIR = "#{TOP_DIR}/app"
 TEMPLATE_DIR = "#{JS_DIR}/templates"
 CSS_DIR = "css"
+ASSET_DIR = "asset"
 
 BUILD_DIR = "build"
 BUILD_JS_DIR = "#{BUILD_DIR}/js"
 BUILD_CSS_DIR = "#{BUILD_DIR}/css"
+BUILD_ASSET_DIR = "#{BUILD_DIR}/asset"
 
 directory BUILD_DIR
 directory BUILD_JS_DIR
 directory BUILD_CSS_DIR
+directory BUILD_ASSET_DIR
 
 CLEAN.include("#{BUILD_DIR}/**/*")
 
@@ -23,6 +31,7 @@ task :default do
   Rake::Task['concat'].invoke
   Rake::Task['minifyjs'].invoke
   Rake::Task['less'].invoke
+  Rake::Task['server_build'].invoke
   Rake::Task['release'].invoke
 end
 
@@ -119,8 +128,8 @@ end
 
 desc 'Minify JS'
 task :minifyjs => [:concat, BUILD_JS_DIR] do
-  `node_modules/uglify-js/bin/uglifyjs -nm -nmf -b -d __DEBUG__=1 -o #{BUILD_JS_DIR}/app.debug.js build/app.js`
-  `node_modules/uglify-js/bin/uglifyjs -d __DEBUG__=0 -o #{BUILD_JS_DIR}/app.prod.js build/app.js`
+  `node_modules/uglify-js/bin/uglifyjs -b -nmf --define __DEBUG__=1 --define-from-module #{JS_DIR}/constants.js -o #{BUILD_JS_DIR}/app.debug.js build/app.js`
+  `node_modules/uglify-js/bin/uglifyjs -nc --define __DEBUG__=0 --define-from-module #{JS_DIR}/constants.js -o #{BUILD_JS_DIR}/app.prod.js build/app.js`
 end
 
 desc 'Compile less to CSS'
@@ -128,7 +137,12 @@ task :less => [BUILD_CSS_DIR] do
   `node_modules/less/bin/lessc #{CSS_DIR}/app.less #{BUILD_CSS_DIR}/app.css`
 end
 
-task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less] do
+desc 'Copy assets'
+task :asset => [BUILD_ASSET_DIR] do
+  FileUtils.copy_entry(ASSET_DIR, BUILD_ASSET_DIR)
+end
+
+task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less, :asset] do
   cp "index.html", BUILD_DIR
 
   libs = [
