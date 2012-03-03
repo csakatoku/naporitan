@@ -1,6 +1,8 @@
 (function(globals, undef) {
     "use strict";
 
+    var compiledTemplates = {};
+
     globals.App = {
         _player: undef,
 
@@ -12,10 +14,19 @@
         templates: {},
 
         template: function(name) {
-            var tmpl = _.template(this.templates[name]);
             var app = this;
+
             return function(args) {
+                var tmpl;
+                if (name in compiledTemplates) {
+                    tmpl = compiledTemplates[name];
+                } else {
+                    tmpl = compiledTemplates[name] = _.template(app.templates[name]);
+                }
+
+                // Helper functions
                 args._path = app.router.reverse;
+
                 return tmpl(args);
             };
         },
