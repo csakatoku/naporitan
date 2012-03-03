@@ -1,9 +1,11 @@
 <h2>Chapters</h2>
 <% items.forEach(function(item) { %>
 <div class="row">
-  <h3><%= item.get("name") %></h3>
-  <div>達成率: --%</div>
-  <a href="<%= _path('chapter/detail', { id: item.get('id') }) %>">このチャプターへ</a>
+  <a href="<%= _path('chapter/detail', { id: item.get('id') }) %>">
+    <h3><%= item.get("name") %></h3>
+    <div>達成率: --%</div>
+    <div>このチャプターへ</div>
+  </a>
 </div>
 <% }); %>
 <nav>
