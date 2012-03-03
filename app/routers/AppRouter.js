@@ -17,7 +17,16 @@
                 params = location.substr(pos + 3).split("/");
             } else {
                 routeAndAction = location;
-                params = {};
+                params = [];
+            }
+
+            if (params.length === 0) {
+                if (/\/$/.test(location) === false) {
+                    var canonical = '#' + location + '/';
+                    Backbone.history.navigate(canonical, {
+                        replace: true
+                    });
+                }
             }
 
             var components = routeAndAction.split("/").filter(function(x) {
@@ -77,8 +86,12 @@
                 }
             }
 
+            var hasArgs;
             if (buf.length) {
+                hasArgs = true;
                 buf.unshift('-');
+            } else {
+                hasArgs = false;
             }
 
             if (action) {
@@ -87,7 +100,7 @@
 
             buf.unshift(router);
 
-            return '#/' + (buf.join('/'));
+            return '#/' + (buf.join('/')) + (hasArgs ? '' : '/');
         }
     });
 }(App));
