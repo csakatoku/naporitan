@@ -3,7 +3,7 @@
 <div>
   <ul class="menu">
     <li><a href="<%= _path('gacha/execute', { id: 1 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute_many', { id: 1 }) %>">10連続ガチャ</a></li>
+    <li><a href="<%= _path('gacha/execute', { id: 1, multiple: 1 }) %>">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -12,8 +12,8 @@
 <p>レア100%保証。特定のカードを集めると....!?(実際はすべてのカードを集めるのは不可能)</p>
 <div>
   <ul class="menu">
-    <li><a href="<%= _path('gacha/execute', { id: 1 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute_many', { id: 2 }) %>">10連続ガチャ</a></li>
+    <li><a href="<%= _path('gacha/execute', { id: 2 }) %>">ガチャする</a></li>
+    <li><a href="<%= _path('gacha/execute', { id: 2, multiple: 1  }) %>">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -22,7 +22,7 @@
 <div>
   <ul class="menu">
     <li><a href="<%= _path('gacha/execute', { id: 5 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute_many', { id: 5 }) %>">10連続ガチャ</a></li>
+    <li><a href="<%= _path('gacha/execute', { id: 5, multiple: 1 }) %>">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -31,7 +31,7 @@
 <div>
   <ul class="menu">
     <li><a href="<%= _path('gacha/execute', { id: 3 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute_many', { id: 3 }) %>">10連続ガチャ</a></li>
+    <li><a href="<%= _path('gacha/execute', { id: 3, multiple: 1 }) %>">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -40,6 +40,6 @@
 <div>
   <ul class="menu">
     <li><a href="<%= _path('gacha/execute', { id: 4 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute_many', { id: 4 }) %>">10連続ガチャ</a></li>
+    <li><a href="<%= _path('gacha/execute', { id: 4, multiple: 1 }) %>">10連続ガチャ</a></li>
   </ul>
 </div>

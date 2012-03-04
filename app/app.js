@@ -28,6 +28,9 @@
                 args = args || {};
                 args._path = app.router.reverse;
 
+                // Global Variables
+                args.ASSET_URL = ASSET_URL;
+
                 return tmpl(args);
             };
         },

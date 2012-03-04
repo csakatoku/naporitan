@@ -22,9 +22,21 @@ server.get('/', function(req, res) {
     });
 });
 
-server.get('/me', function(req, res) {
-    var player = App.getPlayer();
-    res.send(player.toJSON());
+server.get('/api/gacha', function(req, res) {
+    var timestamp = Date.now();
+    var result = {
+        metadata: {
+            version: 1,
+            timestamp: timestamp
+        },
+        body: {
+            id: 1
+        }
+    };
+
+    setTimeout(function() {
+        res.send(JSON.stringify(result));
+    }, 3000);
 });
 
 server.listen(8000);

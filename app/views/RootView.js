@@ -19,6 +19,14 @@
             }, 0);
         },
 
+        startIndicator: function() {
+            $('#loading-indicator').addClass('on');
+        },
+
+        stopIndicator: function() {
+            $('#loading-indicator').removeClass('on');
+        },
+
         hideMenuTab: function() {
             this.menuTab.hide();
         },
