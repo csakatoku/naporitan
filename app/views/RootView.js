@@ -8,6 +8,12 @@
             this.menuTab = new app.views.MenuTabView();
         },
 
+        scrollToTop: function() {
+            setTimeout(function() {
+                window.scroll(0, 1);
+            }, 0);
+        },
+
         hideMenuTab: function() {
             this.menuTab.hide();
         },

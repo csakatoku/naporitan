@@ -69,6 +69,11 @@
                 instance = new klass();
                 if (actionName in instance) {
                     instance[actionName].call(instance, args);
+
+                    // TODO
+                    // ここで呼ぶべきなのか？
+                    app.rootView.scrollToTop();
+
                     return;
                 }
             }
