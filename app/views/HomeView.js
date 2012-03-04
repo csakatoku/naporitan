@@ -1,6 +1,6 @@
 (function(app, undef) {
     app.views.HomeView = Backbone.View.extend({
-        el: $("#container"),
+        el: "#content",
 
         template: app.template("home/index"),
 
@@ -23,6 +23,7 @@
             $(this.el).html(this.template({
                 crews: crews
             }));
+
             return this;
         }
     });

@@ -25,6 +25,7 @@
                 }
 
                 // Helper functions
+                args = args || {};
                 args._path = app.router.reverse;
 
                 return tmpl(args);

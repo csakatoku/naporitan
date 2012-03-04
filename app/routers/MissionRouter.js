@@ -5,6 +5,7 @@
         defaultAction: function(args) {
             var view = new app.views.MissionListView();
             view.render();
+            app.rootView.showMenuTab();
         },
 
         executeAction: function(args) {
@@ -13,6 +14,7 @@
             var player = app.getPlayer();
             var view = new app.views.MissionExecuteView(player, mission);
             view.render();
+            app.rootView.showMenuTab();
         }
     });
 }(App));

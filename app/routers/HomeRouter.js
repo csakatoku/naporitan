@@ -5,6 +5,7 @@
         defaultAction: function() {
             var view = new app.views.HomeView();
             view.render();
+            app.rootView.showMenuTab();
         }
     });
 }(App));

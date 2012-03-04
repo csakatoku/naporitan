@@ -2,7 +2,7 @@
     "use strict";
 
     app.views.MissionExecuteView = Backbone.View.extend({
-        el: $("#container"),
+        el: "#content",
 
         template: app.template("mission/do"),
 

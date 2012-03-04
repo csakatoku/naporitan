@@ -2,13 +2,9 @@
     "use strict";
 
     app.views.TopView = Backbone.View.extend({
-        el: $("#container"),
+        el: "#content",
 
         template: app.template('top/index'),
-
-        initialize: function() {
-            //
-        },
 
         render: function() {
             $(this.el).html(this.template({}));

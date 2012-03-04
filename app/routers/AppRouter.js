@@ -9,6 +9,11 @@
             "*location": "dispatch"
         },
 
+        boot: function() {
+            app.rootView = new app.views.RootView();
+            app.rootView.render();
+        },
+
         dispatch: function(location) {
             var routeAndAction, params;
             var pos = location.indexOf("/-/");

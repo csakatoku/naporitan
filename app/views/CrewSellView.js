@@ -2,7 +2,7 @@
     "use strict";
 
     app.views.CrewSellView = Backbone.View.extend({
-        el: $("#container"),
+        el: "#content",
 
         template: app.template('crew/sell_confirm'),
 

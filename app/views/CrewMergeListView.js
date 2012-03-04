@@ -2,7 +2,7 @@
     "use strict";
 
     app.views.CrewMergeListView = Backbone.View.extend({
-        el: $("#container"),
+        el: "#content",
 
         template: app.template('crew/merge'),
 

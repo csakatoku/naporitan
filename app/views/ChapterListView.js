@@ -2,7 +2,7 @@
     "use strict";
 
     app.views.ChapterListView = Backbone.View.extend({
-        el: $("#container"),
+        el: "#content",
 
         template: app.template('chapter/index'),
 

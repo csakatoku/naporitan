@@ -2,7 +2,7 @@
     "use strict";
 
     app.views.GachaResultView = Backbone.View.extend({
-        el: $("#container"),
+        el: "#content",
 
         template: app.template('gacha/result'),
 

@@ -5,6 +5,7 @@
         defaultAction: function() {
             var view = new app.views.TopView();
             view.render();
+            app.rootView.hideMenuTab();
         }
     });
 }(App));
