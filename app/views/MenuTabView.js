@@ -2,6 +2,19 @@
     "use strict";
 
     app.views.MenuTabView = Backbone.View.extend({
+        events: {
+            'click .menu_tab_other': 'onTabOtherClicked'
+        },
+
+        initialize: function(options) {
+            this.el = options.el;
+        },
+
+        onTabOtherClicked: function() {
+            app.rootView.showMenuDial();
+            return false;
+        },
+
         hide: function() {
             $(".menu_tab").hide();
         },
@@ -12,8 +25,7 @@
 
         render: function() {
             var tmpl = app.template('_partial/menu_tab');
-            var content = tmpl();
-            $(".menu_tab").html(content);
+            $(this.el).html(tmpl());
             return this;
         }
     });
