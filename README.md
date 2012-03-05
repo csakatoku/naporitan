@@ -15,6 +15,7 @@ cloneした後に以下のコマンドを実行して、必要なnode moduleを�
 
     $ rake server_build
 
-サーバーをスタートするには、
+サーバーをスタートするには、foremanをインストール(gem install foreman)した上で、
 
-    $ node lib/server.js
+    $ foreman start
+
