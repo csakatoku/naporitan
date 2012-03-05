@@ -66,6 +66,16 @@
 
             klass = app.routers[routerName];
             if (klass) {
+                // TODO
+                // 本当にここでガードするべきなのか？
+                if (klass !== app.routers.TopRouter && !FB.getUserID()) {
+                    Backbone.history.navigate('#/', {
+                        replace: true
+                    });
+                    klass = app.routers.TopRouter;
+                    actionName = 'defaultAction';
+                }
+
                 instance = new klass();
                 if (actionName in instance) {
                     instance[actionName].call(instance, args);

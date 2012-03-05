@@ -1,5 +1,14 @@
 <h1>Backbone Royale</h1>
-<a href="<%= _path('home') %>">マイページへ</a>
+
+<% if (uid) { %>
+<div>
+  <a href="<%= _path('home') %>">マイページへ</a>
+</div>
+<% } else { %>
+<div>
+  <a class="facebook-login">Facebookでログイン</a>
+</div>
+<% } %>
 
 <a href="https://github.com/csakatoku/royale">
   <img alt="Fork me on GitHub" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" />

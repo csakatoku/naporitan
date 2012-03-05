@@ -4,11 +4,24 @@
     app.views.TopView = Backbone.View.extend({
         el: "#content",
 
-        template: app.template('top/index'),
+        events: {
+            'click .facebook-login': 'onFacebookLogin'
+        },
 
         render: function() {
-            $(this.el).html(this.template({}));
+            var tmpl = app.template('top/index');
+            $(this.el).html(tmpl({
+                uid: app.uid
+            }));
             return this;
+        },
+
+        onFacebookLogin: function() {
+            var self = this;
+            FB.login(function(response) {
+                app.uid = FB.getUserID();
+                self.render();
+            });
         }
     });
 }(App));
