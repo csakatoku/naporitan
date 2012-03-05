@@ -1,4 +1,5 @@
 var express = require('express');
+var gzippo = require('gzippo');
 var underscore = require('underscore');
 var backbone = require('backbone');
 
@@ -10,8 +11,8 @@ var models = require('./server-models.js');
 
 var server = express.createServer();
 
-server.use('/css', express.static(__dirname + '/../css'));
-server.use('/js', express.static(__dirname + '/../js'));
+server.use('/css', gzippo.staticGzip(__dirname + '/../css'));
+server.use('/js', gzippo.staticGzip(__dirname + '/../js'));
 server.use('/asset', express.static(__dirname + '/../asset'));
 
 server.get('/', function(req, res) {
