@@ -79,9 +79,5 @@
         }
     ]);
 
-    // Initialize the Backbone router.
-    app.router = new app.routers.AppRouter();
-    app.router.boot();
-
-    Backbone.history.start();
+    app.boot();
 }(this));

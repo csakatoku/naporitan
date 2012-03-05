@@ -66,6 +66,7 @@ task :concat => [:template] do
              "#{JS_DIR}/app.js",
              "#{BUILD_DIR}/templates.js",
              "#{JS_DIR}/utils/strings.js",
+             "#{JS_DIR}/utils/dom.js",
             ]
 
   packages = [
