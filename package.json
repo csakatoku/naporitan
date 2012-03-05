@@ -14,7 +14,8 @@
         "underscore": ">=0.9.1",
         "backbone": ">=0.9.1",
         "express": ">=2.5.0",
-        "gzippo": ">=0.1.4"
+        "gzippo": ">=0.1.4",
+        "redis": "0.7.1"
     },
     "devDependencies": {
         "less": ">=1.2.2",

@@ -3,3 +3,4 @@
 *.rej
 build/*
 node_modules/*
+lib/gen/*

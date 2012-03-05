@@ -119,12 +119,12 @@ task :server_build do
     buf.push(content)
   end
 
-  out = File.open("#{BUILD_DIR}/js/server-models.js", "w:UTF-8")
+  out = File.open("lib/gen/server-models.js", "w:UTF-8")
   out.puts(buf.join("\n"))
   out.close()
 
-  cp "#{JS_DIR}/app.js", "#{BUILD_DIR}/js/server-app.js"
-  cp "#{JS_DIR}/server.js", "#{BUILD_DIR}/js/server.js"
+  cp "#{JS_DIR}/app.js", "lib/gen/server-app.js"
+  cp "#{JS_DIR}/libs/jsdeferred.js", "lib/gen/jsdeferred.js"
 end
 
 desc 'Minify JS'
@@ -149,7 +149,8 @@ task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less, :asset] do
   libs = [
           "node_modules/underscore/underscore-min.js",
           "node_modules/backbone/backbone-min.js",
-          "#{JS_DIR}/libs/zepto.min.js"
+          "#{JS_DIR}/libs/zepto.min.js",
+          "#{JS_DIR}/libs/jsdeferred.js",
          ]
 
   libs.each do |filename|

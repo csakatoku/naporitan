@@ -17,4 +17,4 @@ cloneした後に以下のコマンドを実行して、必要なnode moduleを�
 
 サーバーをスタートするには、
 
-    $ node build/js/server.js
+    $ node lib/server.js
