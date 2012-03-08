@@ -79,5 +79,8 @@
         }
     ]);
 
+    // TODO
+    globals.I18N = {};
+
     app.boot();
 }(this));

@@ -66,6 +66,7 @@ task :concat => [:template] do
              "#{JS_DIR}/app.js",
              "#{BUILD_DIR}/templates.js",
              "#{JS_DIR}/utils/strings.js",
+             "#{JS_DIR}/utils/translations.js",
              "#{JS_DIR}/utils/dom.js",
             ]
 
@@ -100,6 +101,7 @@ desc 'Concat model classes'
 task :server_build do
   jsfiles = [
              "#{JS_DIR}/utils/strings.js",
+             "#{JS_DIR}/utils/translations.js",
             ]
   packages = [
           'models',

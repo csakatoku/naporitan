@@ -1,12 +1,12 @@
-<h1>Backbone Royale</h1>
+<h1><%= _tr('Backbone Royale') %></h1>
 
 <% if (uid) { %>
 <div>
-  <a href="<%= _path('home') %>">マイページへ</a>
+  <a href="<%= _path('home') %>"><%= _tr('My Page') %></a>
 </div>
 <% } else { %>
 <div>
-  <a class="facebook-login">Facebookでログイン</a>
+  <a class="facebook-login"><%= _tr('Connect with Facebook') %></a>
 </div>
 <% } %>
 

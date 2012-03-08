@@ -30,6 +30,9 @@
                 args = args || {};
                 args._path = app.router.reverse;
 
+                // I18N functions
+                args._tr = app.utils._tr;
+
                 // Global Variables
                 args.ASSET_URL = ASSET_URL;
 
