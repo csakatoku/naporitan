@@ -144,8 +144,6 @@ task :asset => [BUILD_ASSET_DIR] do
 end
 
 task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less, :asset] do
-  cp "index.html", BUILD_DIR
-
   libs = [
           "node_modules/underscore/underscore-min.js",
           "node_modules/backbone/backbone-min.js",
