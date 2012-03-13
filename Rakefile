@@ -9,6 +9,7 @@ ASSET_URL = '../asset'
 TOP_DIR = File.dirname(__FILE__)
 
 JS_DIR = "#{TOP_DIR}/app"
+EXTERNAL_JS_DIR = "#{TOP_DIR}/external"
 TEMPLATE_DIR = "#{JS_DIR}/templates"
 CSS_DIR = "css"
 ASSET_DIR = "asset"
@@ -126,7 +127,7 @@ task :server_build do
   out.close()
 
   cp "#{JS_DIR}/app.js", "lib/gen/server-app.js"
-  cp "#{JS_DIR}/libs/jsdeferred.js", "lib/gen/jsdeferred.js"
+  cp "#{EXTERNAL_JS_DIR}/jsdeferred.js", "lib/gen/jsdeferred.js"
 end
 
 desc 'Minify JS'
@@ -149,8 +150,8 @@ task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less, :asset] do
   libs = [
           "node_modules/underscore/underscore-min.js",
           "node_modules/backbone/backbone-min.js",
-          "#{JS_DIR}/libs/zepto.min.js",
-          "#{JS_DIR}/libs/jsdeferred.js",
+          "#{EXTERNAL_JS_DIR}/zepto.min.js",
+          "#{EXTERNAL_JS_DIR}/jsdeferred.js",
          ]
 
   libs.each do |filename|
