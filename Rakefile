@@ -141,12 +141,33 @@ task :less => [BUILD_CSS_DIR] do
   `node_modules/less/bin/lessc #{CSS_DIR}/app.less #{BUILD_CSS_DIR}/app.css`
 end
 
+desc 'Make messages'
+task :makemessages do
+  pot = "locale/messages.pot"
+  `find app -name "*.html" -print0 | xargs -0 xgettext --language=python --from-code=UTF-8 --keyword=_tr --add-comments=NOTE -o #{pot}`
+  `msguniq --to-code=UTF-8 #{pot}`
+
+  locales = [
+             'en',
+             'ja',
+            ]
+  locales.each do |locale|
+    $stderr.puts "make messages #{locale}"
+    `msgmerge -U locale/#{locale}/LC_MESSAGES/messages.po #{pot}`
+  end
+end
+
+desc 'Compile po to JSON'
+task :po2json do
+  `./scripts/po2json.py locale #{BUILD_JS_DIR}`
+end
+
 desc 'Copy assets'
 task :asset => [BUILD_ASSET_DIR] do
   FileUtils.copy_entry(ASSET_DIR, BUILD_ASSET_DIR)
 end
 
-task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less, :asset] do
+task :release => [BUILD_DIR, BUILD_JS_DIR, :minifyjs, :less, :asset, :po2json] do
   libs = [
           "node_modules/underscore/underscore-min.js",
           "node_modules/backbone/backbone-min.js",

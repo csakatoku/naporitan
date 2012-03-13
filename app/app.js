@@ -49,30 +49,60 @@
 
         boot: function() {
             var app = this;
-            var url = document.location.protocol + '//connect.facebook.net/en_US/all.js';
 
-            // Facebook
-            globals.fbAsyncInit = function() {
-                FB.init({
-                    appId: FB_APP_ID,
-                    status: true,
-                    cookie: true,
-                    xfbml: true,
-                    oauth: true
-                });
+            var fbinit = function() {
+                var deferred = new Deferred();
+                var url = document.location.protocol + '//connect.facebook.net/en_US/all.js';
 
-                app.uid = FB.getUserID();
+                // Facebook
+                globals.fbAsyncInit = function() {
+                    FB.init({
+                        appId: FB_APP_ID,
+                        status: true,
+                        cookie: true,
+                        xfbml: true,
+                        oauth: true
+                    });
 
-                FB.Event.subscribe('auth.authResponseChange', function(res) {
-                    if (__DEBUG__) {
-                        console.log(res);
-                    }
-                });
+                    app.uid = FB.getUserID();
 
-                app.onFacebookInit();
+                    FB.Event.subscribe('auth.authResponseChange', function(res) {
+                        if (__DEBUG__) {
+                            console.log(res);
+                        }
+                    });
+
+                    deferred.call();
+                };
+
+                app.utils.loadScript(url);
+                return deferred;
             };
 
-            app.utils.loadScript(url);
+            var i18ninit = function() {
+                var deferred = new Deferred();
+                var url = 'js/ja.json';
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function(data) {
+                        var I18N = globals.I18N;
+                        _.keys(data).forEach(function(key) {
+                            var msg = data[key];
+                            I18N[key] = msg || key;
+                        });
+                        deferred.call();
+                    }
+                });
+                return deferred;
+            };
+
+            Deferred.parallel([
+                fbinit(),
+                i18ninit()
+            ]).next(function() {
+                app.onFacebookInit();
+            });
         },
 
         onFacebookInit: function() {
