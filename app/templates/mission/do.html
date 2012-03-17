@@ -5,16 +5,16 @@
   </div>
   <p><%= mission.get("description") %></p>
   <ul>
-    <li>エナジー: <span>{{ mission_progress }}/{{ max_energy }}</span></li>
-    <li>達成度: <span id="mission-progress-value">{{ mission_progress }}/100</span></li>
+    <li><%= _tr('Mission:') %><span>{{ mission_progress }}/{{ max_energy }}</span></li>
+    <li><%= _tr('Progress:') %><span id="mission-progress-value">{{ mission_progress }}/100</span></li>
   </ul>
   <ul>
-    <li>消費エナジー: <%= mission.get("energy") %></li>
-    <li>獲得経験値: <%= mission.get("xp") %></li>
-    <li>獲得コイン: <%= mission.get("minCoins") %> 〜 <%= mission.get("maxCoins") %></li>
+    <li><%= _tr('Cost:', mission.get("energy")) %>{{ mission_progress }}/{{ max_energy }}></li>
+    <li><%= _tr('Reward XP: %s', mission.get("xp")) %></li>
+    <li><%= _tr('Reward Coins: %(min)s - %(max)s', { min: mission.get("minCoins"), max: mission.get("maxCoins") }) %></li>
   </ul>
   <button id="mission-execute">DO JOB</button>
 </div>
 <nav>
-  <a href="<%= _path('mission') %>">ミッション一覧へ</a>
+  <a href="<%= _path('mission') %>"><%= _tr('Back to mission list') %></a>
 </nav>
