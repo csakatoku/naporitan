@@ -5,8 +5,6 @@
         {
             "id": 1,
             "chapterId": 1,
-            "name": "Mission 1",
-            "description": "中二病的な説明がここに入ります",
             "xp": 1,
             "energy": 1,
             "minCoins": 1,
@@ -15,8 +13,6 @@
         {
             "id": 2,
             "chapterId": 1,
-            "name": "Mission 2",
-            "description": "192.168.56.101",
             "xp": 2,
             "energy": 2,
             "minCoins": 3,
@@ -25,8 +21,6 @@
         {
             "id": 3,
             "chapterId": 1,
-            "name": "Mission 3",
-            "description": "<span>descripton</span>",
             "xp": 3,
             "energy": 3,
             "minCoins": 4,
@@ -36,8 +30,6 @@
         {
             "id": 4,
             "chapterId": 2,
-            "name": "Mission 4",
-            "description": "中二病的な説明がここに入ります",
             "xp": 4,
             "energy": 4,
             "minCoins": 8,
@@ -46,8 +38,6 @@
         {
             "id": 5,
             "chapterId": 2,
-            "name": "Mission 5",
-            "description": "192.168.56.101",
             "xp": 2,
             "energy": 2,
             "minCoins": 3,
@@ -56,8 +46,6 @@
         {
             "id": 6,
             "chapterId": 2,
-            "name": "Mission 6",
-            "description": "<span>descripton</span>",
             "xp": 3,
             "energy": 3,
             "minCoins": 4,
