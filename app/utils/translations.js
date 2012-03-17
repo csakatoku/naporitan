@@ -1,5 +1,6 @@
 (function(app) {
     var sprintf = app.utils.sprintf;
+    var I18N = app.I18N;
 
     _.extend(app.utils, {
         '_tr': function(key) {
