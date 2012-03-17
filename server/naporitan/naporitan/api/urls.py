@@ -5,5 +5,5 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns(
     'naporitan.api.views',
 
-    url(r'^$', 'naporitan.api.views.default'),
+    url('facebook/credits', 'facebook_credits'),
 )

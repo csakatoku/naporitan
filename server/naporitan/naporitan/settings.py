@@ -155,6 +155,10 @@ LOGGING = {
     }
 }
 
+# Facebook Settings
+FACEBOOK_APP_ID = ''
+FACEBOOK_API_SECRET = ''
+
 try:
     from local_settings import *
 except ImportError:
