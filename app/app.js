@@ -5,7 +5,13 @@
 
     var fbinit = function(app) {
         var deferred = new Deferred();
-        var url = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        var url;
+
+        if (__DEBUG__) {
+            url = ASSET_URL + '/js/fb-mock.js';
+        } else {
+            url = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        }
 
         // Facebook
         globals.fbAsyncInit = function() {
