@@ -90,7 +90,7 @@
         return Deferred.parallel(configs.map(proto_get));
     };
 
-    globals.App = {
+    var App = globals.App = {
         _player: undef,
 
         uid: 0,
@@ -159,4 +159,7 @@
             Backbone.history.start();
         }
     };
+
+    // TODO
+    App.ANIMATION_END = 'webkitAnimationEnd';
 }(this));
