@@ -7,8 +7,8 @@
         initialize: function(args) {
             var id = args.id;
             this.set({
-                name: gettext('mission_name_' + id),
-                description: gettext('mission_description_' + id)
+                name: gettext('<Mission>mission_name_' + id),
+                description: gettext('<Mission>mission_description_' + id)
             });
         }
     });

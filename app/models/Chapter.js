@@ -7,7 +7,7 @@
         initialize: function(args) {
             var id = args.id;
             this.set({
-                name: gettext('chapter_name_' + id)
+                name: gettext('<CHAPTER>chapter_name_' + id)
             });
         }
     });
