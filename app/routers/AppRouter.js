@@ -4,6 +4,9 @@
     var DEFAULT_ROUTER = 'top';
     var DEFAULT_ACTION = 'default';
 
+    // Router instances
+    var instances = {};
+
     app.routers.AppRouter = Backbone.Router.extend({
         routes: {
             "*location": "dispatch"
@@ -76,7 +79,13 @@
                     actionName = 'defaultAction';
                 }
 
-                instance = new klass();
+                // Don't recreate a router instance if already exists
+                if (routerName in instances) {
+                    instance = instances[routerName];
+                } else {
+                    instance = instances[routerName] = new klass();
+                }
+
                 if (actionName in instance) {
                     instance[actionName].call(instance, args);
 

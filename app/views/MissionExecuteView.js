@@ -14,12 +14,6 @@
             "click #mission-execute": "execute"
         },
 
-        initialize: function(player, mission) {
-            this.mission = mission;
-            this.player = player;
-            this.crew = player.getCrews().get(1);
-        },
-
         render: function() {
             $(this.el).html(this.template({
                 mission: this.mission,
