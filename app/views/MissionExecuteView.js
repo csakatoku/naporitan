@@ -48,8 +48,7 @@
         },
 
         onMissionCompleteViewClosed: function() {
-            var hash = app.router.reverse('mission/default');
-            location.hash = hash;
+            app.redirect('mission/default');
             return false;
         }
     });

@@ -160,6 +160,12 @@
         }
     };
 
+    App.redirect = function(name, options) {
+        var hash = App.router.reverse('mission/default');
+        Backbone.history.navigate(hash, options);
+        return Backbone.history.loadUrl(hash);
+    };
+
     // TODO
     App.ANIMATION_END = 'webkitAnimationEnd';
 }(this));
