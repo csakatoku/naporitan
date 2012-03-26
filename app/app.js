@@ -3,7 +3,7 @@
 
     var compiledTemplates = {};
 
-    var fbinit = function(app) {
+    var fbinit = function(app, options) {
         var deferred = new Deferred();
         var url;
 
@@ -15,13 +15,7 @@
 
         // Facebook
         globals.fbAsyncInit = function() {
-            FB.init({
-                appId: FB_APP_ID,
-                status: true,
-                cookie: true,
-                xfbml: true,
-                oauth: true
-            });
+            FB.init(options.facebook);
 
             app.uid = FB.getUserID();
 
@@ -56,7 +50,7 @@
         return deferred;
     };
 
-    var protoinit = function(app) {
+    var protoinit = function(app, options) {
         var proto_get = function(url) {
             var deferred = new Deferred();
             $.ajax({
@@ -81,12 +75,7 @@
             return deferred;
         };
 
-        var configs = [
-            'asset/proto/chapter.json',
-            'asset/proto/mission.json',
-            'asset/proto/card.json'
-        ];
-
+        var configs = options.configs || [];
         return Deferred.parallel(configs.map(proto_get));
     };
 
@@ -136,12 +125,12 @@
             return this._player;
         },
 
-        boot: function() {
+        boot: function(options) {
             var app = this;
             Deferred.parallel([
-                fbinit(app),
-                i18ninit(app),
-                protoinit(app)
+                fbinit(app, options),
+                i18ninit(app, options),
+                protoinit(app, options)
             ]).next(function() {
                 app.onFacebookInit();
             });

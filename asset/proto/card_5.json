@@ -1,0 +1,866 @@
+{
+  "data": [
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 80, 
+      "rarity": 5, 
+      "sell_price": 260, 
+      "attack": 90, 
+      "defense": 90, 
+      "id": 1
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1380, 
+      "rarity": 5, 
+      "sell_price": 5190, 
+      "attack": 1800, 
+      "defense": 2010, 
+      "id": 2
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1630, 
+      "rarity": 5, 
+      "sell_price": 5530, 
+      "attack": 1950, 
+      "defense": 1950, 
+      "id": 3
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1530, 
+      "rarity": 5, 
+      "sell_price": 5670, 
+      "attack": 2310, 
+      "defense": 1830, 
+      "id": 4
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1400, 
+      "rarity": 5, 
+      "sell_price": 5450, 
+      "attack": 1830, 
+      "defense": 2220, 
+      "id": 5
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1580, 
+      "rarity": 5, 
+      "sell_price": 5720, 
+      "attack": 2070, 
+      "defense": 2070, 
+      "id": 6
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1480, 
+      "rarity": 5, 
+      "sell_price": 5590, 
+      "attack": 2340, 
+      "defense": 1770, 
+      "id": 7
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1680, 
+      "rarity": 5, 
+      "sell_price": 5160, 
+      "attack": 1920, 
+      "defense": 1560, 
+      "id": 8
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1530, 
+      "rarity": 5, 
+      "sell_price": 5310, 
+      "attack": 1890, 
+      "defense": 1890, 
+      "id": 9
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1750, 
+      "rarity": 5, 
+      "sell_price": 5800, 
+      "attack": 2100, 
+      "defense": 1950, 
+      "id": 10
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1630, 
+      "rarity": 5, 
+      "sell_price": 5680, 
+      "attack": 2160, 
+      "defense": 1890, 
+      "id": 11
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1600, 
+      "rarity": 5, 
+      "sell_price": 5680, 
+      "attack": 2100, 
+      "defense": 1980, 
+      "id": 12
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1680, 
+      "rarity": 5, 
+      "sell_price": 5700, 
+      "attack": 1980, 
+      "defense": 2040, 
+      "id": 13
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1850, 
+      "rarity": 5, 
+      "sell_price": 5630, 
+      "attack": 2400, 
+      "defense": 1380, 
+      "id": 14
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1530, 
+      "rarity": 5, 
+      "sell_price": 5760, 
+      "attack": 2400, 
+      "defense": 1830, 
+      "id": 15
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1430, 
+      "rarity": 5, 
+      "sell_price": 5810, 
+      "attack": 2010, 
+      "defense": 2370, 
+      "id": 16
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1630, 
+      "rarity": 5, 
+      "sell_price": 5770, 
+      "attack": 2190, 
+      "defense": 1950, 
+      "id": 17
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 3760, 
+      "attack": 1130, 
+      "defense": 1130, 
+      "id": 18
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 5820, 
+      "attack": 2400, 
+      "defense": 1920, 
+      "id": 19
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1580, 
+      "rarity": 5, 
+      "sell_price": 5810, 
+      "attack": 2310, 
+      "defense": 1920, 
+      "id": 20
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1630, 
+      "rarity": 5, 
+      "sell_price": 5860, 
+      "attack": 1950, 
+      "defense": 2280, 
+      "id": 21
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1800, 
+      "rarity": 5, 
+      "sell_price": 5850, 
+      "attack": 1770, 
+      "defense": 2280, 
+      "id": 22
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 2000, 
+      "rarity": 5, 
+      "sell_price": 5900, 
+      "attack": 1770, 
+      "defense": 2130, 
+      "id": 23
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 2000, 
+      "rarity": 5, 
+      "sell_price": 5900, 
+      "attack": 2070, 
+      "defense": 1830, 
+      "id": 24
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 3760, 
+      "attack": 1130, 
+      "defense": 1130, 
+      "id": 25
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 2000, 
+      "rarity": 5, 
+      "sell_price": 4260, 
+      "attack": 1130, 
+      "defense": 1130, 
+      "id": 26
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 6000, 
+      "attack": 2430, 
+      "defense": 2070, 
+      "id": 27
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1900, 
+      "rarity": 5, 
+      "sell_price": 5950, 
+      "attack": 2400, 
+      "defense": 1650, 
+      "id": 28
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 2050, 
+      "rarity": 5, 
+      "sell_price": 5740, 
+      "attack": 1920, 
+      "defense": 1770, 
+      "id": 29
+    }, 
+    {
+      "character_type": 1, 
+      "max_level": 70, 
+      "hp": 1630, 
+      "rarity": 5, 
+      "sell_price": 6130, 
+      "attack": 2100, 
+      "defense": 2400, 
+      "id": 30
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 5520, 
+      "attack": 2400, 
+      "defense": 1620, 
+      "id": 61
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1580, 
+      "rarity": 5, 
+      "sell_price": 5720, 
+      "attack": 2370, 
+      "defense": 1770, 
+      "id": 62
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1700, 
+      "rarity": 5, 
+      "sell_price": 5600, 
+      "attack": 2040, 
+      "defense": 1860, 
+      "id": 63
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1540, 
+      "rarity": 5, 
+      "sell_price": 5730, 
+      "attack": 2370, 
+      "defense": 1820, 
+      "id": 64
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1780, 
+      "rarity": 5, 
+      "sell_price": 5560, 
+      "attack": 1800, 
+      "defense": 1980, 
+      "id": 65
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1680, 
+      "rarity": 5, 
+      "sell_price": 5730, 
+      "attack": 2070, 
+      "defense": 1980, 
+      "id": 66
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1550, 
+      "rarity": 5, 
+      "sell_price": 5720, 
+      "attack": 2370, 
+      "defense": 1800, 
+      "id": 67
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1550, 
+      "rarity": 5, 
+      "sell_price": 5750, 
+      "attack": 2250, 
+      "defense": 1950, 
+      "id": 68
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1600, 
+      "rarity": 5, 
+      "sell_price": 6010, 
+      "attack": 2550, 
+      "defense": 1860, 
+      "id": 69
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1700, 
+      "rarity": 5, 
+      "sell_price": 5750, 
+      "attack": 1950, 
+      "defense": 2100, 
+      "id": 70
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1630, 
+      "rarity": 5, 
+      "sell_price": 5860, 
+      "attack": 2400, 
+      "defense": 1830, 
+      "id": 71
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1750, 
+      "rarity": 5, 
+      "sell_price": 5800, 
+      "attack": 1920, 
+      "defense": 2130, 
+      "id": 72
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1650, 
+      "rarity": 5, 
+      "sell_price": 5940, 
+      "attack": 2340, 
+      "defense": 1950, 
+      "id": 73
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1430, 
+      "rarity": 5, 
+      "sell_price": 5960, 
+      "attack": 2130, 
+      "defense": 2400, 
+      "id": 74
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1400, 
+      "rarity": 5, 
+      "sell_price": 5960, 
+      "attack": 2490, 
+      "defense": 2070, 
+      "id": 75
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1880, 
+      "rarity": 5, 
+      "sell_price": 5840, 
+      "attack": 1980, 
+      "defense": 1980, 
+      "id": 76
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1450, 
+      "rarity": 5, 
+      "sell_price": 5980, 
+      "attack": 2070, 
+      "defense": 2460, 
+      "id": 77
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1800, 
+      "rarity": 5, 
+      "sell_price": 6150, 
+      "attack": 1830, 
+      "defense": 2520, 
+      "id": 78
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1700, 
+      "rarity": 5, 
+      "sell_price": 6050, 
+      "attack": 2310, 
+      "defense": 2040, 
+      "id": 79
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1880, 
+      "rarity": 5, 
+      "sell_price": 5930, 
+      "attack": 1590, 
+      "defense": 2460, 
+      "id": 80
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1680, 
+      "rarity": 5, 
+      "sell_price": 5700, 
+      "attack": 2010, 
+      "defense": 2010, 
+      "id": 81
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1650, 
+      "rarity": 5, 
+      "sell_price": 5880, 
+      "attack": 2370, 
+      "defense": 1860, 
+      "id": 82
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1550, 
+      "rarity": 5, 
+      "sell_price": 5930, 
+      "attack": 2190, 
+      "defense": 2190, 
+      "id": 83
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 2050, 
+      "rarity": 5, 
+      "sell_price": 5890, 
+      "attack": 1800, 
+      "defense": 2040, 
+      "id": 84
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1550, 
+      "rarity": 5, 
+      "sell_price": 5990, 
+      "attack": 2460, 
+      "defense": 1980, 
+      "id": 85
+    }, 
+    {
+      "character_type": 2, 
+      "max_level": 70, 
+      "hp": 1680, 
+      "rarity": 5, 
+      "sell_price": 5940, 
+      "attack": 1830, 
+      "defense": 2430, 
+      "id": 86
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 5640, 
+      "attack": 2340, 
+      "defense": 1800, 
+      "id": 87
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1530, 
+      "rarity": 5, 
+      "sell_price": 5610, 
+      "attack": 2310, 
+      "defense": 1770, 
+      "id": 88
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1450, 
+      "rarity": 5, 
+      "sell_price": 5800, 
+      "attack": 2160, 
+      "defense": 2190, 
+      "id": 89
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1670, 
+      "rarity": 5, 
+      "sell_price": 5620, 
+      "attack": 2000, 
+      "defense": 1950, 
+      "id": 90
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1480, 
+      "rarity": 5, 
+      "sell_price": 5830, 
+      "attack": 2100, 
+      "defense": 2250, 
+      "id": 91
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1550, 
+      "rarity": 5, 
+      "sell_price": 5770, 
+      "attack": 2420, 
+      "defense": 1800, 
+      "id": 92
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1530, 
+      "rarity": 5, 
+      "sell_price": 5760, 
+      "attack": 2430, 
+      "defense": 1800, 
+      "id": 93
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1780, 
+      "rarity": 5, 
+      "sell_price": 5870, 
+      "attack": 2060, 
+      "defense": 2030, 
+      "id": 94
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1730, 
+      "rarity": 5, 
+      "sell_price": 5750, 
+      "attack": 2010, 
+      "defense": 2010, 
+      "id": 95
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1650, 
+      "rarity": 5, 
+      "sell_price": 5670, 
+      "attack": 1980, 
+      "defense": 2040, 
+      "id": 96
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1830, 
+      "rarity": 5, 
+      "sell_price": 5890, 
+      "attack": 2120, 
+      "defense": 1940, 
+      "id": 97
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1600, 
+      "rarity": 5, 
+      "sell_price": 5770, 
+      "attack": 2310, 
+      "defense": 1860, 
+      "id": 98
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1550, 
+      "rarity": 5, 
+      "sell_price": 5720, 
+      "attack": 1920, 
+      "defense": 2250, 
+      "id": 99
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1880, 
+      "rarity": 5, 
+      "sell_price": 5770, 
+      "attack": 1950, 
+      "defense": 1940, 
+      "id": 100
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1580, 
+      "rarity": 5, 
+      "sell_price": 6080, 
+      "attack": 2070, 
+      "defense": 2430, 
+      "id": 101
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1680, 
+      "rarity": 5, 
+      "sell_price": 5940, 
+      "attack": 2460, 
+      "defense": 1800, 
+      "id": 102
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1700, 
+      "rarity": 5, 
+      "sell_price": 5930, 
+      "attack": 2490, 
+      "defense": 1740, 
+      "id": 103
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1450, 
+      "rarity": 5, 
+      "sell_price": 5920, 
+      "attack": 2160, 
+      "defense": 2310, 
+      "id": 104
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1600, 
+      "rarity": 5, 
+      "sell_price": 6130, 
+      "attack": 2370, 
+      "defense": 2160, 
+      "id": 105
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1550, 
+      "rarity": 5, 
+      "sell_price": 5840, 
+      "attack": 2310, 
+      "defense": 1980, 
+      "id": 106
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1930, 
+      "rarity": 5, 
+      "sell_price": 5830, 
+      "attack": 2160, 
+      "defense": 1740, 
+      "id": 107
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1750, 
+      "rarity": 5, 
+      "sell_price": 5800, 
+      "attack": 2100, 
+      "defense": 1950, 
+      "id": 108
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 6030, 
+      "attack": 2130, 
+      "defense": 2400, 
+      "id": 109
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1650, 
+      "rarity": 5, 
+      "sell_price": 6210, 
+      "attack": 2520, 
+      "defense": 2040, 
+      "id": 110
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1580, 
+      "rarity": 5, 
+      "sell_price": 5930, 
+      "attack": 1890, 
+      "defense": 2460, 
+      "id": 111
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1480, 
+      "rarity": 5, 
+      "sell_price": 6010, 
+      "attack": 2460, 
+      "defense": 2070, 
+      "id": 112
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 5970, 
+      "attack": 2370, 
+      "defense": 2100, 
+      "id": 113
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1680, 
+      "rarity": 5, 
+      "sell_price": 5970, 
+      "attack": 1920, 
+      "defense": 2370, 
+      "id": 114
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1500, 
+      "rarity": 5, 
+      "sell_price": 6030, 
+      "attack": 2550, 
+      "defense": 1980, 
+      "id": 115
+    }, 
+    {
+      "character_type": 3, 
+      "max_level": 70, 
+      "hp": 1530, 
+      "rarity": 5, 
+      "sell_price": 5970, 
+      "attack": 2400, 
+      "defense": 2040, 
+      "id": 116
+    }
+  ], 
+  "version": "0.0.2", 
+  "type": "card"
+}
