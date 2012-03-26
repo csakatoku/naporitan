@@ -12,7 +12,7 @@
     ],
     "dependencies": {
         "underscore": ">=0.9.1",
-        "backbone": ">=0.9.1",
+        "backbone": ">=0.9.2",
         "express": ">=2.5.0",
         "gzippo": ">=0.1.4",
         "redis": "0.7.1"
