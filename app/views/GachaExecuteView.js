@@ -1,47 +1,47 @@
 (function(app, undef) {
     "use strict";
 
-    var Card = app.models.Card;
-
     app.views.GachaExecuteView = Backbone.View.extend({
         el: '#content',
 
         events: {
-            'click #gacha-result': 'onResultClick'
+            'click [data-action="gacha-result"]': 'onResultClick',
+            'click [data-action="gacha-reload"]': 'onReloadClick'
         },
 
-        initialize: function(args) {
-            this.multiple = args.multiple || false;
-            this.cards = args.cards || [];
+        initialize: function(options) {
+            // this.el = options.el;
+            this.result = [];
+        },
+
+        setResult: function(items) {
+            this.result = items;
         },
 
         render: function() {
-            var templateName = this.multiple ? 'gacha/do' : 'gacha/do_many';
+            var templateName = this.result.length > 1 ? 'gacha/do' : 'gacha/do_many';
             var tmpl = app.template(templateName);
-            $(this.el).html(tmpl({}));
+            $(this.el).html(tmpl({
+                items: this.result
+            }));
             return this;
         },
 
         onResultClick: function() {
-            var templateName = this.multiple ? 'gacha/result_many' : 'gacha/result';
+            var templateName = this.result.length > 1 ? 'gacha/result_many' : 'gacha/result';
             var tmpl = app.template(templateName);
 
-            var items = [];
-
-            this.cards.forEach(function(id) {
-                var proto = App.data.card[id];
-                if (proto) {
-                    var instance = new Card(proto);
-                    items.push(instance);
-                }
-            });
-
             $(this.el).html(tmpl({
-                'items': items
+                items: this.result
             }));
 
             app.rootView.showMenuTab();
 
+            return false;
+        },
+
+        onReloadClick: function() {
+            this.trigger('onGachaReload');
             return false;
         }
     });

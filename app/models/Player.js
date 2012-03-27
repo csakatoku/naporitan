@@ -154,53 +154,7 @@
 
         getCrews: function() {
             if (this.__crews === undefined) {
-                this.__crews = new app.collections.UserCardCollection([
-                    {
-                        id     : 1,
-                        rarity : 2,
-                        category: 1,
-                        name   : 'Crew 1',
-                        cost   : 3,
-                        hp     : 100,
-                        attack : 100,
-                        defence: 100,
-                        xp     : 0,
-                        level  : 1,
-                        skillLevel: 0,
-                        timestamp: 100,
-                        priority: 0
-                    },
-                    {
-                        id     : 2,
-                        rarity : 1,
-                        category: 2,
-                        name   : 'Crew 2',
-                        cost   : 6,
-                        hp     : 200,
-                        attack : 80,
-                        defence: 120,
-                        xp     : 0,
-                        level  : 5,
-                        skillLevel: 5,
-                        timestamp: 10,
-                        priority: 0
-                    },
-                    {
-                        id     : 3,
-                        rarity : 3,
-                        category: 3,
-                        name   : 'Crew 3',
-                        cost   : 10,
-                        hp     : 300,
-                        attack : 500,
-                        defence: 320,
-                        xp     : 0,
-                        level  : 10,
-                        skillLevel: 1,
-                        timestamp: 0,
-                        priority: 0
-                    }
-                ]);
+                this.__crews = new app.collections.CardCollection();
             }
             return this.__crews;
         },

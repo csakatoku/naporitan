@@ -1,8 +1,9 @@
-<p>{{ crew.name }}を入手しましたよ。よかったですね。(棒読み)</p>
-<p>{{ crew.description }}</p>
+<% var item = _.first(items); %>
+<p><%= item.get('name') %>を入手しましたよ。よかったですね。(棒読み)</p>
+<p><%= item.get('description') %></p>
 <ul>
-  <li>攻撃力: {{ crew.attack }}</li>
-  <li>防御力: {{ crew.defence }}</li>
-  <li>レア度: {{ crew.rarity }}</li>
+  <li>攻撃力: <%= item.get('attack') %></li>
+  <li>防御力: <%= item.get('defense') %></li>
+  <li>レア度: <%= item.get('rarity') %></li>
 </ul>
-<a href="<%= _path('gacha/default') %>">懲りずにもう一度</a>
+<a data-action="gacha-reload">懲りずにもう一度</a>

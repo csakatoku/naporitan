@@ -1,34 +1,55 @@
 (function(App, undef) {
     "use strict";
 
-    var last = null;
+    var Card = App.models.Card;
 
     App.routers.GachaRouter = Backbone.Router.extend({
+        initialize: function() {
+            this.listView = new App.views.GachaListView();
+            this.listView.on('onGachaExecute', this.onExecute, this);
+
+            this.resultView = new App.views.GachaExecuteView();
+            this.resultView.on('onGachaReload', this.onReload, this);
+
+            this.on('onCardsAdded', this.onCardAdded, this);
+        },
+
         defaultAction: function() {
-            var view = new App.views.GachaListView();
-            view.render();
+            this.listView.render();
             App.rootView.showMenuTab();
         },
 
-        executeAction: function(args) {
-            var multiple = ~~(args.multiple || 0);
+        onReload: function(args) {
+            this.listView.render();
+        },
+
+        onExecute: function(args) {
+            var self = this;
 
             App.rootView.startIndicator();
 
             $.ajax({
                 type: 'GET',
                 url: '/api/gacha',
-                data: {
-                    multiple: multiple
-                },
+                data: args,
                 dataType: 'json',
                 success: function(res) {
-                    last = res;
-                    var resultId = res.result_id;
-                    App.rootView.stopIndicator();
+                    var cards = res.cards || [];
+                    var items = [];
+                    var collection = App.getPlayer().getCrews();
 
-                    App.redirect('gacha/result', {
-                        result_id: resultId
+                    cards.forEach(function(id) {
+                        var proto = App.data.card[id];
+                        if (proto) {
+                            var instance = new Card(proto);
+                            collection.add(instance);
+                            items.push(instance);
+                        }
+                    });
+
+                    self.trigger('onCardsAdded', {
+                        response: res,
+                        items: items
                     });
                 },
                 error: function(res) {
@@ -38,10 +59,12 @@
             });
         },
 
-        resultAction: function(args) {
-            var view = new App.views.GachaExecuteView(last);
-            view.render();
+        onCardAdded: function(res) {
+            App.rootView.stopIndicator();
             App.rootView.hideMenuTab();
+
+            this.resultView.setResult(res.items);
+            this.resultView.render();
         }
     });
 }(App));

@@ -2,8 +2,8 @@
 <p>ソーシャルポイントで行うガチャ。なんと(棒読み)1日1回無料で行える。</p>
 <div>
   <ul class="menu">
-    <li><a href="<%= _path('gacha/execute', { id: 1 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute', { id: 1, multiple: 1 }) %>">10連続ガチャ</a></li>
+    <li><a data-action="gacha-execute" data-gacha-id="1">ガチャする</a></li>
+    <li><a data-action="gacha-execute-many" data-gacha-id="1">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -12,8 +12,8 @@
 <p>レア100%保証。特定のカードを集めると....!?(実際はすべてのカードを集めるのは不可能)</p>
 <div>
   <ul class="menu">
-    <li><a href="<%= _path('gacha/execute', { id: 2 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute', { id: 2, multiple: 1  }) %>">10連続ガチャ</a></li>
+    <li><a data-action="gacha-execute" data-gacha-id="2">ガチャする</a></li>
+    <li><a data-action="gacha-execute-many" data-gacha-id="2">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -21,8 +21,8 @@
 <p>期間限定のイベントで行えるガチャ。マネタイズスキームに使われやすい。</p>
 <div>
   <ul class="menu">
-    <li><a href="<%= _path('gacha/execute', { id: 5 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute', { id: 5, multiple: 1 }) %>">10連続ガチャ</a></li>
+    <li><a data-action="gacha-execute" data-gacha-id="5">ガチャする</a></li>
+    <li><a data-action="gacha-execute-many" data-gacha-id="5">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -30,8 +30,8 @@
 <p>ゲーム内アクションで獲得したチケットで行うガチャ。そこそこ強力なアイテムを取得しやすい。(と言っているが、実際はゴミばかり)</p>
 <div>
   <ul class="menu">
-    <li><a href="<%= _path('gacha/execute', { id: 3 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute', { id: 3, multiple: 1 }) %>">10連続ガチャ</a></li>
+    <li><a data-action="gacha-execute" data-gacha-id="3">ガチャする</a></li>
+    <li><a data-action="gacha-execute-many" data-gacha-id="3">10連続ガチャ</a></li>
   </ul>
 </div>
 
@@ -39,7 +39,7 @@
 <p>ゲーム内アクションで獲得したチケットで行うガチャ。強力なアイテムを取得しやすい。(ゴミだったら、さすがに怒るぞ!)</p>
 <div>
   <ul class="menu">
-    <li><a href="<%= _path('gacha/execute', { id: 4 }) %>">ガチャする</a></li>
-    <li><a href="<%= _path('gacha/execute', { id: 4, multiple: 1 }) %>">10連続ガチャ</a></li>
+    <li><a data-action="gacha-execute" data-gacha-id="4">ガチャする</a></li>
+    <li><a data-action="gacha-execute-many" data-gacha-id="4">10連続ガチャ</a></li>
   </ul>
 </div>

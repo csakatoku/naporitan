@@ -79,16 +79,20 @@ def facebook_credits(req):
 def gacha_execute(req):
     import random
 
+    multiple = req.GET.get('multiple') == 'true'
+    gacha_id = req.GET.get('gacha_id')
+
     result_id = random.randint(1, 1 << 32)
 
+    times = 10 if multiple else 1
     cards = []
-    for x in xrange(0, 10):
+    for x in xrange(0, times):
         character_id = random.randint(1, 300)
         cards.append(character_id)
 
     result = {
         'result_id': result_id,
-        'multiple' : True,
+        'multiple' : multiple,
         'cards'    : cards,
         }
     res = HttpResponse(json.dumps(result), content_type='application/json')
