@@ -75,3 +75,21 @@ def facebook_credits(req):
     res = HttpResponse(json.dumps(result), content_type='application/json')
     return res
 
+
+def gacha_execute(req):
+    import random
+
+    result_id = random.randint(1, 1 << 32)
+
+    cards = []
+    for x in xrange(0, 10):
+        character_id = random.randint(1, 300)
+        cards.append(character_id)
+
+    result = {
+        'result_id': result_id,
+        'multiple' : True,
+        'cards'    : cards,
+        }
+    res = HttpResponse(json.dumps(result), content_type='application/json')
+    return res

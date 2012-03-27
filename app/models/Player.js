@@ -154,7 +154,7 @@
 
         getCrews: function() {
             if (this.__crews === undefined) {
-                this.__crews = new app.collections.CrewCollection([
+                this.__crews = new app.collections.UserCardCollection([
                     {
                         id     : 1,
                         rarity : 2,

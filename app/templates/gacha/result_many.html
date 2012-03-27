@@ -1,11 +1,10 @@
 <p>我らの力を見せてやろう</p>
-{{#crews}}
-  <h3>{{ name }}</h3>
-  <p>{{ description }}</p>
+<% items.forEach(function(item) { %>
+  <h3><%= item.get("name") %></h3>
   <ul>
-    <li>攻撃力: {{ attack }}</li>
-    <li>防御力: {{ defence }}</li>
-    <li>レア度: {{ rarity }}</li>
+    <li>攻撃力: <%= item.get("attack") %></li>
+    <li>防御力: <%= item.get("defense") %></li>
+    <li>レア度: <%= item.get("rarity") %></li>
   </ul>
-{{/crews}}
+<% }); %>
 <a href="<%= _path('gacha/default') %>">懲りずにもう一度</a>

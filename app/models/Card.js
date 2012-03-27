@@ -1,45 +1,45 @@
-(function(app, undef) {
+(function(App, undef) {
     "use strict";
 
-    app.models.Crew = Backbone.Model.extend({
+    var Card = App.models.Card = Backbone.Model.extend({
+        initialize: function(args) {
+            this.pictureId = args.card_id;
+            this.set(args);
+        },
+
         /**
          * Get image URL used in list views
          */
         getSquarePictureURL: function() {
-            var id = 1;
-            return ASSET_URL + '/images/character/' + id + '/48x48.png';
+            return ASSET_URL + '/images/character/' + this.cardId + '/48x48.png';
         },
 
         /**
          * Get the smaller image URL
          */
         getSmallPictureURL: function() {
-            var id = 1;
-            return ASSET_URL + '/images/character/' + id + '/80x107.png';
+            return ASSET_URL + '/images/character/' + this.cardId + '/80x107.png';
         },
 
         /**
          * Get the biggest image URL which used in the detail view
          */
         getLargePictureURL: function() {
-            var id = 1;
-            return ASSET_URL + '/images/character/' + id + '/320x427.jpg';
+            return ASSET_URL + '/images/character/' + this.cardId + '/320x427.jpg';
         },
 
         /**
          * Get landscape image URL which used in mission views.
          */
         getLandscapePictureURL: function() {
-            var id = 1;
-            return ASSET_URL + '/images/character/' + id + '/320x64.jpg';
+            return ASSET_URL + '/images/character/' + this.cardId + '/320x64.jpg';
         },
 
         /**
          * Get portrait image URL which used in home views.
          */
         getPortraitPictureURL: function() {
-            var id = 1;
-            return ASSET_URL + '/images/character/' + id + '/64x128.jpg';
+            return ASSET_URL + '/images/character/' + this.cardId + '/64x128.jpg';
         },
 
         getSkillLevelStarClass: function() {

@@ -61,7 +61,8 @@
                     var data = res.data;
                     var seq = app.data[type] || [];
                     data.forEach(function(datum) {
-                        seq.push(datum);
+                        var frozen = Object.freeze(datum);
+                        seq.push(frozen);
                     });
 
                     seq.sort(function(a, b) {
@@ -149,8 +150,8 @@
         }
     };
 
-    App.redirect = function(name, options) {
-        var hash = App.router.reverse('mission/default');
+    App.redirect = function(name, params, options) {
+        var hash = App.router.reverse(name, params);
         Backbone.history.navigate(hash, options);
         return Backbone.history.loadUrl(hash);
     };

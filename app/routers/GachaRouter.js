@@ -1,17 +1,19 @@
-(function(app, undef) {
+(function(App, undef) {
     "use strict";
 
-    app.routers.GachaRouter = Backbone.Router.extend({
+    var last = null;
+
+    App.routers.GachaRouter = Backbone.Router.extend({
         defaultAction: function() {
-            var view = new app.views.GachaListView();
+            var view = new App.views.GachaListView();
             view.render();
-            app.rootView.showMenuTab();
+            App.rootView.showMenuTab();
         },
 
         executeAction: function(args) {
             var multiple = ~~(args.multiple || 0);
 
-            app.rootView.startIndicator();
+            App.rootView.startIndicator();
 
             $.ajax({
                 type: 'GET',
@@ -21,17 +23,25 @@
                 },
                 dataType: 'json',
                 success: function(res) {
-                    var view = new app.views.GachaExecuteView(res.body);
-                    view.render();
+                    last = res;
+                    var resultId = res.result_id;
+                    App.rootView.stopIndicator();
 
-                    app.rootView.stopIndicator();
-                    app.rootView.hideMenuTab();
+                    App.redirect('gacha/result', {
+                        result_id: resultId
+                    });
                 },
                 error: function(res) {
                     alert("error!");
-                    app.rootView.stopIndicator();
+                    App.rootView.stopIndicator();
                 }
             });
+        },
+
+        resultAction: function(args) {
+            var view = new App.views.GachaExecuteView(last);
+            view.render();
+            App.rootView.hideMenuTab();
         }
     });
 }(App));

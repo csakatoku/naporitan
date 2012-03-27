@@ -6,4 +6,7 @@ urlpatterns = patterns(
     'naporitan.api.views',
 
     url('facebook/credits', 'facebook_credits'),
+
+    # gacha
+    url('gacha', 'gacha_execute'),
 )
