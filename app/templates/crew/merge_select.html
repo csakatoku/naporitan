@@ -1,16 +1,5 @@
 <h2>強化する仲間を選択</h2>
-<table>
-  <% crews.forEach(function(crew) { %>
-  <tr>
-    <td><img src="<%= crew.getSquarePictureURL() %>" /></td>
-    <td>
-      <div><span>近</span> <%= crew.get("name") %></div>
-      <div><span>Lv</span><%= crew.get("level") %> 必要統率力 <%= crew.get("cost") %></div>
-      <div><span>AT</span><%= crew.get("attack") %> <span>DF</span><%= crew.get("defence") %></div>
-    </td>
-    <td>
-      <a href="<%= _path('crew_merge_select_done', { id: crew.get('id') }) %>">強化する</a>
-    </td>
-  </tr>
-  <% }); %>
-</table>
+<div id="card-tab"></div>
+<div id="sort-placeholder"></div>
+<ul id="card-list"></ul>
+<nav id="card-sub-menu"></nav>

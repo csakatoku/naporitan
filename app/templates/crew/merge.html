@@ -1,40 +1,22 @@
-<h2>合成</h2>
-<h3>ベースとなる仲間</h3>
+<h2><%= _tr("Merge") %></h2>
+<h3><%= _tr("ベースとなる仲間") %></h3>
 <table>
   <tr>
-    <td><img src="asset/r/images/crew_normal.png" /></td>
+    <td><img src="<%= base.getSquarePictureURL() %>" /></td>
     <td>
-      <div><span>近</span> {{ base.name }}</div>
-      <div><span>Lv</span>{{ base.level }} 必要統率力 3</div>
-      <div><span>AT</span>{{ base.attack }} <span>DF</span>{{ base.defence }}</div>
+      <div><span><%= base.get("category") %></span><%= base.get("name") %></div>
+      <div><span>Lv</span><%= base.get("level") %> 必要統率力 <%= base.get("cost") %></div>
+      <div><span>AT</span><%= base.get("attack") %><span>DF</span><%= base.get("defense") %></div>
     </td>
     <td>
-      <a href="<%= _path('crew/merge_select') %>">変更する</a>
+      <a href="<%= _path('card/merge_select') %>"><%= _tr("変更する") %></a>
     </td>
   </tr>
 </table>
 
-<h3>力を与える仲間</h3>
-<table>
-  {{#crews}}
-  <tr data-outlet="{{ id }}">
-    <td><img src="asset/r/images/crew_normal.png" /></td>
-    <td>
-      <div><span>近</span> {{ name }}</div>
-      <div><span>Lv</span>{{ level }} 必要統率力 3</div>
-      <div><span>AT</span>{{ attack }} <span>DF</span>{{ defence }}</div>
-    </td>
-    <td>
-      <label>合成<input type="checkbox" id="crew_{{ id }}" name="crew_{{ id }}" /></label>
-    </td>
-  </tr>
-  {{/crews}}
-</table>
+<h3><%= _tr("力を与える仲間") %></h3>
+<div id="card-tab"></div>
+<div id="sort-placeholder"></div>
+<ul id="card-list"></ul>
 
-<nav>
-  <ul>
-    <li><a href="<%= _path('crew/default') %>">一覧</a></li>
-    <li>合成</li>
-    <li><a href="<%= _path('crew/sell') %>">売却</a></li>
-  </ul>
-</nav>
+<nav id="card-sub-menu"></nav>

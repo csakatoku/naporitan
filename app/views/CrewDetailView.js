@@ -7,13 +7,12 @@
         template: app.template('crew/detail'),
 
         initialize: function() {
-            var crews = app.getPlayer().getCrews();
-            this.crew = crews.get(1);
+            //
         },
 
         render: function() {
             $(this.el).html(this.template({
-                crew: this.crew
+                item: this.item
             }));
             return this;
         }

@@ -1,20 +1,18 @@
-(function(app, undef) {
+(function(App, undef) {
     "use strict";
 
-    app.views.CrewMergeListView = Backbone.View.extend({
-        el: "#content",
+    var ListElementView = App.views.BaseListElementView.extend({
+        template: App.template('crew/card_merge_select_list_element')
+    });
 
-        template: app.template('crew/merge'),
+    App.views.CrewMergeListView = App.views.BaseListView.extend({
+        template: App.template('crew/merge'),
 
-        initialize: function() {
-            this.crews = app.getPlayer().getCrews();
-        },
+        ListElementView: ListElementView,
 
-        render: function() {
-            $(this.el).html(this.template({
-                crews: this.crews
-            }));
-            return this;
+        onElementClick: function(evt, element) {
+            var id = element.get('id');
+            console.log(id);
         }
     });
 }(App));

@@ -1,47 +1,5 @@
 <h2>仲間一覧</h2>
-<ul>
-  <li><a href="#" data-action="filter-crew" data-filter="0">全タイプ</a></li>
-  <li><a href="#" data-action="filter-crew" data-filter="1">近接</a></li>
-  <li><a href="#" data-action="filter-crew" data-filter="2">遠隔</a></li>
-  <li><a href="#" data-action="filter-crew" data-filter="3">飛行</a></li>
-</ul>
-<select class="sort">
-  <option value="-1">総パラメータ高い順</option>
-  <option value="1">総パラメータ低い順</option>
-  <option value="-2">HP高い順</option>
-  <option value="2">HP低い順</option>
-  <option value="-3">AT高い順</option>
-  <option value="3">AT低い順</option>
-  <option value="-4">DF高い順</option>
-  <option value="4">DF低い順</option>
-  <option value="-5">必要統率高い順</option>
-  <option value="5">必要統率低い順</option>
-  <option value="-6">レア度高い順</option>
-  <option value="6">レア度低い順</option>
-  <option value="-7">最近出会った順</option>
-  <option value="7">昔に出会った順</option>
-  <option value="-8">SKがある順</option>
-  <option value="8">SKがない順</option>
-  <option value="-9">優先度高い順</option>
-  <option value="9">優先度低い順</option>
-</select>
-<table>
-  <% crews.forEach(function(crew) { %>
-  <tr>
-    <td><img src="<%= crew.getSquarePictureURL() %>" /></td>
-    <td>
-      <div><span>近</span> <%= crew.get("name") %></div>
-      <div><span>Lv</span><%= crew.get("level") %> 必要統率力 <%= crew.get("cost") %></div>
-      <div><span>AT</span><%= crew.get("attack") %> <span>DF</span><%= crew.get("defence") %></div>
-    </td>
-  </tr>
-  <% }); %>
-</table>
-
-<nav>
-  <ul>
-    <li>一覧</li>
-    <li><a href="<%= _path('crew/merge') %>">合成</a></li>
-    <li><a href="<%= _path('crew/sell') %>">売却</a></li>
-  </ul>
-</nav>
+<div id="card-tab"></div>
+<div id="sort-placeholder"></div>
+<ul id="card-list"></ul>
+<nav id="card-sub-menu"></nav>

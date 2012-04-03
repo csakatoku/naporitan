@@ -3,8 +3,11 @@
 
     var Card = App.models.Card = Backbone.Model.extend({
         initialize: function(args) {
-            this.pictureId = args.card_id;
+            this.cardId = args.card_id || 1;
             this.set(args);
+            this.set({
+                level: 1
+            });
         },
 
         /**

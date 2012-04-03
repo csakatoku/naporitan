@@ -1,40 +1,20 @@
-(function(app, undef) {
+(function(App, undef) {
     "use strict";
 
-    app.views.CrewListView = Backbone.View.extend({
-        el: "#content",
+    var ListElementView = App.views.BaseListElementView.extend({
+        template: App.template('crew/card_list_element')
+    });
 
-        template: app.template('crew/index'),
+    App.views.CrewListView = App.views.BaseListView.extend({
+        template: App.template('crew/index'),
 
-        events: {
-            "change .sort": "onChangeSort",
-            "click [data-action='filter-crew']": "onChangeFilter"
-        },
+        ListElementView: ListElementView,
 
-        initialize: function() {
-            this.sortType = 0;
-            this.filterCategory = 0;
-        },
-
-        render: function() {
-            var crews = app.getPlayer().getCrews()
-                .filterByCategory(this.filterCategory)
-                .sortByType(this.sortType);
-            $(this.el).html(this.template({
-                crews: crews
-            }));
-            return this;
-        },
-
-        onChangeFilter: function(e) {
-            this.filterCategory = $(e.target).data("filter");
-            this.render();
-            return false;
-        },
-
-        onChangeSort: function(e) {
-            this.sortType = $(e.target).val();
-            this.render();
+        onElementClick: function(evt, model) {
+            var id = model.get('id');
+            App.redirect('card/detail', {
+                id: id
+            });
         }
     });
 }(App));

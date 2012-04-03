@@ -1,13 +1,13 @@
-<h2>売却確認</h2>
+<h2><%= _tr("売却確認") %></h2>
 <p>
   <%= crews.length %>名の仲間を売却します。
 </p>
 <div>
-  <button id="crew_sell_execute">売却する</button>
+  <button id="crew_sell_execute"><%= _tr("売却する") %></button>
 </div>
 
 <nav>
   <ul>
-    <li><a href="<%= _path('crew_sell') %>">選び直す</a></li>
+    <li><a href="<%= _path('crew_sell') %>"><%= _tr("選び直す") %></a></li>
   </ul>
 </nav>

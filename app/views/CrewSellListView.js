@@ -1,20 +1,23 @@
-(function(app, undef) {
+(function(App, undef) {
     "use strict";
 
-    app.views.CrewSellListView = Backbone.View.extend({
-        el: "#content",
+    var ListElementView = App.views.BaseListElementView.extend({
+        template: App.template('crew/card_sell_list_element'),
 
-        template: app.template('crew/sell'),
+        toggle: function() {
+            console.log("toggle: " + this.element.get("id"));
+            this.$el.toggleClass("selected");
+        }
+    });
 
-        initialize: function() {
-            this.crews = app.getPlayer().getCrews();
-        },
+    App.views.CrewSellListView = App.views.BaseListView.extend({
+        template: App.template('crew/sell'),
 
-        render: function() {
-            $(this.el).html(this.template({
-                crews: this.crews
-            }));
-            return this;
+        ListElementView: ListElementView,
+
+        onElementClick: function(evt, element, view) {
+            var id = element.get('id');
+            view.toggle();
         }
     });
 }(App));

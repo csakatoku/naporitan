@@ -1,7 +1,8 @@
 {
   "data": [
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 10, 
       "rarity": 2, 
@@ -11,7 +12,8 @@
       "id": 235
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 500, 
       "rarity": 2, 
@@ -21,7 +23,8 @@
       "id": 236
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 630, 
       "rarity": 2, 
@@ -31,7 +34,8 @@
       "id": 237
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 350, 
       "rarity": 2, 
@@ -41,7 +45,8 @@
       "id": 238
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 350, 
       "rarity": 2, 
@@ -51,7 +56,8 @@
       "id": 239
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -61,7 +67,8 @@
       "id": 240
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 400, 
       "rarity": 2, 
@@ -71,7 +78,8 @@
       "id": 241
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 930, 
       "rarity": 2, 
@@ -81,7 +89,8 @@
       "id": 242
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -91,7 +100,8 @@
       "id": 243
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -101,7 +111,8 @@
       "id": 244
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 800, 
       "rarity": 2, 
@@ -111,7 +122,8 @@
       "id": 245
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -121,7 +133,8 @@
       "id": 246
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 400, 
       "rarity": 2, 
@@ -131,7 +144,8 @@
       "id": 247
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 580, 
       "rarity": 2, 
@@ -141,7 +155,8 @@
       "id": 248
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -151,7 +166,8 @@
       "id": 249
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 800, 
       "rarity": 2, 
@@ -161,7 +177,8 @@
       "id": 250
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -171,7 +188,8 @@
       "id": 251
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 630, 
       "rarity": 2, 
@@ -181,7 +199,8 @@
       "id": 252
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -191,7 +210,8 @@
       "id": 253
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 680, 
       "rarity": 2, 
@@ -201,7 +221,8 @@
       "id": 254
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 850, 
       "rarity": 2, 
@@ -211,7 +232,8 @@
       "id": 255
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -221,7 +243,8 @@
       "id": 256
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 430, 
       "rarity": 2, 
@@ -231,7 +254,8 @@
       "id": 257
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 630, 
       "rarity": 2, 
@@ -241,7 +265,8 @@
       "id": 258
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 500, 
       "rarity": 2, 
@@ -251,7 +276,8 @@
       "id": 259
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 580, 
       "rarity": 2, 
@@ -261,7 +287,8 @@
       "id": 260
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 630, 
       "rarity": 2, 
@@ -271,7 +298,8 @@
       "id": 261
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 800, 
       "rarity": 2, 
@@ -281,7 +309,8 @@
       "id": 262
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 1000, 
       "rarity": 2, 
@@ -291,7 +320,8 @@
       "id": 263
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 1000, 
       "rarity": 2, 
@@ -301,7 +331,8 @@
       "id": 264
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 500, 
       "rarity": 2, 
@@ -311,7 +342,8 @@
       "id": 265
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 900, 
       "rarity": 2, 
@@ -321,7 +353,8 @@
       "id": 266
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 1050, 
       "rarity": 2, 
@@ -331,7 +364,8 @@
       "id": 267
     }, 
     {
-      "character_type": 1, 
+      "category": 1, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 580, 
       "rarity": 2, 
@@ -341,7 +375,8 @@
       "id": 268
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 10, 
       "rarity": 2, 
@@ -351,7 +386,8 @@
       "id": 373
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 350, 
       "rarity": 2, 
@@ -361,7 +397,8 @@
       "id": 374
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -371,7 +408,8 @@
       "id": 375
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -381,7 +419,8 @@
       "id": 376
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 800, 
       "rarity": 2, 
@@ -391,7 +430,8 @@
       "id": 377
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 350, 
       "rarity": 2, 
@@ -401,7 +441,8 @@
       "id": 378
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -411,7 +452,8 @@
       "id": 379
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 430, 
       "rarity": 2, 
@@ -421,7 +463,8 @@
       "id": 380
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 400, 
       "rarity": 2, 
@@ -431,7 +474,8 @@
       "id": 381
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 930, 
       "rarity": 2, 
@@ -441,7 +485,8 @@
       "id": 382
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 650, 
       "rarity": 2, 
@@ -451,7 +496,8 @@
       "id": 383
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 670, 
       "rarity": 2, 
@@ -461,7 +507,8 @@
       "id": 384
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -471,7 +518,8 @@
       "id": 385
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 550, 
       "rarity": 2, 
@@ -481,7 +529,8 @@
       "id": 386
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -491,7 +540,8 @@
       "id": 387
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 730, 
       "rarity": 2, 
@@ -501,7 +551,8 @@
       "id": 388
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 650, 
       "rarity": 2, 
@@ -511,7 +562,8 @@
       "id": 389
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 600, 
       "rarity": 2, 
@@ -521,7 +573,8 @@
       "id": 390
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 550, 
       "rarity": 2, 
@@ -531,7 +584,8 @@
       "id": 391
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 880, 
       "rarity": 2, 
@@ -541,7 +595,8 @@
       "id": 392
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 680, 
       "rarity": 2, 
@@ -551,7 +606,8 @@
       "id": 393
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 700, 
       "rarity": 2, 
@@ -561,7 +617,8 @@
       "id": 394
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 450, 
       "rarity": 2, 
@@ -571,7 +628,8 @@
       "id": 395
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 550, 
       "rarity": 2, 
@@ -581,7 +639,8 @@
       "id": 396
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 750, 
       "rarity": 2, 
@@ -591,7 +650,8 @@
       "id": 397
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 930, 
       "rarity": 2, 
@@ -601,7 +661,8 @@
       "id": 398
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -611,7 +672,8 @@
       "id": 399
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 580, 
       "rarity": 2, 
@@ -621,7 +683,8 @@
       "id": 400
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -631,7 +694,8 @@
       "id": 401
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 500, 
       "rarity": 2, 
@@ -641,7 +705,8 @@
       "id": 402
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 680, 
       "rarity": 2, 
@@ -651,7 +716,8 @@
       "id": 403
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 500, 
       "rarity": 2, 
@@ -661,7 +727,8 @@
       "id": 404
     }, 
     {
-      "character_type": 3, 
+      "category": 3, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -671,7 +738,8 @@
       "id": 405
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 10, 
       "rarity": 2, 
@@ -681,7 +749,8 @@
       "id": 406
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 350, 
       "rarity": 2, 
@@ -691,7 +760,8 @@
       "id": 407
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 500, 
       "rarity": 2, 
@@ -701,7 +771,8 @@
       "id": 408
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 430, 
       "rarity": 2, 
@@ -711,7 +782,8 @@
       "id": 409
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 480, 
       "rarity": 2, 
@@ -721,7 +793,8 @@
       "id": 410
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 550, 
       "rarity": 2, 
@@ -731,7 +804,8 @@
       "id": 411
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 400, 
       "rarity": 2, 
@@ -741,7 +815,8 @@
       "id": 412
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 350, 
       "rarity": 2, 
@@ -751,7 +826,8 @@
       "id": 413
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 350, 
       "rarity": 2, 
@@ -761,7 +837,8 @@
       "id": 414
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 580, 
       "rarity": 2, 
@@ -771,7 +848,8 @@
       "id": 415
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 700, 
       "rarity": 2, 
@@ -781,7 +859,8 @@
       "id": 416
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 540, 
       "rarity": 2, 
@@ -791,7 +870,8 @@
       "id": 417
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 780, 
       "rarity": 2, 
@@ -801,7 +881,8 @@
       "id": 418
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 680, 
       "rarity": 2, 
@@ -811,7 +892,8 @@
       "id": 419
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 550, 
       "rarity": 2, 
@@ -821,7 +903,8 @@
       "id": 420
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 530, 
       "rarity": 2, 
@@ -831,7 +914,8 @@
       "id": 421
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 700, 
       "rarity": 2, 
@@ -841,7 +925,8 @@
       "id": 422
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 750, 
       "rarity": 2, 
@@ -851,7 +936,8 @@
       "id": 423
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 630, 
       "rarity": 2, 
@@ -861,7 +947,8 @@
       "id": 424
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 650, 
       "rarity": 2, 
@@ -871,7 +958,8 @@
       "id": 425
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 430, 
       "rarity": 2, 
@@ -881,7 +969,8 @@
       "id": 426
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 400, 
       "rarity": 2, 
@@ -891,7 +980,8 @@
       "id": 427
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 880, 
       "rarity": 2, 
@@ -901,7 +991,8 @@
       "id": 428
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 450, 
       "rarity": 2, 
@@ -911,7 +1002,8 @@
       "id": 429
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 650, 
       "rarity": 2, 
@@ -921,7 +1013,8 @@
       "id": 430
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 880, 
       "rarity": 2, 
@@ -931,7 +1024,8 @@
       "id": 431
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 680, 
       "rarity": 2, 
@@ -941,7 +1035,8 @@
       "id": 432
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 650, 
       "rarity": 2, 
@@ -951,7 +1046,8 @@
       "id": 433
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 550, 
       "rarity": 2, 
@@ -961,7 +1057,8 @@
       "id": 434
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 1050, 
       "rarity": 2, 
@@ -971,7 +1068,8 @@
       "id": 435
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 550, 
       "rarity": 2, 
@@ -981,7 +1079,8 @@
       "id": 436
     }, 
     {
-      "character_type": 2, 
+      "category": 2, 
+      "cost": 6, 
       "max_level": 40, 
       "hp": 680, 
       "rarity": 2, 

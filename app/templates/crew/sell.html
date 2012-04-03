@@ -1,28 +1,10 @@
-<h2>売却</h2>
-<table>
-  <% crews.forEach(function(crew) { %>
-  <tr>
-    <td><img src="<%= crew.getSquarePictureURL() %>" /></td>
-    <td>
-      <div><span>近</span> <%= crew.get("name") %></div>
-      <div><span>Lv</span><%= crew.get("level") %> 必要統率力 <%= crew.get("cost") %></div>
-      <div><span>AT</span><%= crew.get("attack") %> <span>DF</span><%= crew.get("defence") %></div>
-    </td>
-    <td>
-      <label>売却<input type="checkbox" id="crew_<%= crew.get('id') %>" name="crew_<%= crew.get('id') %>" /></label>
-    </td>
-  </tr>
-  <% }); %>
-</table>
+<h2><%= _tr("売却") %></h2>
+<div id="card-tab"></div>
+<div id="sort-placeholder"></div>
+<ul id="card-list"></ul>
 
 <div>
-  <a id="crew_sell_confirm">売却する</a>
+  <a id="crew_sell_confirm"><%= _tr("売却する") %></a>
 </div>
 
-<nav>
-  <ul>
-    <li><a href="<%= _path('crew/default') %>">一覧</a></li>
-    <li><a href="<%= _path('crew/merge') %>">合成</a></li>
-    <li>売却</li>
-  </ul>
-</nav>
+<nav id="card-sub-menu"></nav>

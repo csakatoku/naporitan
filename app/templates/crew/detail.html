@@ -1,18 +1,18 @@
-<h2>仲間詳細</h2>
-<h3><%= crew.get("name") %></h3>
+<h2><%= _tr("仲間詳細") %></h2>
+<h3><%= item.get("name") %></h3>
 <div>
-  <img src="<%= crew.getLargePictureURL() %>" />
+  <img src="<%= item.getLargePictureURL() %>" />
   <ul>
-    <li>攻撃力: <%= crew.get("attack") %></li>
-    <li>防御力: <%= crew.get("defence") %></li>
-    <li>必要統率力: <%= crew.get("cost") %></li>
+    <li><%= _tr("攻撃力") %>: <%= item.get("attack") %></li>
+    <li><%= _tr("防御力") %>: <%= item.get("defence") %></li>
+    <li><%= _tr("必要統率力") %>: <%= item.get("cost") %></li>
     <li>
-      SK:<span class="<%= crew.getSkillLevelStarClass() %>"><%= crew.getSkillLevelStars() %></span>
+      SK:<span class="<%= item.getSkillLevelStarClass() %>"><%= item.getSkillLevelStars() %></span>
     </li>
   </ul>
 </div>
 <nav>
   <ul>
-    <li><a href="<%= _path('crew/default') %>">仲間一覧</a></li>
+    <li><a href="<%= _path('card/default') %>"><%= _tr("仲間一覧") %></a></li>
   </ul>
 </nav>

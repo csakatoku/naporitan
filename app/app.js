@@ -138,6 +138,10 @@
         },
 
         onFacebookInit: function() {
+            // Initialize localStorage and sessionStorage
+            this.localStorage = this.utils.getLocalStorage();
+            this.sessionStorage = this.utils.getSessionStorage();
+
             // Initialize Game Data
             this.missions = new this.collections.MissionCollection(this.data.mission);
             this.chapters = new this.collections.ChapterCollection(this.data.chapter);

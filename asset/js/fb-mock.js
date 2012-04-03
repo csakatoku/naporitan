@@ -1,9 +1,18 @@
 (function(globals) {
     var key = '_naporitan_uid';
-    var uid = localStorage[key];
+    var storage = (function() {
+        try {
+            localStorage["__FB_MOCK_LOCAL_STORAGE_TEST"] = "1";
+            return localStorage;
+        } catch (x) {
+            return {};
+        }
+    }());
+
+    var uid = storage[key];
     if (uid === undefined) {
         uid = Math.floor(Math.random() * 10000 + 1);
-        localStorage[key]= uid;
+        storage[key]= uid;
     }
 
     var Event = {
