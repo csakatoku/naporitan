@@ -11,7 +11,6 @@ ASSET_URL = '../asset'
 TOP_DIR = File.dirname(__FILE__)
 
 JS_DIR = "#{TOP_DIR}/app"
-TEMPLATE_DIR = "#{JS_DIR}/templates"
 CSS_DIR = "css"
 ASSET_DIR = "asset"
 
@@ -40,8 +39,8 @@ desc 'Compile Templates'
 task :template => [BUILD_DIR] do
   data = []
 
-  pattern = Regexp.compile("#{TEMPLATE_DIR}/(.+?)\.html$")
-  Find.find(TEMPLATE_DIR) do |filename|
+  pattern = Regexp.compile("templates/(.+?)\.html$")
+  Find.find(JS_DIR) do |filename|
     matcher = pattern.match(filename)
     if matcher
       template_name = matcher[1]
