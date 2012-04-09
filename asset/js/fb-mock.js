@@ -21,6 +21,12 @@
         }
     };
 
+    var UA = {
+        nativeApp: function() {
+            return true;
+        }
+    };
+
     globals.FB = {
         getUserID: function() {
             console.log("FB.getUserID() == " + uid);
@@ -31,7 +37,9 @@
             console.log("FB.init");
         },
 
-        Event: Event
+        Event: Event,
+
+        UA: UA
     };
 
     globals.fbAsyncInit();
