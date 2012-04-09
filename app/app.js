@@ -4,7 +4,24 @@
 
     var compiledTemplates = {};
 
-    var fbinit = function(app, options) {
+    var Application = function() {
+        var self = this;
+
+        ['I18N', 'data', 'templates',
+         'utils', 'views', 'models', 'collections', 'routers'].forEach(function(module) {
+             self[module] = {};
+         });
+
+        this._player = undef;
+        this.uid = 0;
+    };
+
+    _.extend(Application.prototype, Backbone.Events);
+
+    var p = Application.prototype;
+
+    p.fbinit = function(options) {
+        var self = this;
         var deferred = new Deferred();
         var url;
 
@@ -18,7 +35,7 @@
         globals.fbAsyncInit = function() {
             FB.init(options.facebook);
 
-            app.uid = FB.getUserID();
+            self.uid = FB.getUserID();
 
             FB.Event.subscribe('auth.authResponseChange', function(res) {
                 if (__DEBUG__) {
@@ -29,11 +46,12 @@
             deferred.call();
         };
 
-        app.utils.loadScript(url);
+        self.utils.loadScript(url);
         return deferred;
     };
 
-    var i18ninit = function(app) {
+    p.i18ninit = function() {
+        var self = this;
         var deferred = new Deferred();
         var url = 'js/ja.json';
 
@@ -43,7 +61,7 @@
             success: function(data) {
                 _.keys(data).forEach(function(key) {
                     var msg = data[key];
-                    app.I18N[key] = msg || key;
+                    self.I18N[key] = msg || key;
                 });
                 deferred.call();
             }
@@ -51,7 +69,8 @@
         return deferred;
     };
 
-    var protoinit = function(app, options) {
+    p.protoinit = function(options) {
+        var self = this;
         var proto_get = function(url) {
             var deferred = new Deferred();
             $.ajax({
@@ -60,7 +79,7 @@
                 success: function(res) {
                     var type = res.type;
                     var data = res.data;
-                    var seq = app.data[type] || [];
+                    var seq = self.data[type] || [];
                     data.forEach(function(datum) {
                         var frozen = Object.freeze(datum);
                         seq.push(frozen);
@@ -69,7 +88,7 @@
                     seq.sort(function(a, b) {
                         return a.id - b.id;
                     });
-                    app.data[type] = seq;
+                    self.data[type] = seq;
 
                     deferred.call();
                 }
@@ -81,92 +100,80 @@
         return Deferred.parallel(configs.map(proto_get));
     };
 
-    var App = globals.App = {
-        _player: undef,
 
-        uid: 0,
+    p.template =  function(name) {
+        var self = this;
 
-        I18N: {},
-        data: {},
-        utils: {},
-        views: {},
-        models: {},
-        collections: {},
-        routers: {},
-        templates: {},
+        return function(args) {
+            var tmpl;
+            if (name in compiledTemplates) {
+                tmpl = compiledTemplates[name];
+            } else {
+                tmpl = compiledTemplates[name] = _.template(self.templates[name]);
+            }
 
-        template: function(name) {
-            var app = this;
+            // Helper functions
+            args = args || {};
+            args._path = self.router.reverse;
 
-            return function(args) {
-                var tmpl;
-                if (name in compiledTemplates) {
-                    tmpl = compiledTemplates[name];
-                } else {
-                    tmpl = compiledTemplates[name] = _.template(app.templates[name]);
-                }
+            // I18N functions
+            args._tr = self.utils._tr;
 
-                // Helper functions
-                args = args || {};
-                args._path = app.router.reverse;
+            // Global Variables
+            args.ASSET_URL = ASSET_URL;
 
-                // I18N functions
-                args._tr = app.utils._tr;
+            return tmpl(args);
+        };
+    };
 
-                // Global Variables
-                args.ASSET_URL = ASSET_URL;
-
-                return tmpl(args);
-            };
-        },
-
-        getPlayer: function() {
+    p.getPlayer = function() {
             if (this._player === undef) {
                 this._player = new this.models.Player();
             }
             return this._player;
-        },
-
-        boot: function(options) {
-            var app = this;
-            Deferred.parallel([
-                fbinit(app, options),
-                i18ninit(app, options),
-                protoinit(app, options)
-            ]).next(function() {
-                // Initialize template from JSON
-                app.data.template.forEach(function(datum) {
-                    app.templates[datum.id] = datum.content;
-                });
-                delete app.data.template;
-
-                app.onFacebookInit();
-            });
-        },
-
-        onFacebookInit: function() {
-            // Initialize localStorage and sessionStorage
-            this.localStorage = this.utils.getLocalStorage();
-            this.sessionStorage = this.utils.getSessionStorage();
-
-            // Initialize Game Data
-            this.missions = new this.collections.MissionCollection(this.data.mission);
-            this.chapters = new this.collections.ChapterCollection(this.data.chapter);
-
-            // Initialize the Backbone router.
-            this.router = new this.routers.AppRouter();
-            this.router.boot();
-
-            Backbone.history.start();
-        }
     };
 
-    App.redirect = function(name, params, options) {
+    p.boot = function(options) {
+        var app = this;
+        Deferred.parallel([
+            app.fbinit(options),
+            app.i18ninit(options),
+            app.protoinit(options)
+        ]).next(function() {
+            // Initialize template from JSON
+            app.data.template.forEach(function(datum) {
+                app.templates[datum.id] = datum.content;
+            });
+            delete app.data.template;
+
+            app.onFacebookInit();
+        });
+    };
+
+    p.onFacebookInit = function() {
+        // Initialize localStorage and sessionStorage
+        this.localStorage = this.utils.getLocalStorage();
+        this.sessionStorage = this.utils.getSessionStorage();
+
+        // Initialize Game Data
+        this.missions = new this.collections.MissionCollection(this.data.mission);
+        this.chapters = new this.collections.ChapterCollection(this.data.chapter);
+
+        // Initialize the Backbone router.
+        this.router = new this.routers.AppRouter();
+        this.router.boot();
+
+        Backbone.history.start();
+    };
+
+    p.redirect = function(name, params, options) {
         var hash = App.router.reverse(name, params);
         Backbone.history.navigate(hash, options);
         return Backbone.history.loadUrl(hash);
     };
 
     // TODO
-    App.ANIMATION_END = 'webkitAnimationEnd';
+    p.ANIMATION_END = 'webkitAnimationEnd';
+
+    globals.App = new Application();
 }(this));
