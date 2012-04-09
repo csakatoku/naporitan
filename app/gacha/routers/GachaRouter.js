@@ -28,12 +28,8 @@
 
             App.rootView.startIndicator();
 
-            $.ajax({
-                type: 'GET',
-                url: '/api/gacha',
-                data: args,
-                dataType: 'json',
-                success: function(res) {
+            App.net.post('/api/gacha', args)
+                .done(function(res) {
                     var cards = res.cards || [];
                     var items = [];
                     var collection = App.getPlayer().getCrews();
@@ -51,12 +47,11 @@
                         response: res,
                         items: items
                     });
-                },
-                error: function(res) {
+                })
+                .fail(function() {
                     alert("error!");
                     App.rootView.stopIndicator();
-                }
-            });
+                });
         },
 
         onCardAdded: function(res) {

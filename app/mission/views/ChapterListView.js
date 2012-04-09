@@ -4,17 +4,13 @@
     app.views.ChapterListView = Backbone.View.extend({
         el: "#content",
 
-        template: app.template('chapter/index'),
-
-        initialize: function() {
-            //
-        },
-
         render: function() {
-            var items = app.chapters;
-            $(this.el).html(this.template({
+            var tmpl = app.template('chapter/index');
+            var items = app.data.chapter;
+            var content = tmpl({
                 items: items
-            }));
+            });
+            $(this.el).html(content);
             return this;
         }
     });

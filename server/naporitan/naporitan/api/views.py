@@ -90,10 +90,28 @@ def gacha_execute(req):
         character_id = random.randint(1, 300)
         cards.append(character_id)
 
-    result = {
+    body = {
         'result_id': result_id,
         'multiple' : multiple,
         'cards'    : cards,
+        }
+    result = {
+        'metadata': {
+            'version': '1.0.0',
+            },
+        'body': body
+        }
+    res = HttpResponse(json.dumps(result), content_type='application/json')
+    return res
+
+
+def mission_execute(req):
+    result = {
+        'metadata': {
+            'version': '1.0.0',
+            },
+        'body': {
+            }
         }
     res = HttpResponse(json.dumps(result), content_type='application/json')
     return res

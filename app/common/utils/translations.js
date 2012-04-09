@@ -1,3 +1,4 @@
+// -*- jsconcat: 250  -*-
 (function(app) {
     var sprintf = app.utils.sprintf;
     var I18N = app.I18N;

@@ -15,10 +15,7 @@
         },
 
         render: function() {
-            $(this.el).html(this.template({
-                mission: this.mission,
-                crew: this.crew
-            }));
+            $(this.el).html(this.template(this.data));
 
             this._levelupView = new app.views.LevelupPopupView({
                 el: '#levelup-popup'
@@ -35,16 +32,29 @@
         },
 
         execute: function(e) {
-            this.player.executeMission(this.mission);
-            count += 1;
-            console.log(count);
+            var self = this;
+            var player = this.data.player;
+            var mission = this.data.mission;
 
-            if (count % 6 === 0) {
-                this._missionCompleteView.show();
-            } else if (count % 3 === 0) {
-                this._levelupView.show();
-            }
+            app.net.post('/api/mission/execute', {
+                id: mission.id
+            }).done(function(data) {
+                player.executeMission(mission);
+                count += 1;
 
+                if (count % 6 === 0) {
+                    self._missionCompleteView.show();
+                } else if (count % 3 === 0) {
+                    self._levelupView.show();
+                }
+
+            }).fail(function(data) {
+                alert("大変です！ミッションに失敗しました!");
+            });
+        },
+
+        dataBind: function(data) {
+            this.data = data;
         },
 
         onMissionCompleteViewClosed: function() {

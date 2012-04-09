@@ -9,4 +9,7 @@ urlpatterns = patterns(
 
     # gacha
     url('gacha', 'gacha_execute'),
+
+    # Mission
+    url('mission/execute', 'mission_execute'),
 )

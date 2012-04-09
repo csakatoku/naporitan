@@ -1,7 +1,9 @@
 <div class="job">
   <h2><%= mission.get("name") %></h2>
   <div>
-    <img src="<%= crew.getLandscapePictureURL() %>" />
+<% if (card) { %>
+    <img src="<%= card.getLandscapePictureURL() %>" />
+<% } %>
   </div>
   <p><%= mission.get("description") %></p>
   <ul>
