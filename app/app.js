@@ -1,3 +1,4 @@
+// -*- jsconcat: 1 -*-
 (function(globals, undef) {
     "use strict";
 
@@ -133,6 +134,12 @@
                 i18ninit(app, options),
                 protoinit(app, options)
             ]).next(function() {
+                // Initialize template from JSON
+                app.data.template.forEach(function(datum) {
+                    app.templates[datum.id] = datum.content;
+                });
+                delete app.data.template;
+
                 app.onFacebookInit();
             });
         },

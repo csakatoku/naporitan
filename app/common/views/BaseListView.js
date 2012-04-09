@@ -1,3 +1,4 @@
+// -*- jsconcat: 100 -*-
 (function(App) {
     App.views.BaseListView = Backbone.View.extend({
         el: "#content",

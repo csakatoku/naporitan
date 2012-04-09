@@ -4,6 +4,8 @@ require "json"
 require "fileutils"
 require "rake/clean"
 
+APP_VERSION = "0.0.3"
+
 ASSET_URL = '../asset'
 
 TOP_DIR = File.dirname(__FILE__)
@@ -36,7 +38,7 @@ end
 
 desc 'Compile Templates'
 task :template => [BUILD_DIR] do
-  buf = []
+  data = []
 
   pattern = Regexp.compile("#{TEMPLATE_DIR}/(.+?)\.html$")
   Find.find(TEMPLATE_DIR) do |filename|
@@ -45,50 +47,77 @@ task :template => [BUILD_DIR] do
       template_name = matcher[1]
 
       content = File.read(filename)
-      jsstr = content.to_json
 
-      buf.push("// #{filename}")
-      buf.push("T['#{template_name}'] = #{jsstr};")
+      data.push({
+                  :id      => template_name,
+                  :content => content
+                })
     end
   end
 
-  template_str = buf.join("\n")
-
-  out = File.open("#{BUILD_DIR}/templates.js", "w:UTF-8")
-  out.puts("(function(app) { var T = app.templates; #{template_str} }(App));")
+  out = File.open("#{BUILD_DIR}/template.json", "w:UTF-8")
+  out.puts({
+             :data    => data,
+             :version => APP_VERSION,
+             :type    => "template"
+           }.to_json)
   out.close()
 end
 
 desc 'Concat all JavaScript files and templates'
 task :concat => [:template] do
-  jsfiles = [
-             "#{JS_DIR}/app.js",
-             "#{BUILD_DIR}/templates.js",
-             "#{JS_DIR}/utils/strings.js",
-             "#{JS_DIR}/utils/translations.js",
-             "#{JS_DIR}/utils/dom.js",
-             "#{JS_DIR}/utils/storage.js",
-            ]
+  jsfiles = []
 
-  packages = [
-          'common/views',
-          'models',
-          'collections',
-          'views',
-          'routers',
-         ]
+  Find.find(JS_DIR) do |filename|
+    if File.file?(filename) && /\.js$/.match(filename)
 
-  packages.each do |package|
-    Dir["#{JS_DIR}/#{package}/*.js"].each do |filename|
-      jsfiles.push(filename)
+      content = File.read(filename)
+
+      weight = -1
+      ignore = false
+
+      matcher = /-\*-(.+?)-\*-/.match(content)
+      if matcher
+        matcher[1].split(",").each do |meta|
+          k, v = meta.split(":")
+          k = k.strip()
+          v = v.strip()
+          if k == 'jsignore'
+            ignore = true
+          elsif k == 'jsconcat'
+            weight = v.to_i
+          end
+        end
+      end
+
+      if ignore
+        next
+      end
+
+      if weight < 0
+        if filename.index('utils/')
+          weight = 200
+        elsif filename.index('models/')
+          weight = 300
+        elsif filename.index('collections/')
+          weight = 400
+        elsif filename.index('views/')
+          weight = 500
+        elsif filename.index('routers/')
+          weight = 600
+        else
+          weight = 100
+        end
+      end
+
+      jsfiles.push([weight, filename, content])
     end
   end
 
-  jsfiles.push("#{JS_DIR}/setup.js")
+  jsfiles.sort! {|a, b| a[0] <=> b[0] }
 
   buf = []
-  jsfiles.each do |filename|
-    content = File.read(filename)
+  jsfiles.each do |weight, filename, content|
     buf.push("// #{filename}")
     buf.push(content)
   end

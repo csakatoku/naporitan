@@ -1,3 +1,4 @@
+// -*- jsconcat: 1000 -*-
 (function(globals, undef) {
     var app = globals.App;
 
@@ -17,7 +18,8 @@
             'asset/proto/card_2.json',
             'asset/proto/card_3.json',
             'asset/proto/card_4.json',
-            'asset/proto/card_5.json'
+            'asset/proto/card_5.json',
+            'template.json'
         ]
     });
 }(this));
