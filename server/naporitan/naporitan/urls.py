@@ -5,7 +5,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns(
     '',
 
-    url(r'^api', include('naporitan.api.urls')),
+    url(r'^api/', include('naporitan.api.urls')),
 
     url(r'^(?P<path>.+)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,

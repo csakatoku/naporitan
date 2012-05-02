@@ -22,7 +22,7 @@
 
     p.fbinit = function(options) {
         var self = this;
-        var deferred = new Deferred();
+        var deferred = new $.Deferred();
         var url;
 
         if (__DEBUG__) {
@@ -43,63 +43,37 @@
                 }
             });
 
-            deferred.call();
+            deferred.resolve();
         };
 
         self.utils.loadScript(url);
         return deferred;
     };
 
-    p.i18ninit = function() {
-        var self = this;
-        var deferred = new Deferred();
-        var url = 'js/ja.json';
+    p.inituser = function() {
+        var deferred = new $.Deferred();
 
         $.ajax({
-            url: url,
+            url: '/api/init',
             dataType: 'json',
             success: function(data) {
-                _.keys(data).forEach(function(key) {
-                    var msg = data[key];
-                    self.I18N[key] = msg || key;
-                });
-                deferred.call();
+                deferred.resolve(data);
             }
         });
+
         return deferred;
     };
 
-    p.protoinit = function(options) {
+    p.i18ninit = function(options) {
         var self = this;
-        var proto_get = function(url) {
-            var deferred = new Deferred();
-            $.ajax({
-                url: url,
-                dataType: 'json',
-                success: function(res) {
-                    var type = res.type;
-                    var data = res.data;
-                    var seq = self.data[type] || [];
-                    data.forEach(function(datum) {
-                        var frozen = Object.freeze(datum);
-                        seq.push(frozen);
-                    });
-
-                    seq.sort(function(a, b) {
-                        return a.id - b.id;
-                    });
-                    self.data[type] = seq;
-
-                    deferred.call();
-                }
+        var url = 'js/ja.json';
+        return $.get(url).success(function(data) {
+            _.keys(data).forEach(function(key) {
+                var msg = data[key];
+                self.I18N[key] = msg || key;
             });
-            return deferred;
-        };
-
-        var configs = options.configs || [];
-        return Deferred.parallel(configs.map(proto_get));
+        });
     };
-
 
     p.template =  function(name) {
         var self = this;
@@ -135,19 +109,44 @@
 
     p.boot = function(options) {
         var app = this;
-        Deferred.parallel([
-            app.fbinit(options),
-            app.i18ninit(options),
-            app.protoinit(options)
-        ]).next(function() {
-            // Initialize template from JSON
-            app.data.template.forEach(function(datum) {
-                app.templates[datum.id] = datum.content;
-            });
-            delete app.data.template;
 
-            app.onFacebookInit();
-        });
+        app.fbinit(options).
+            then(function() {
+                app.inituser()
+                    .then(function(res) {
+                        var dfds = [];
+                        dfds.push(app.i18ninit(options));
+
+                        res.configs.forEach(function(config) {
+                            var d = $.get(config).success(function(res) {
+                                var type = res.type;
+                                var data = res.data;
+                                var seq = app.data[type] || [];
+                                data.forEach(function(datum) {
+                                    var frozen = Object.freeze(datum);
+                                    seq.push(frozen);
+                                });
+
+                                seq.sort(function(a, b) {
+                                    return a.id - b.id;
+                                });
+                                app.data[type] = seq;
+                            });
+
+                            dfds.push(d);
+                        });
+
+                        $.when.apply(this, dfds).then(function() {
+                            // Initialize template from JSON
+                            app.data.template.forEach(function(datum) {
+                                app.templates[datum.id] = datum.content;
+                            });
+                            delete app.data.template;
+
+                            app.onFacebookInit();
+                        });
+                    });
+            });
     };
 
     p.onFacebookInit = function() {

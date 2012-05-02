@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
+from django.conf import settings
+from django.core import urlresolvers
 from django.http import *
 from django.views.decorators.csrf import csrf_exempt
 
@@ -112,6 +114,54 @@ def mission_execute(req):
             },
         'body': {
             }
+        }
+    res = HttpResponse(json.dumps(result), content_type='application/json')
+    return res
+
+
+def init(req):
+    protodb_names = [
+        'chapter',
+        'mission',
+        'card_1',
+        'card_2',
+        'card_3',
+        'card_4',
+        'card_5',
+        ]
+
+    configs = []
+    for name in protodb_names:
+        url = urlresolvers.reverse('api_proto_database', kwargs={
+                'name': name,
+                })
+        configs.append(url)
+
+    configs.append('template.json')
+    result = {
+        'configs': configs
+        }
+    res = HttpResponse(json.dumps(result), content_type='application/json')
+    return res
+
+
+def proto_database(req, name):
+    import os
+
+    path = os.path.join(settings.MEDIA_ROOT, 'asset', 'proto', '%s.json' % name)
+    if not os.path.isfile(path):
+        raise Http404
+
+    proto = json.load(open(path))
+
+    data = proto['data']
+    tp = proto['type']
+    version = '0.0.3'
+
+    result = {
+        'version': version,
+        'data'   : data,
+        'type'   : tp,
         }
     res = HttpResponse(json.dumps(result), content_type='application/json')
     return res
