@@ -3,9 +3,9 @@
 
     var animationEnd = App.ANIMATION_END;
 
-    App.views.LevelupPopupView = Backbone.View.extend({
+    App.views.MissionObstructionModalView = Backbone.View.extend({
         events: {
-            'click .close-popup': 'close'
+            'click .modal': 'close'
         },
 
         initialize: function(options) {
@@ -13,29 +13,30 @@
         },
 
         render: function() {
-            var tmpl = App.template('_popup/levelup');
+            var tmpl = App.template('mission/obstruction');
             $(this.el).html(tmpl());
             return this;
         },
 
         show: function() {
+            var self = this;
             $('#modal_overlay').show();
-            $('.levelup-popup')
+            self.$('.modal')
                 .one(animationEnd, function() {
-                    $('.levelup-popup .close-popup').show();
+                    self.$('.close-popup').show();
                 })
-                .addClass('levelup-popup-animation')
+                .addClass('mission-complete-popup-animation')
                 .show()
             ;
         },
 
         close: function() {
             $('#modal_overlay').hide();
-            $('.levelup-popup')
-                .removeClass('levelup-popup-animation')
+            this.$('.modal')
+                .removeClass('mission-complete-popup-animation')
                 .hide()
             ;
-            $('.close-popup').hide();
+            this.$('.close-popup').hide();
 
             this.trigger('close', this);
         }

@@ -8,8 +8,17 @@
             var id = args.id;
             this.set({
                 name: gettext('<Mission>mission_name_' + id),
-                description: gettext('<Mission>mission_description_' + id)
+                description: gettext('<Mission>mission_description_' + id),
+                progress: args.progress || 0
             });
+        },
+
+        execute: function(player) {
+            var energy = player.getEnergy();
+            if (energy < this.get("energy")) {
+                return false;
+            }
+            return true;
         }
     });
 }(App));

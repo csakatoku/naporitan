@@ -7,11 +7,9 @@
   </div>
   <p><%= mission.get("description") %></p>
   <ul>
-    <li><%= _tr('Mission:') %><span>{{ mission_progress }}/{{ max_energy }}</span></li>
-    <li><%= _tr('Progress:') %><span id="mission-progress-value">{{ mission_progress }}/100</span></li>
-  </ul>
-  <ul>
-    <li><%= _tr('Cost:', mission.get("energy")) %>{{ mission_progress }}/{{ max_energy }}></li>
+    <li><%= _tr('Energy:') %><span id="mission-energy-value"><%= player.get('energy') %></span>/<span id="mission-energy-max-value"><%= player.get('maxEnergy') %></span></li>
+    <li><%= _tr('Progress:') %><span id="mission-progress-value"><%= mission.get('progress') %></span>/100</span></li>
+    <li><%= _tr('Cost: %s', mission.get("energy")) %></li>
     <li><%= _tr('Reward XP: %s', mission.get("xp")) %></li>
     <li><%= _tr('Reward Coins: %(min)s - %(max)s', { min: mission.get("minCoins"), max: mission.get("maxCoins") }) %></li>
   </ul>
@@ -22,3 +20,4 @@
 </nav>
 <div id="levelup-popup"></div>
 <div id="mission-complete-popup"></div>
+<div id="obstrcution-popup"></div>

@@ -4,9 +4,7 @@
     app.routers.MissionRouter = Backbone.Router.extend({
         initialize: function() {
             this.listView = new app.views.MissionListView();
-
             this.executeView = new app.views.MissionExecuteView();
-            this.executeView.on('execute', this.onExecute, this);
         },
 
         defaultAction: function(args) {
@@ -38,6 +36,11 @@
             this.executeView.render();
 
             app.rootView.showMenuTab();
+        },
+
+        noEnergyAction: function(args) {
+            alert("エナジーが足りません");
+            app.redirect('home/default');
         }
     });
 }(App));

@@ -2,6 +2,11 @@
     var request = function(path, method, args) {
         var deferred = $.Deferred();
 
+        args = args || {};
+
+        // TDDO
+        args['uid'] = App.uid;
+
         $.ajax({
             url: path,
             method: method,

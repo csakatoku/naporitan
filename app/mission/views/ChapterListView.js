@@ -6,9 +6,8 @@
 
         render: function() {
             var tmpl = app.template('chapter/index');
-            var items = app.data.chapter;
             var content = tmpl({
-                items: items
+                items: app.chapters
             });
             $(this.el).html(content);
             return this;

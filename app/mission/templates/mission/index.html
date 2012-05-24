@@ -4,6 +4,7 @@
   <a href="<%= _path('mission/execute', { id: mission.get('id') }) %>">
     <div><%= mission.get("name") %></div>
     <ul>
+      <li><%= _tr('Progress:') %><span id="mission-progress-value"><%= mission.get('progress') %></span>/100</span></li>
       <li><%= _tr('Const:') %><%= mission.get("energy") %></li>
       <li><%= _tr('Reward XP:') %><%= mission.get("xp") %></li>
       <li><%= _tr('Reward Coins:') %><%= mission.get("minCoins") %> 〜 <%= mission.get("maxCoins") %></li>

@@ -13,7 +13,7 @@
         },
 
         render: function() {
-            var tmpl = App.template('_popup/mission_complete');
+            var tmpl = App.template('mission/mission_complete');
             $(this.el).html(tmpl());
             return this;
         },
@@ -37,7 +37,7 @@
             ;
             $('.close-popup').hide();
 
-            this.trigger('close');
+            this.trigger('close', this);
         }
     });
 }(App));

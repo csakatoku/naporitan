@@ -17,7 +17,7 @@
 
     var Event = {
         subscribe: function() {
-            console.log('FB.Event.subscribe');
+            //console.log('FB.Event.subscribe');
         }
     };
 
@@ -29,12 +29,11 @@
 
     globals.FB = {
         getUserID: function() {
-            console.log("FB.getUserID() == " + uid);
             return uid;
         },
 
         init: function() {
-            console.log("FB.init");
+            //console.log("FB.init");
         },
 
         Event: Event,

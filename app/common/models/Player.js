@@ -53,24 +53,6 @@
             return current > 100 ? 100 : current;
         },
 
-        executeMission: function(mission) {
-            var energy = this.getEnergy();
-            if (energy >= mission.get("energy")) {
-                //var coins = r.util.Random.randInt(mission.minCoins, mission.maxCoins);
-                var coins = 100;
-                this.set({
-                    "energy": energy - mission.get("energy"),
-                    "coins" : this.get("coins") + coins
-                });
-                this.addXp(mission.get("xp"));
-                this.progressMission(mission.get("id"), 10);
-            }
-        },
-
-        progressMission: function(missionId, delta) {
-            //
-        },
-
         getCurrentMission: function() {
             var self = this;
             var chapter = this.getCurrentChapter();

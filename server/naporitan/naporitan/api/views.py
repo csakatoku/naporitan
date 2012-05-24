@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import json
+import time
 from django.conf import settings
 from django.core import urlresolvers
 from django.http import *
 from django.views.decorators.csrf import csrf_exempt
 
 from naporitan import _facebook as facebook
+from naporitan.storage import storage
+from naporitan.models import Player, Mission
 
 PRODUCTS = {
     'cash300': {
@@ -108,11 +111,65 @@ def gacha_execute(req):
 
 
 def mission_execute(req):
+    uid = req.REQUEST.get('uid')
+    if not uid:
+        raise Http404
+
+    mission_id = req.REQUEST.get('id')
+    if not mission_id:
+        raise Http404
+
+    player = storage.get(Player, uid)
+    player.coins += 10
+    player.energy -= 1
+    player.save()
+
+    mission = storage.get(Mission, uid, mission_id)
+    mission.progress += 10
+    mission.save()
+
+    player_data = {
+        'level': player.level,
+        'xp': player.coins,
+        'energy': player.energy,
+        'coins': player.coins,
+        }
+
+    mission_data = {
+        'progress': min(mission.progress, 100),
+        }
+
+    if 0:
+        actions = [
+            {
+                'type': 'levelup'
+                },
+            {
+                'type': 'complete'
+                },
+            {
+                'type': 'redirect',
+                'url': 'mission/default'
+                },
+            ]
+    else:
+        actions = [
+            {
+                'type': 'levelup'
+                },
+            {
+                'type': 'obstrcution'
+                },
+            ]
+
     result = {
         'metadata': {
             'version': '1.0.0',
             },
         'body': {
+            'player' : player_data,
+            'mission': mission_data,
+            'actions': actions,
             }
         }
     res = HttpResponse(json.dumps(result), content_type='application/json')
@@ -120,6 +177,8 @@ def mission_execute(req):
 
 
 def init(req):
+    now = time.time()
+
     protodb_names = [
         'chapter',
         'mission',
@@ -137,7 +196,7 @@ def init(req):
                 })
         configs.append(url)
 
-    configs.append('template.json')
+    configs.append('template.json?_=%d' % now)
     result = {
         'configs': configs
         }
