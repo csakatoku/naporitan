@@ -5,16 +5,16 @@
     <td><img src="<%= base.getSquarePictureURL() %>" /></td>
     <td>
       <div><span><%= base.get("category") %></span><%= base.get("name") %></div>
-      <div><span>Lv</span><%= base.get("level") %> 必要統率力 <%= base.get("cost") %></div>
-      <div><span>AT</span><%= base.get("attack") %><span>DF</span><%= base.get("defense") %></div>
+      <div><span><%= _tr("LV") %></span><%= base.get("level") %> <%= _tr("Cost") %> <%= base.get("cost") %></div>
+      <div><span><%= _tr("AT") %></span><%= base.get("attack") %><span><%= _tr("DF") %></span><%= base.get("defense") %></div>
     </td>
     <td>
-      <a href="<%= _path('card/merge_select') %>"><%= _tr("変更する") %></a>
+      <a href="<%= _path('card/merge_select') %>"><%= _tr("Change") %></a>
     </td>
   </tr>
 </table>
 
-<h3><%= _tr("力を与える仲間") %></h3>
+<h3><%= _tr("Base card") %></h3>
 <div id="card-tab"></div>
 <div id="sort-placeholder"></div>
 <ul id="card-list"></ul>
