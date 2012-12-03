@@ -18,6 +18,10 @@
     ];
 
     var klass = App.routers.ItemRouter = Backbone.Router.extend({
+        routes: {
+            '': 'defaultAction'
+        },
+
         defaultAction: function() {
             var self = this;
 

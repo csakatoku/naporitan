@@ -4,6 +4,10 @@
     var Card = App.models.Card;
 
     App.routers.GachaRouter = Backbone.Router.extend({
+        routes: {
+            '': 'defaultAction'
+        },
+
         initialize: function() {
             this.listView = new App.views.GachaListView();
             this.listView.on('onGachaExecute', this.onExecute, this);

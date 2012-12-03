@@ -2,6 +2,10 @@
     "use strict";
 
     App.routers.CardRouter = Backbone.Router.extend({
+        routes: {
+            '': 'defaultAction'
+        },
+
         initialize: function() {
             var rootView = App.rootView;
 

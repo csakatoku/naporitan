@@ -59,9 +59,11 @@ module.exports = function(app) {
         }));
     });
 
-    app.get('/gacha/', function(req, res) {
-        res.render('index.html', context({
-            module: 'gacha'
-        }));
+    ['top', 'home', 'mission', 'gacha', 'item', 'card', 'cash'].forEach(function(mod) {
+        app.get('/' + mod + '/', function(req, res) {
+            res.render('index.html', context({
+                module: mod
+            }));
+        });
     });
 };

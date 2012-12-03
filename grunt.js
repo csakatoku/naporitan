@@ -79,12 +79,39 @@ module.exports = function(grunt) {
                 ],
                 dest: 'server/public/js/dist/app.top.js'
             },
+            home: {
+                src: [
+                    'app/common/**/*.js'
+                ],
+                dest: 'server/public/js/dist/app.home.js'
+            },
             gacha: {
                 src: [
                     'app/common/**/*.js',
                     'app/gacha/**/*.js'
                 ],
                 dest: 'server/public/js/dist/app.gacha.js'
+            },
+            item: {
+                src: [
+                    'app/common/**/*.js',
+                    'app/item/**/*.js'
+                ],
+                dest: 'server/public/js/dist/app.item.js'
+            },
+            card: {
+                src: [
+                    'app/common/**/*.js',
+                    'app/card/**/*.js'
+                ],
+                dest: 'server/public/js/dist/app.card.js'
+            },
+            mission: {
+                src: [
+                    'app/common/**/*.js',
+                    'app/mission/**/*.js'
+                ],
+                dest: 'server/public/js/dist/app.mission.js'
             }
         },
 

@@ -113,7 +113,16 @@
 
             // Helper functions
             args = args || {};
-            args._path = self.router.reverse;
+            args._path = function(name, args) {
+                var components = name.split('/');
+                var router = components[0];
+                var action = (components[1] === 'default') ? null : components[1];
+                if (action) {
+                    return '/' + router + '/#!/' + action;
+                } else {
+                    return '/' + router + '/';
+                }
+            };
 
             // I18N functions
             args._tr = self.utils._tr;
@@ -132,7 +141,7 @@
             return this._player;
     };
 
-    p.boot = function(options) {
+    p.boot = function(module, options) {
         var app = this;
 
         Object.keys(options.constants || {}).forEach(function(k) {
@@ -144,11 +153,11 @@
             //app.i18ninit(options),
             //app.protoinit(options)
         ]).next(function() {
-            app.onFacebookInit();
+            app.onFacebookInit(module);
         });
     };
 
-    p.onFacebookInit = function() {
+    p.onFacebookInit = function(module) {
         // Initialize localStorage and sessionStorage
         this.localStorage = this.utils.getLocalStorage();
         this.sessionStorage = this.utils.getSessionStorage();
@@ -158,10 +167,13 @@
         this.chapters = new this.collections.ChapterCollection(this.data.chapter);
 
         // Initialize the Backbone router.
-        this.router = new this.routers.AppRouter();
-        this.router.boot();
-
-        Backbone.history.start();
+        var name = this.utils.snakeToPascal(module) + "Router";
+        var routerClass = this.routers[name];
+        if (routerClass) {
+            var router = this.router = new routerClass();
+            router.initialize();
+            Backbone.history.start();
+        }
     };
 
     p.redirect = function(name, params, options) {

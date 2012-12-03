@@ -2,6 +2,11 @@
     "use strict";
 
     app.routers.MissionRouter = Backbone.Router.extend({
+        routes: {
+            '': 'defaultAction',
+            '!/execute': 'executeAction'
+        },
+
         initialize: function() {
             this.listView = new app.views.MissionListView();
 

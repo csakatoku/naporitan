@@ -24,7 +24,7 @@
 {% endblock %}
 <script>
 {% autoescape false %}
-App.boot({{ BOOTSTRAP_DATA }});
+App.boot("{{ module|escape('js') }}", {{ BOOTSTRAP_DATA }});
 {% endautoescape %}
 </script>
   </body>
