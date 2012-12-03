@@ -1,5 +1,0 @@
-# -*- coding: utf-8 -*-
-
-# Facebook Settings
-FACEBOOK_APP_ID = ''
-FACEBOOK_API_SECRET = ''
