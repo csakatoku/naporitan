@@ -22,9 +22,8 @@ app.set('view engine', 'html');
 // Initialize statics
 app.use(express.static(PUBLIC_DIR));
 
-app.get('/', function(req, res) {
-    res.render('index.html');
-});
+// Load controllers
+require(__dirname + '/server/controllers/bootstrap.js')(app);
 
 var port = process.env.port || 3000;
 app.listen(port, function() {

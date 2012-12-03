@@ -8,7 +8,8 @@ module.exports = function(grunt) {
         ];
         var files = grunt.file.expandFiles(this.file.src);
         files.forEach(function(filepath) {
-            var templateName = filepath.replace(/^client\/templates\//, '').replace(/\.html$/, '');
+            var templateFileName = filepath.split('templates')[1];
+            var templateId = templateFileName.substr(1).replace(/\.html$/, '');
             var content = grunt.file.read(filepath);
 
             var tmp = [];
@@ -16,7 +17,7 @@ module.exports = function(grunt) {
                 tmp.push(line.replace(/^\s*</, '<'));
             });
 
-            buf.push('_T["' + templateName + '"] = ' + JSON.stringify(tmp.join('')) + ';');
+            buf.push('_T["' + templateId + '"] = ' + JSON.stringify(tmp.join('')) + ';');
         });
 
         grunt.file.write(this.file.dest, buf.join("\n"));
@@ -29,8 +30,7 @@ module.exports = function(grunt) {
         lint: {
             files: [
                 'grunt.js',
-                'client/*.js',
-                'client/{models,collections,views,routers}/*.js'
+                'app/**/*.js'
             ]
         },
 
@@ -57,30 +57,42 @@ module.exports = function(grunt) {
         templates: {
             debug: {
                 src: [
-                    'client/templates/**/*.html'
+                    'app/*/templates/**/*.html'
                 ],
-                dest: 'server/public/js/app.template.js'
+                dest: 'server/public/js/dist/app.templates.js'
             }
         },
 
         depconcat: {
             bootstrap: {
                 src: [
+                    'app/app.js',
+                    'app/common/utils/dom.js',
                     'app/setup.js'
                 ],
-                dest: 'server/public/js/app.setup.js',
+                dest: 'server/public/js/dist/app.setup.js',
                 separator: ';'
             },
-            app: {
+            top: {
                 src: [
-                    'client/{models,collections,views,routers}/*.js'
+                    'app/common/**/*.js'
                 ],
-                dest: 'server/public/js/app.js'
+                dest: 'server/public/js/dist/app.top.js'
+            },
+            gacha: {
+                src: [
+                    'app/common/**/*.js',
+                    'app/gacha/**/*.js'
+                ],
+                dest: 'server/public/js/dist/app.gacha.js'
             }
         },
 
         watch: {
-            files: ['<config:lint.files>', '<config:templates.debug.src>'],
+            files: [
+                '<config:lint.files>',
+                '<config:templates.debug.src>'
+            ],
             tasks: 'default'
         }
     });

@@ -100,7 +100,6 @@
         return Deferred.parallel(configs.map(proto_get));
     };
 
-
     p.template =  function(name) {
         var self = this;
 
@@ -109,7 +108,7 @@
             if (name in compiledTemplates) {
                 tmpl = compiledTemplates[name];
             } else {
-                tmpl = compiledTemplates[name] = _.template(self.templates[name]);
+                tmpl = compiledTemplates[name] = _.template(globals['_T'][name]);
             }
 
             // Helper functions
@@ -136,16 +135,10 @@
     p.boot = function(options) {
         var app = this;
         Deferred.parallel([
-            app.fbinit(options),
-            app.i18ninit(options),
-            app.protoinit(options)
+            app.fbinit(options)
+            //app.i18ninit(options),
+            //app.protoinit(options)
         ]).next(function() {
-            // Initialize template from JSON
-            app.data.template.forEach(function(datum) {
-                app.templates[datum.id] = datum.content;
-            });
-            delete app.data.template;
-
             app.onFacebookInit();
         });
     };
