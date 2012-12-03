@@ -46,10 +46,10 @@ module.exports = function(grunt) {
         less: {
             development: {
                 options: {
-                    paths: ['css']
+                    paths: ['app/common/stylesheets']
                 },
                 files: {
-                    'server/public/css/app.css': 'css/app.less'
+                    'server/public/css/app.css': 'app/common/stylesheets/app.less'
                 }
             }
         },
