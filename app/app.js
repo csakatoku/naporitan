@@ -26,9 +26,9 @@
         var url;
 
         if (__DEBUG__) {
-            url = ASSET_URL + '/js/fb-mock.js';
+            url = ASSET_URL + 'js/fb-mock.js';
         } else {
-            url = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+            url = '//connect.facebook.net/en_US/all.js';
         }
 
         // Facebook
@@ -134,6 +134,11 @@
 
     p.boot = function(options) {
         var app = this;
+
+        Object.keys(options.constants || {}).forEach(function(k) {
+            globals[k] = options.constants[k];
+        });
+
         Deferred.parallel([
             app.fbinit(options)
             //app.i18ninit(options),

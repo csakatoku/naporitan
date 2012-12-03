@@ -9,3 +9,4 @@ locale/messages.pot
 
 *.pyc
 local_settings.py
+aws.json

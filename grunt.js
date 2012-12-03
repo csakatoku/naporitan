@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-dep-concat');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-s3');
 
     grunt.registerMultiTask('templates', 'Convert templates to JavaScript', function() {
         var buf = [
@@ -67,8 +68,7 @@ module.exports = function(grunt) {
             bootstrap: {
                 src: [
                     'app/app.js',
-                    'app/common/utils/dom.js',
-                    'app/setup.js'
+                    'app/common/utils/dom.js'
                 ],
                 dest: 'server/public/js/dist/app.setup.js',
                 separator: ';'
@@ -86,6 +86,29 @@ module.exports = function(grunt) {
                 ],
                 dest: 'server/public/js/dist/app.gacha.js'
             }
+        },
+
+        aws: '<json:aws.json>',
+
+        s3: {
+            key: '<%= aws.key %>',
+            secret: '<%= aws.secret %>',
+            bucket: '<%= aws.bucket %>',
+            access: 'public-read',
+            upload: [
+                {
+                    src : 'server/public/js/*.js',
+                    dest: 'naporitan/js/'
+                },
+                {
+                    src : 'server/public/js/dist/*.js',
+                    dest: 'naporitan/js/dist/'
+                },
+                {
+                    src : 'server/public/css/*.css',
+                    dest: 'naporitan/css/'
+                }
+            ]
         },
 
         watch: {

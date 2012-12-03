@@ -22,5 +22,10 @@
     <script type="text/javascript" src="{{ ASSET_URL }}js/dist/app.templates.js"></script>
 {% block javascript %}
 {% endblock %}
+<script>
+{% autoescape false %}
+App.boot({{ BOOTSTRAP_DATA }});
+{% endautoescape %}
+</script>
   </body>
 </html>
