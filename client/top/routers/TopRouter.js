@@ -7,7 +7,9 @@
         },
 
         defaultAction: function() {
-            var view = new app.views.TopView();
+            var view = new app.views.TopView({
+                el: "#content"
+            });
             view.render();
             app.rootView.hideMenuTab();
         }

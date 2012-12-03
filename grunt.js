@@ -25,6 +25,26 @@ module.exports = function(grunt) {
         grunt.log.writeln('File "' + this.file.dest + '" created.');
     });
 
+    var depconcat = {
+        bootstrap: {
+            src: [
+                'client/app.js',
+                'client/common/utils/dom.js'
+            ],
+            dest: 'server/public/js/dist/app.setup.js',
+            separator: ';'
+        }
+    };
+    ['top', 'home', 'gacha', 'item', 'card', 'mission', 'cash'].forEach(function(mod) {
+        depconcat[mod] = {
+            src: [
+                'client/common/**/*.js',
+                'client/'+ mod + '/**/*.js'
+            ],
+            dest: 'server/public/js/dist/app.' + mod + '.js'
+        };
+    });
+
     grunt.initConfig({
         pkg: '<json:package.json>',
 
@@ -64,56 +84,7 @@ module.exports = function(grunt) {
             }
         },
 
-        depconcat: {
-            bootstrap: {
-                src: [
-                    'client/app.js',
-                    'client/common/utils/dom.js'
-                ],
-                dest: 'server/public/js/dist/app.setup.js',
-                separator: ';'
-            },
-            top: {
-                src: [
-                    'client/common/**/*.js'
-                ],
-                dest: 'server/public/js/dist/app.top.js'
-            },
-            home: {
-                src: [
-                    'client/common/**/*.js'
-                ],
-                dest: 'server/public/js/dist/app.home.js'
-            },
-            gacha: {
-                src: [
-                    'client/common/**/*.js',
-                    'client/gacha/**/*.js'
-                ],
-                dest: 'server/public/js/dist/app.gacha.js'
-            },
-            item: {
-                src: [
-                    'client/common/**/*.js',
-                    'client/item/**/*.js'
-                ],
-                dest: 'server/public/js/dist/app.item.js'
-            },
-            card: {
-                src: [
-                    'client/common/**/*.js',
-                    'client/card/**/*.js'
-                ],
-                dest: 'server/public/js/dist/app.card.js'
-            },
-            mission: {
-                src: [
-                    'client/common/**/*.js',
-                    'client/mission/**/*.js'
-                ],
-                dest: 'server/public/js/dist/app.mission.js'
-            }
-        },
+        depconcat: depconcat,
 
         aws: '<json:aws.json>',
 

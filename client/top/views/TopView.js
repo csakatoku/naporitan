@@ -2,8 +2,6 @@
     "use strict";
 
     app.views.TopView = Backbone.View.extend({
-        el: "#content",
-
         events: {
             'click .facebook-login': 'onFacebookLogin'
         },
