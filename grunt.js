@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         lint: {
             files: [
                 'grunt.js',
-                'app/**/*.js'
+                'client/**/*.js'
             ]
         },
 
@@ -47,10 +47,10 @@ module.exports = function(grunt) {
         less: {
             development: {
                 options: {
-                    paths: ['app/common/stylesheets']
+                    paths: ['client/common/stylesheets']
                 },
                 files: {
-                    'server/public/css/app.css': 'app/common/stylesheets/app.less'
+                    'server/public/css/app.css': 'client/common/stylesheets/app.less'
                 }
             }
         },
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         templates: {
             debug: {
                 src: [
-                    'app/*/templates/**/*.html'
+                    'client/*/templates/**/*.html'
                 ],
                 dest: 'server/public/js/dist/app.templates.js'
             }
@@ -67,49 +67,49 @@ module.exports = function(grunt) {
         depconcat: {
             bootstrap: {
                 src: [
-                    'app/app.js',
-                    'app/common/utils/dom.js'
+                    'client/app.js',
+                    'client/common/utils/dom.js'
                 ],
                 dest: 'server/public/js/dist/app.setup.js',
                 separator: ';'
             },
             top: {
                 src: [
-                    'app/common/**/*.js'
+                    'client/common/**/*.js'
                 ],
                 dest: 'server/public/js/dist/app.top.js'
             },
             home: {
                 src: [
-                    'app/common/**/*.js'
+                    'client/common/**/*.js'
                 ],
                 dest: 'server/public/js/dist/app.home.js'
             },
             gacha: {
                 src: [
-                    'app/common/**/*.js',
-                    'app/gacha/**/*.js'
+                    'client/common/**/*.js',
+                    'client/gacha/**/*.js'
                 ],
                 dest: 'server/public/js/dist/app.gacha.js'
             },
             item: {
                 src: [
-                    'app/common/**/*.js',
-                    'app/item/**/*.js'
+                    'client/common/**/*.js',
+                    'client/item/**/*.js'
                 ],
                 dest: 'server/public/js/dist/app.item.js'
             },
             card: {
                 src: [
-                    'app/common/**/*.js',
-                    'app/card/**/*.js'
+                    'client/common/**/*.js',
+                    'client/card/**/*.js'
                 ],
                 dest: 'server/public/js/dist/app.card.js'
             },
             mission: {
                 src: [
-                    'app/common/**/*.js',
-                    'app/mission/**/*.js'
+                    'client/common/**/*.js',
+                    'client/mission/**/*.js'
                 ],
                 dest: 'server/public/js/dist/app.mission.js'
             }
