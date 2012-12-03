@@ -1,3 +1,4 @@
+// load: client/app.js
 (function(App) {
     var request = function(path, method, args) {
         var deferred = $.Deferred();
