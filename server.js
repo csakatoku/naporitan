@@ -9,6 +9,7 @@ var VIEW_DIR   = __dirname + '/server/views',
     PUBLIC_DIR = __dirname + '/server/public'
 ;
 
+// Initialize views
 swig.init({
     root: VIEW_DIR,
     allowErrors: true
@@ -17,6 +18,9 @@ app.set('views', VIEW_DIR);
 
 app.engine('.html', consolidate.swig);
 app.set('view engine', 'html');
+
+// Initialize statics
+app.use(express.static(PUBLIC_DIR));
 
 app.get('/', function(req, res) {
     res.render('index.html');
