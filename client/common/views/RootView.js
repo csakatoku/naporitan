@@ -2,15 +2,9 @@
     "use strict";
 
     app.views.RootView = Backbone.View.extend({
-        el: "#container",
-
         events: {
             'click #menu_dial': 'onMenuDialClicked',
             'click #menu_dial .menu_dial_element': 'onMenuDialClicked'
-        },
-
-        initialize: function(options) {
-            //
         },
 
         scrollToTop: function() {
@@ -52,14 +46,7 @@
         },
 
         render: function() {
-            var tmpl = app.template('_root');
-            $(this.el).html(tmpl());
-
-            this.menuTab = new app.views.MenuTabView({
-                el: '.menu_tab'
-            });
-            this.menuTab.render();
-
+            this.menuTab = new app.views.MenuTabView().render();
             return this;
         }
     });

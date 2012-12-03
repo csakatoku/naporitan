@@ -2,16 +2,9 @@
     "use strict";
 
     app.views.GachaListView = Backbone.View.extend({
-        el: '#content',
-
         events: {
             'click a[data-action="gacha-execute"]': 'onExecute',
             'click a[data-action="gacha-execute-many"]': 'onExecuteMany'
-        },
-
-        initialize: function(options) {
-            //options = options || {};
-            //this.el = options.el || ;
         },
 
         render: function() {

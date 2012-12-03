@@ -9,10 +9,14 @@
         },
 
         initialize: function() {
-            this.listView = new App.views.GachaListView();
+            this.listView = new App.views.GachaListView({
+                el: '#content'
+            });
             this.listView.on('onGachaExecute', this.onExecute, this);
 
-            this.resultView = new App.views.GachaExecuteView();
+            this.resultView = new App.views.GachaExecuteView({
+                el: '#content'
+            });
             this.resultView.on('onGachaReload', this.onReload, this);
 
             this.on('onCardsAdded', this.onCardAdded, this);

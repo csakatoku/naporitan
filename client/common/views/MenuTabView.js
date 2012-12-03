@@ -6,10 +6,6 @@
             'click .menu_tab_other': 'onTabOtherClicked'
         },
 
-        initialize: function(options) {
-            this.el = options.el;
-        },
-
         onTabOtherClicked: function() {
             app.rootView.showMenuDial();
             return false;

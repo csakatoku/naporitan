@@ -1,3 +1,4 @@
+<% if (items.length > 0) { %>
 <% var item = _.first(items); %>
 <p><%= item.get('name') %>を入手しましたよ。よかったですね。(棒読み)</p>
 <p><%= item.get('description') %></p>
@@ -6,4 +7,5 @@
   <li>防御力: <%= item.get('defense') %></li>
   <li>レア度: <%= item.get('rarity') %></li>
 </ul>
+<% } %><!-- items -->
 <a data-action="gacha-reload">懲りずにもう一度</a>

@@ -1,4 +1,3 @@
-// -*- jsconcat: 1 -*-
 (function(globals, undef) {
     "use strict";
 
@@ -170,6 +169,7 @@
         var name = this.utils.snakeToPascal(module) + "Router";
         var routerClass = this.routers[name];
         if (routerClass) {
+            this.rootView = new this.views.RootView().render();
             var router = this.router = new routerClass();
             router.initialize();
             Backbone.history.start();
