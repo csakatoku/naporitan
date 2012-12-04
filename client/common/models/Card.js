@@ -1,3 +1,4 @@
+/*global MAX_SKILL_LEVEL:true */
 (function(App, undef) {
     "use strict";
 

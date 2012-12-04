@@ -1,4 +1,5 @@
 // load: client/app.js
+/*global localStorage:true, sessionStorage:true */
 (function(app) {
     "use strict";
 

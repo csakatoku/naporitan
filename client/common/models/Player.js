@@ -1,3 +1,4 @@
+/*global setInterval:true */
 (function(app, undef) {
     "use strict";
 
@@ -56,7 +57,7 @@
         executeMission: function(mission) {
             var energy = this.getEnergy();
             if (energy >= mission.get("energy")) {
-                //var coins = r.util.Random.randInt(mission.minCoins, mission.maxCoins);
+                //var coins = app.util.Random.randInt(mission.minCoins, mission.maxCoins);
                 var coins = 100;
                 this.set({
                     "energy": energy - mission.get("energy"),
@@ -85,7 +86,7 @@
             if (missionId === 1) {
                 return false;
             }
-            var prev = r.model.Mission.get(missionId - 1);
+            var prev = app.models.Mission.get(missionId - 1);
             return !this.isCompletedMission(prev);
         },
 
@@ -99,7 +100,7 @@
                 // first chapter is always unlocked
                 return false;
             }
-            var prev = r.model.Chapter.get(chapterId - 1);
+            var prev = app.models.Chapter.get(chapterId - 1);
             return !this.isCompletedChapter(prev);
         },
 
@@ -112,7 +113,7 @@
         },
 
         refreshCurrentChapter: function() {
-            var chapters = r.model.Chapter.list();
+            var chapters = app.models.Chapter.list();
             var chapter = chapters[0], next;
             for (var i = 0, length = chapters.length; i < length; i++) {
                 next = chapters[i];
@@ -141,7 +142,7 @@
 
         sellCrew: function(id) {
             var crew, crews = this.getCrews();
-            id = parseInt(id);
+            id = ~~id;
             for (var i = 0, length = crews.length; i < length; i++) {
                 crew = crews[i];
                 if (crew.id === id) {

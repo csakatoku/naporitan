@@ -1,3 +1,4 @@
+/*global FB:true */
 (function(app, undef) {
     "use strict";
 

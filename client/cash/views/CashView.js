@@ -1,3 +1,4 @@
+/*jshint sub:true */
 (function(app) {
     app.views.CashView = Backbone.View.extend({
         el: '#content',

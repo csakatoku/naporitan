@@ -28,7 +28,7 @@
         },
 
         mergeAction: function() {
-            var mergeBaseId = App.localStorage["card_merge_base_id"];
+            var mergeBaseId = App.localStorage.cardMergeBaseId;
             var player = App.getPlayer();
             var items = player.getCrews();
             var mergeBase = items.get(mergeBaseId);

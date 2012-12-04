@@ -1,3 +1,4 @@
+/*global alert:true */
 (function(app, undef) {
     "use strict";
 

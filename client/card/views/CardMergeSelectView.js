@@ -12,7 +12,7 @@
 
         onElementClick: function(evt, element) {
             var mergeBaseId = element.get('id');
-            App.localStorage["card_merge_base_id"] = mergeBaseId;
+            App.localStorage.cardMergeBaseId = mergeBaseId;
             App.redirect('card/merge');
         }
     });

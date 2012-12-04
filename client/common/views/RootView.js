@@ -1,3 +1,4 @@
+/*global window:true */
 (function(app) {
     "use strict";
 
@@ -8,7 +9,7 @@
         },
 
         scrollToTop: function() {
-            setTimeout(function() {
+            window.setTimeout(function() {
                 window.scroll(0, 1);
             }, 0);
         },

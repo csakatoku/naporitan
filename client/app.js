@@ -1,3 +1,4 @@
+/*global Deferred:true, FB:true */
 (function(globals, undef) {
     "use strict";
 
@@ -107,38 +108,13 @@
             if (name in compiledTemplates) {
                 tmpl = compiledTemplates[name];
             } else {
-                tmpl = compiledTemplates[name] = _.template(globals['_T'][name]);
+                tmpl = compiledTemplates[name] = _.template(globals._T[name]);
             }
 
             // Helper functions
             args = args || {};
             args._path = function(name, args) {
-                var components, router, buf;
-
-                if (args) {
-                    Object.keys(args).forEach(function(k) {
-                        var needle = ':' + k;
-                        name = name.replace(needle, args[k]);
-                    });
-                }
-
-                components = name.split('/');
-                router = components[0];
-
-                buf = [];
-                if (components[1] !== 'default') {
-                    buf.push(components[1]);
-                }
-
-                if (components.length >= 2) {
-                    buf.push.apply(buf, components.slice(2));
-                }
-
-                if (buf.length > 0) {
-                    return '/' + router + '/#!/' + (buf.join('/'));
-                } else {
-                    return '/' + router + '/';
-                }
+                return self.resolveRoute(name, args);
             };
 
             // I18N functions
@@ -185,19 +161,48 @@
 
         // Initialize the Backbone router.
         var name = this.utils.snakeToPascal(module) + "Router";
-        var routerClass = this.routers[name];
-        if (routerClass) {
+        var RouterClass = this.routers[name];
+        if (RouterClass) {
             this.rootView = new this.views.RootView().render();
-            var router = this.router = new routerClass();
+            var router = this.router = new RouterClass();
             router.initialize();
             Backbone.history.start();
         }
     };
 
     p.redirect = function(name, params, options) {
-        var hash = App.router.reverse(name, params);
+        var hash = this.resolveRoute(name, params);
         Backbone.history.navigate(hash, options);
         return Backbone.history.loadUrl(hash);
+    };
+
+    p.resolveRoute = function(name, args) {
+        var components, router, buf;
+
+        if (args) {
+            Object.keys(args).forEach(function(k) {
+                var needle = ':' + k;
+                name = name.replace(needle, args[k]);
+            });
+        }
+
+        components = name.split('/');
+        router = components[0];
+
+        buf = [];
+        if (components[1] !== 'default') {
+            buf.push(components[1]);
+        }
+
+        if (components.length >= 2) {
+            buf.push.apply(buf, components.slice(2));
+        }
+
+        if (buf.length > 0) {
+            return '/' + router + '/#!/' + (buf.join('/'));
+        } else {
+            return '/' + router + '/';
+        }
     };
 
     // TODO

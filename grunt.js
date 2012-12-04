@@ -60,7 +60,9 @@ module.exports = function(grunt) {
                 console: true,
                 Backbone: true,
                 '$': true,
-                '_': true
+                '_': true,
+                '__DEBUG__': true,
+                'ASSET_URL': true
             }
         },
 

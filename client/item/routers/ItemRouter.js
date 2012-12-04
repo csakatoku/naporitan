@@ -1,3 +1,4 @@
+/*global confirm:true */
 (function(App, undefined) {
     "use strict";
 
