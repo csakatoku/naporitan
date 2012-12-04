@@ -9,13 +9,10 @@ cloneした後に以下のコマンドを実行して、必要なnode moduleを�
 
 クライアントをビルドするには、
 
-    $ rake
+    $ ./node_modules/grunt/bin/grunt depconcat templates less
+    $ ./node_modules/grunt/bin/grunt watch
 
-サーバーをビルドするには、
+サーバーをスタートするには、
 
-    $ rake server_build
+    $ node server.js
 
-サーバーをスタートするには、Djangoをインストールした上で、
-
-    $ cd server/naporitan
-    $ python manage.py runserver

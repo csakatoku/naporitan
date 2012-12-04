@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Naporitan Z{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="{{ ASSET_URL }}css/app.css" type="text/css" />
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <div id="container">
+{% block content %}
+{% endblock %}
+    </div>
+    <script type="text/javascript" src="{{ ASSET_URL }}js/jsdeferred.js"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}js/underscore-min.js"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}js/backbone-min.js"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}js/dist/app.setup.js"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}js/dist/app.templates.js"></script>
+{% block javascript %}
+{% endblock %}
+<script>
+{% autoescape false %}
+App.boot("{{ module|escape('js') }}", {{ BOOTSTRAP_DATA }});
+{% endautoescape %}
+</script>
+  </body>
+</html>

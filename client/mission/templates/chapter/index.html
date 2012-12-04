@@ -1,0 +1,10 @@
+<h2>Chapters</h2>
+<% items.forEach(function(item) { %>
+<div class="row">
+  <a href="<%= _path('mission/chapter/:id', { id: item.id }) %>">
+    <h3><%= item.name %></h3>
+    <div><%= _tr('Progress: %d/%d (%d%%)', 0, 100, 0) %></div>
+    <div><%= _tr('To this chapter') %></div>
+  </a>
+</div>
+<% }); %>

@@ -1,0 +1,205 @@
+// Common
+
+body {
+    background: url("../images/bg.jpg") 50% 0 no-repeat;
+    background-color: #1c1c1c;
+    color: #8b8b8b;
+}
+
+h1, h2, h3, h4 {
+    color: white;
+    clear: both;
+}
+
+hr {
+    clear: both;
+}
+
+a img {
+    border: none !important;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    width: 90%;
+    height: 44px;
+}
+
+ul.menu li {
+    display: inline;
+    list-style: none;
+
+    a {
+        display: block;
+        float: left;
+        margin: 0 2px;
+        padding: 3px 15px;
+        background: rgba(0,0,0,0.2);
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -webkit-box-shadow: 1px 2px 2px rgba(0,0,0,0.6);
+        -moz-box-shadow: 1px 2px 2px rgba(0,0,0,0.6);
+        -webkit-transition-property: opacity, -webkit-transform, color, background-color, -webkit-box-shadow;
+        -webkit-transition-duration: 0.15s;
+        -webkit-transition-timing-function: ease-out;
+    }
+}
+
+#ribbon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+#content {
+    clear: both;
+}
+
+#modal_overlay {
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    z-index: 100;
+    opacity: 0.8;
+}
+
+#loading-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 200;
+    opacity: 0;
+
+    &.on {
+        opacity: 1.0;
+    }
+}
+
+// ヘッダーとフッターのタブ
+.menu_tab {
+    clear: both;
+
+    ul.tab {
+        list-style: none;
+        display: inline;
+
+        li {
+            display: inline;
+
+            a {
+                display: block;
+                float: left;
+                width: 50px;
+                height: 50px;
+                border: 1px solid red;
+            }
+        }
+    }
+}
+
+// その他のメニュー
+#menu_dial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    z-index: 200;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 280px;
+        height: 320px;
+
+        li {
+            float: left;
+
+            a {
+                display: block;
+                width: 60px;
+                height: 60px;
+                border: 1px solid blue;
+            }
+        }
+    }
+}
+
+//レベルアップ, ミッション完了
+@-webkit-keyframes levelup-animation-keyframes {
+    from {
+        top: -5em;
+    }
+    to {
+        top: 5em;
+    }
+}
+
+.levelup-popup-animation,
+.mission-complete-popup-animation {
+    -webkit-animation-name: levelup-animation-keyframes;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+}
+
+.levelup-popup,
+.mission-complete-popup {
+    position: absolute;
+    top: -10em;
+    left: 0px;
+    display: none;
+    z-index: 2000;
+
+    h2 {
+        font-size: 5em;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    a {
+        font-size: 5em;
+        display: none;
+    }
+}
+
+// カードのスキルレベルの星の色
+.skill-level-0 {
+
+}
+
+.skill-level-1 {
+    color: #ffff44;
+}
+
+.skill-level-2 {
+    color: #ff8888;
+}
+
+.skill-level-3 {
+    color: #66aaee;
+}
+
+.skill-level-4 {
+    color: #aa66ee;
+}
+
+.skill-level-5 {
+    color: #62bc64;
+}
+
+.skill-level-6 {
+    color: #ff66cc;
+}

@@ -1,23 +1,29 @@
 {
     "name": "naporitan",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "Naporitan Z",
     "keywords": ["backbone.js", "game"],
     "repository": {
         "type": "git",
-        "url": "https://github.com/csakatoku/royale"
+        "url": "https://github.com/csakatoku/naporitan"
     },
     "author": "Chihiro SAKATOKU <csakatoku@gmail.com>",
     "contributors": [
     ],
     "dependencies": {
-        "underscore": ">=0.9.1",
-        "backbone": ">=0.9.2",
-        "express": ">=2.5.0",
+        "express": ">=3.0.0",
+        "consolidate": ">=0.5.0",
+        "swig": ">=0.13.2",
         "gzippo": ">=0.1.4",
         "redis": "0.7.1"
     },
     "devDependencies": {
+        "grunt": "latest",
+        "grunt-dep-concat": "latest",
+        "grunt-contrib-less": "latest",
+        "grunt-s3": "latest",
+        "underscore": ">=0.9.1",
+        "backbone": ">=0.9.2",
         "less": ">=1.2.2",
         "uglify-js": ">=1.2.5"
     },
@@ -28,6 +34,10 @@
     "scripts": {
     },
     "bugs": {
-        "url": "https://github.com/csakatoku/royale/issues"
+        "url": "https://github.com/csakatoku/naporitan/issues"
+    },
+    "subdomain" : "naporitan",
+    "scripts": {
+        "start": "server.js"
     }
 }
