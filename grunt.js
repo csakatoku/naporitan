@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         bootstrap: {
             src: [
                 'client/app.js',
-                'client/common/utils/dom.js'
+                'client/common/utils/*.js'
             ],
             dest: 'server/public/js/dist/app.setup.js',
             separator: ';'
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     ['top', 'home', 'gacha', 'item', 'card', 'mission', 'cash'].forEach(function(mod) {
         depconcat[mod] = {
             src: [
-                'client/common/**/*.js',
+                'client/common/{models,collections,views}/*.js',
                 'client/'+ mod + '/**/*.js'
             ],
             dest: 'server/public/js/dist/app.' + mod + '.js'
