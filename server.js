@@ -19,8 +19,10 @@ app.set('views', VIEW_DIR);
 app.engine('.html', consolidate.swig);
 app.set('view engine', 'html');
 
-// Initialize statics
+// Initialize middleware
 app.use(express.static(PUBLIC_DIR));
+app.use(express.logger());
+app.use(express.bodyParser());
 
 // Load controllers
 require(__dirname + '/server/controllers/bootstrap.js')(app);

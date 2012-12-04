@@ -5,14 +5,12 @@
 
         $.ajax({
             url: path,
-            method: method,
+            type: method,
             data: args,
             dataType: 'json',
             cache: false
         }).success(function(data) {
-            var metadata = data.metadata;
-            var body = data.body || {};
-            deferred.resolve(body);
+            deferred.resolve(data);
         }).fail(function() {
             deferred.reject();
         });
@@ -23,11 +21,21 @@
     var net = {};
 
     net.get = function(path, args) {
-        return request(path, 'GET', args);
+        return request(net.resolve(path, args), 'GET', args);
     };
 
     net.post = function(path, args) {
-        return request(path, 'POST', args);
+        return request(net.resolve(path, args), 'POST', args);
+    };
+
+    net.resolve = function(routeName, args) {
+        if ('gacha_box_list' === routeName) {
+            return '/api/users/' + args.user_id + '/gacha/box/' + args.box_id;
+        } else if ('gacha_execute' === routeName) {
+            return '/api/users/' + args.user_id + '/gacha/box/' + args.box_id;
+        } else {
+            return routeName;
+        }
     };
 
     App.net = net;

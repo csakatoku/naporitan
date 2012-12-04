@@ -59,9 +59,9 @@ module.exports = function(app) {
         }));
     });
 
-    ['top', 'home', 'mission', 'gacha', 'item', 'card', 'cash'].forEach(function(mod) {
+    ['top', 'home', 'mission', 'gacha', 'item', 'card'].forEach(function(mod) {
         app.get('/' + mod + '/', function(req, res) {
-            res.render('index.html', context({
+            res.render(mod + '.html', context({
                 module: mod
             }));
         });

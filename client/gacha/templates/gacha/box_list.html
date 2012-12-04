@@ -1,0 +1,26 @@
+<h2>ボックスの中身一覧</h2>
+
+<p>ボックスの中身を減らせば減らすほどSSR, SRの取得確率アップ！</p>
+
+<ul id="gacha_box_list_placeholder">
+<% items.forEach(function(item) { %>
+  <li><%- item.get('name') %> レア度:<%- item.get('rarity') %>  残り <%- item.get('numerator') %>/<%- item.get('denominator') %></li>
+<% }); %>
+<% if (denominators[3] > 0) { %>
+  <li>レア度 3: <%- numerators[3] %>/<%- denominators[3] %></li>
+<% } %>
+<% if (denominators[2] > 0) { %>
+  <li>レア度 2: <%- numerators[2] %>/<%- denominators[2] %></li>
+<% } %>
+<% if (denominators[1] > 0) { %>
+  <li>レア度 1: <%- numerators[1] %>/<%- denominators[1] %></li>
+<% } %>
+</ul>
+
+<hr />
+
+<nav>
+  <ul>
+    <li><a href="<%- _path('gacha/default') %>">戻りましょう</a></li>
+  </ul>
+</nav>
