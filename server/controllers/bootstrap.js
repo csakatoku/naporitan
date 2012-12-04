@@ -54,7 +54,7 @@ module.exports = function(app) {
     };
 
     app.get('/', function(req, res) {
-        res.render('index.html', context({
+        res.render('top.html', context({
             module: 'top'
         }));
     });
