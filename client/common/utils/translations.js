@@ -1,4 +1,5 @@
-// -*- jsconcat: 250  -*-
+// load: client/app.js
+// load: client/common/utils/strings.js
 (function(app) {
     var sprintf = app.utils.sprintf;
     var I18N = app.I18N;

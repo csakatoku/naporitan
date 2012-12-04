@@ -1,3 +1,4 @@
+// load: client/app.js
 (function(app) {
     _.extend(app.utils, {
         loadScript: function(url, callback) {
