@@ -165,7 +165,6 @@
         if (RouterClass) {
             this.rootView = new this.views.RootView().render();
             var router = this.router = new RouterClass();
-            router.initialize();
             Backbone.history.start();
         }
     };
