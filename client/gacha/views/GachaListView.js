@@ -16,8 +16,10 @@
         onExecute: function(e) {
             var $target = $(e.target);
             var gachaId = $target.data('gacha-id');
+            var boxId = $target.data('box-id') || 1;
             this.trigger('onGachaExecute', {
                 gacha_id: gachaId,
+                box_id: boxId,
                 multiple: false
             });
             return false;
@@ -26,8 +28,10 @@
         onExecuteMany: function(e) {
             var $target = $(e.target);
             var gachaId = $target.data('gacha-id');
+            var boxId = $target.data('box-id') || 1;
             this.trigger('onGachaExecute', {
                 gacha_id: gachaId,
+                box_id: boxId,
                 multiple: true
             });
             return false;

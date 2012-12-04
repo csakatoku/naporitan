@@ -12,39 +12,43 @@
         },
 
         initialize: function() {
+            // Gacha Top Page
             this.listView = new App.views.GachaListView({
-                el: '#content'
+                el: '#gacha-index'
             });
             this.listView.on('onGachaExecute', this.onExecute, this);
 
+            // Gacha Animation
             this.resultView = new App.views.GachaExecuteView({
-                el: '#content'
+                el: '#gacha-animation'
             });
-            this.resultView.on('onGachaReload', this.onReload, this);
+            this.resultView.on('onGachaReload', this.defaultAction, this);
 
             this.on('onCardsAdded', this.onCardAdded, this);
 
+            // Gacha Box List Page
             this.boxCollection = new Backbone.Collection(null, {
                 model: GachaBoxItem
             });
+
+            this.boxListView = new App.views.GachaBoxListView({
+                el: '#gacha-box-list',
+                collection: this.boxCollection
+            }).render();
         },
 
         defaultAction: function() {
             // TODO: こんなテキトーな画面切り替えでいいのか?
-            $('#gacha_box_list').empty();
+            var _a = this.boxListView && this.boxListView.$el.empty();
+            var _b = this.resultView && this.resultView.$el.empty();
 
             this.listView.render();
-            App.rootView.showMenuTab();
         },
 
         boxListAction: function(boxId) {
             // TODO: こんなテキトーな画面切り替えでいいのか?
-            $('#content').empty();
-
-            var view = new App.views.GachaBoxListView({
-                el: '#gacha_box_list',
-                collection: this.boxCollection
-            }).render();
+            var _a = this.listView &&  this.listView.$el.empty();
+            var _b = this.resultView && this.resultView.$el.empty();
 
             this.boxCollection.fetch({
                 url: App.net.resolve('gacha_box_list', {
@@ -54,28 +58,20 @@
             });
         },
 
-        onReload: function(args) {
-            this.listView.render();
-        },
-
         onExecute: function(args) {
             var self = this;
 
             App.rootView.startIndicator();
+            args.user_id = App.uid;
 
             App.net.post('gacha_execute', args)
                 .done(function(res) {
                     var cards = res.cards || [];
                     var items = [];
-                    var collection = App.getPlayer().getCrews();
 
-                    cards.forEach(function(id) {
-                        var proto = App.data.card[id];
-                        if (proto) {
-                            var instance = new Card(proto);
-                            collection.add(instance);
-                            items.push(instance);
-                        }
+                    cards.forEach(function(args) {
+                        var instance = new Card(args);
+                        items.push(instance);
                     });
 
                     self.trigger('onCardsAdded', {
@@ -91,7 +87,9 @@
 
         onCardAdded: function(res) {
             App.rootView.stopIndicator();
-            App.rootView.hideMenuTab();
+
+            // TODO: こんなテキトーな画面切り替えでいいのか?
+            var _a = this.listView && this.listView.$el.empty();
 
             this.resultView.setResult(res.items);
             this.resultView.render();

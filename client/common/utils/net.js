@@ -5,14 +5,12 @@
 
         $.ajax({
             url: path,
-            method: method,
+            type: method,
             data: args,
             dataType: 'json',
             cache: false
         }).success(function(data) {
-            var metadata = data.metadata;
-            var body = data.body || {};
-            deferred.resolve(body);
+            deferred.resolve(data);
         }).fail(function() {
             deferred.reject();
         });
@@ -32,9 +30,9 @@
 
     net.resolve = function(routeName, args) {
         if ('gacha_box_list' === routeName) {
-            return '/api/users/' + args.user_id  + '/gacha/box/' + args.box_id;
+            return '/api/users/' + args.user_id + '/gacha/box/' + args.box_id;
         } else if ('gacha_execute' === routeName) {
-            return '/api/gacha';
+            return '/api/users/' + args.user_id + '/gacha/box/' + args.box_id;
         } else {
             return routeName;
         }
