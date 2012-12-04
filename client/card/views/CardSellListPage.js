@@ -1,4 +1,4 @@
-//load client/card/views/CardBaseListPage.js
+// load: client/card/views/CardBaseListPage.js
 (function(App) {
     "use strict";
 
