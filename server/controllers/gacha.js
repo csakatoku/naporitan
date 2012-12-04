@@ -6,9 +6,8 @@ module.exports = function(app) {
         var userId = req.params.user_id;
         var boxId = req.params.box_id;
         var gachaId = req.body.gacha_id;
-        var multiple = ('true' === req.body.multiple) ? true : false;
+        var times = req.body.times ? ~~req.body.times : 1;
 
-        var times = multiple ? 10 : 1;
         var cards = [];
 
         var box = db[userId] || initializeGachaBox(userId, boxId);

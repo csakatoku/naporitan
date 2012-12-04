@@ -1,4 +1,3 @@
-/*global alert:true */
 (function(App, undef) {
     "use strict";
 
@@ -16,15 +15,17 @@
             this.listView = new App.views.GachaListView({
                 el: '#gacha-index'
             });
-            this.listView.on('onGachaExecute', this.onExecute, this);
+            this.listView.on('onCardsAdded', this.onCardsAdded, this);
+
+            this.confirmView = this.listView.confirmView = new App.views.GachaConfirmView({
+                el: '#gacha-confirm'
+            }).render();
 
             // Gacha Animation
             this.resultView = new App.views.GachaExecuteView({
                 el: '#gacha-animation'
             });
             this.resultView.on('onGachaReload', this.defaultAction, this);
-
-            this.on('onCardsAdded', this.onCardAdded, this);
 
             // Gacha Box List Page
             this.boxCollection = new Backbone.Collection(null, {
@@ -58,40 +59,20 @@
             });
         },
 
-        onExecute: function(args) {
-            var self = this;
-
-            App.rootView.startIndicator();
-            args.user_id = App.uid;
-
-            App.net.post('gacha_execute', args)
-                .done(function(res) {
-                    var cards = res.cards || [];
-                    var items = [];
-
-                    cards.forEach(function(args) {
-                        var instance = new Card(args);
-                        items.push(instance);
-                    });
-
-                    self.trigger('onCardsAdded', {
-                        response: res,
-                        items: items
-                    });
-                })
-                .fail(function() {
-                    alert("error!");
-                    App.rootView.stopIndicator();
-                });
-        },
-
-        onCardAdded: function(res) {
+        onCardsAdded: function(res) {
             App.rootView.stopIndicator();
 
             // TODO: こんなテキトーな画面切り替えでいいのか?
             var _a = this.listView && this.listView.$el.empty();
 
-            this.resultView.setResult(res.items);
+            var items = [];
+
+            res.items.forEach(function(args) {
+                var instance = new Card(args);
+                items.push(instance);
+            });
+
+            this.resultView.setResult(items);
             this.resultView.render();
         }
     });

@@ -13,8 +13,7 @@
 
         render: function() {
             var result = this.result || [];
-            var templateName = result.length > 1 ? 'gacha/do' : 'gacha/do_many';
-            var tmpl = app.template(templateName);
+            var tmpl = app.template('gacha/do_many');
             $(this.el).html(tmpl({
                 items: result
             }));
@@ -23,15 +22,10 @@
 
         onResultClick: function() {
             var result = this.result || [];
-            var templateName = result.length > 1 ? 'gacha/result_many' : 'gacha/result';
-            var tmpl = app.template(templateName);
-
+            var tmpl = app.template('gacha/result_many');
             $(this.el).html(tmpl({
                 items: result
             }));
-
-            app.rootView.showMenuTab();
-
             return false;
         },
 
