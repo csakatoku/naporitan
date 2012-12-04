@@ -2,14 +2,14 @@
     "use strict";
 
     var ListElementView = App.views.BaseListElementView.extend({
-        template: App.template('card/card_merge_select_list_element')
+        template: App.template('card/card_enhance_base_list_element')
     });
 
-    App.views.CrewMergeSelectView = App.views.BaseListView.extend({
+    App.views.CardEnhanceBaseListView = App.views.BaseListView.extend({
         ListElementView: ListElementView,
 
-        onElementClick: function(evt, element) {
-            var mergeBaseId = element.get('id');
+        onSubViewClick: function(evt, view) {
+            var mergeBaseId = view.model.get('id');
             App.localStorage.cardMergeBaseId = mergeBaseId;
             App.redirect('card/merge');
         }

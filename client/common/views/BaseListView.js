@@ -2,6 +2,21 @@
     App.views.BaseListView = Backbone.View.extend({
         tagName: 'ul',
 
+        events: {
+            'click li': 'onClick'
+        },
+
+        onClick: function(evt) {
+            var target = evt.currentTarget;
+            var modelId = $(target).data('model-id');
+            var view = this._elements[modelId];
+            return this.onSubViewClick(evt, view);
+        },
+
+        onSubViewClick: function(evt, view) {
+            return false;
+        },
+
         renderElements: function(collection) {
             var self = this;
             var $list = this.$el;

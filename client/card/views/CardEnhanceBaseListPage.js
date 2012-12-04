@@ -4,6 +4,6 @@
 
     App.views.CardEnhanceBaseListPage = App.views.CardBaseListPage.extend({
         templateName: 'card/enhance_base_list',
-        ListViewClassName: 'CardListView'
+        ListViewClassName: 'CardEnhanceBaseListView'
     });
 }(App));

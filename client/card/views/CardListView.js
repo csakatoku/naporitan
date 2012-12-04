@@ -8,11 +8,8 @@
     App.views.CardListView = App.views.BaseListView.extend({
         ListElementView: ListElementView,
 
-        onElementClick: function(evt, model) {
-            var id = model.get('id');
-            App.redirect('card/detail', {
-                id: id
-            });
+        onSubViewClick: function(evt, view) {
+            //
         }
     });
 }(App));

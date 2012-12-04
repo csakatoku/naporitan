@@ -4,6 +4,6 @@
 
     App.views.CardSellListPage = App.views.CardBaseListPage.extend({
         templateName: 'card/sell_list',
-        ListViewClassName: 'CardListView'
+        ListViewClassName: 'CardSellListView'
     });
 }(App));

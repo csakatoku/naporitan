@@ -1,20 +1,15 @@
 (function(App) {
+    "use strict";
+
     App.views.BaseListElementView = Backbone.View.extend({
         tagName: 'li',
 
-        events: {
-            'click a': 'onClick'
-        },
-
         render: function() {
+            var model = this.options.model;
             this.$el.html(this.template({
-                element: this.options.model
+                model: model
             }));
             return this;
-        },
-
-        onClick: function(e) {
-            this.trigger('click', e, this.element, this);
         }
     });
 }(App));

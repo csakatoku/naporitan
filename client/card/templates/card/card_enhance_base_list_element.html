@@ -1,0 +1,11 @@
+<a>
+  <div><img src="<%= model.getSquarePictureURL() %>" /></div>
+  <div>
+    <div><span><%= model.get("category") %></span> <%= model.get("name") %></div>
+    <div><span><%= _tr("Lv") %></span><%= model.get("level") %> <%= _tr("Use Cost") %> <%= model.get("cost") %></div>
+    <div><span><%= _tr("AT") %></span><%= model.get("attack") %> <span><%= _tr("DF") %></span><%= model.get("defense") %></div>
+  </div>
+  <div>
+    <button><%= _tr("Enhance") %></button>
+  </div>
+</a>
