@@ -11,6 +11,7 @@
     <div id="fb-root"></div>
     <div id="container">
 {% block content %}
+      <div id="content"></div>
 {% endblock %}
     </div>
     <script type="text/javascript" src="{{ ASSET_URL }}js/jsdeferred.js"></script>
@@ -19,6 +20,7 @@
     <script type="text/javascript" src="{{ ASSET_URL }}js/backbone-min.js"></script>
     <script type="text/javascript" src="{{ ASSET_URL }}js/dist/app.setup.js"></script>
     <script type="text/javascript" src="{{ ASSET_URL }}js/dist/app.templates.js"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}js/dist/app.{{ module }}.js"></script>
 {% block javascript %}
 {% endblock %}
 <script>
