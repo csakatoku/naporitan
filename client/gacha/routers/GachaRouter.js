@@ -3,10 +3,12 @@
     "use strict";
 
     var Card = App.models.Card;
+    var GachaBoxItem = App.models.GachaBoxItem;
 
     App.routers.GachaRouter = Backbone.Router.extend({
         routes: {
-            '': 'defaultAction'
+            '': 'defaultAction',
+            '!/box/:box_id': 'boxListAction'
         },
 
         initialize: function() {
@@ -21,11 +23,35 @@
             this.resultView.on('onGachaReload', this.onReload, this);
 
             this.on('onCardsAdded', this.onCardAdded, this);
+
+            this.boxCollection = new Backbone.Collection(null, {
+                model: GachaBoxItem
+            });
         },
 
         defaultAction: function() {
+            // TODO: こんなテキトーな画面切り替えでいいのか?
+            $('#gacha_box_list').empty();
+
             this.listView.render();
             App.rootView.showMenuTab();
+        },
+
+        boxListAction: function(boxId) {
+            // TODO: こんなテキトーな画面切り替えでいいのか?
+            $('#content').empty();
+
+            var view = new App.views.GachaBoxListView({
+                el: '#gacha_box_list',
+                collection: this.boxCollection
+            }).render();
+
+            this.boxCollection.fetch({
+                url: App.net.resolve('gacha_box_list', {
+                    user_id: App.uid,
+                    box_id: boxId
+                })
+            });
         },
 
         onReload: function(args) {
@@ -37,7 +63,7 @@
 
             App.rootView.startIndicator();
 
-            App.net.post('/api/gacha', args)
+            App.net.post('gacha_execute', args)
                 .done(function(res) {
                     var cards = res.cards || [];
                     var items = [];

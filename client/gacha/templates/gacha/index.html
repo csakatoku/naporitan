@@ -7,6 +7,23 @@
   </ul>
 </div>
 
+<h2>シルバーガチャ</h2>
+<p>ゲーム内アクションで獲得したチケットで行うガチャ。そこそこ強力なアイテムを取得しやすい。(と言っているが、実際はゴミばかり)</p>
+<div>
+  <ul class="menu">
+    <li><a data-action="gacha-execute" data-gacha-id="3">ガチャする</a></li>
+    <li><a data-action="gacha-execute-many" data-gacha-id="3">10連続ガチャ</a></li>
+  </ul>
+</div>
+
+<h2>ゴールドガチャ</h2>
+<p>ゲーム内アクションで獲得したチケットで行うガチャ。強力なアイテムを取得しやすい。(ゴミだったら、さすがに怒るぞ!)</p>
+<div>
+  <ul class="menu">
+    <li><a data-action="gacha-execute" data-gacha-id="4">ガチャする</a></li>
+    <li><a data-action="gacha-execute-many" data-gacha-id="4">10連続ガチャ</a></li>
+  </ul>
+</div>
 
 <h2>プラチナガチャ</h2>
 <p>レア100%保証。特定のカードを集めると....!?(実際はすべてのカードを集めるのは不可能)</p>
@@ -26,20 +43,10 @@
   </ul>
 </div>
 
-<h2>シルバーガチャ</h2>
-<p>ゲーム内アクションで獲得したチケットで行うガチャ。そこそこ強力なアイテムを取得しやすい。(と言っているが、実際はゴミばかり)</p>
-<div>
-  <ul class="menu">
-    <li><a data-action="gacha-execute" data-gacha-id="3">ガチャする</a></li>
-    <li><a data-action="gacha-execute-many" data-gacha-id="3">10連続ガチャ</a></li>
-  </ul>
-</div>
+<hr />
 
-<h2>ゴールドガチャ</h2>
-<p>ゲーム内アクションで獲得したチケットで行うガチャ。強力なアイテムを取得しやすい。(ゴミだったら、さすがに怒るぞ!)</p>
-<div>
-  <ul class="menu">
-    <li><a data-action="gacha-execute" data-gacha-id="4">ガチャする</a></li>
-    <li><a data-action="gacha-execute-many" data-gacha-id="4">10連続ガチャ</a></li>
+<nav>
+  <ul>
+    <li><a href="<%- _path('gacha/box/:id', { id: 1 }) %>">ボックスの中身を確認する</a></li>
   </ul>
-</div>
+</nav>
