@@ -2,12 +2,10 @@
     "use strict";
 
     var ListElementView = App.views.BaseListElementView.extend({
-        template: App.template('crew/card_list_element')
+        template: App.template('card/card_list_element')
     });
 
-    App.views.CrewListView = App.views.BaseListView.extend({
-        template: App.template('crew/index'),
-
+    App.views.CardListView = App.views.BaseListView.extend({
         ListElementView: ListElementView,
 
         onElementClick: function(evt, model) {

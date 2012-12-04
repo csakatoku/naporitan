@@ -3,10 +3,6 @@
     "use strict";
 
     app.views.CrewSellView = Backbone.View.extend({
-        el: "#content",
-
-        template: app.template('crew/sell_confirm'),
-
         events: {
             "click #crew_sell_execute": "execute"
         },
@@ -16,6 +12,7 @@
         },
 
         render: function() {
+            var tmpl = app.template('crew/sell_confirm');
             $(this.el).html(this.template({
                 crews: this.crews
             }));

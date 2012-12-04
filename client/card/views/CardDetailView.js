@@ -2,19 +2,13 @@
     "use strict";
 
     app.views.CrewDetailView = Backbone.View.extend({
-        el: "#content",
-
-        template: app.template('crew/detail'),
-
-        initialize: function() {
-            //
+        render: function() {
+            var tmpl = app.template('crew/detail');
+            $(this.el).html(tmpl({}));
+            return this;
         },
 
-        render: function() {
-            $(this.el).html(this.template({
-                item: this.item
-            }));
-            return this;
+        show: function(options) {
         }
     });
 }(App));

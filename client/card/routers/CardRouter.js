@@ -1,62 +1,76 @@
 (function(App, undef) {
     "use strict";
 
+    var Card = App.models.Card;
+
     App.routers.CardRouter = Backbone.Router.extend({
         routes: {
-            '': 'defaultAction'
+            '': 'defaultAction',
+            '!/': 'defaultAction',
+            '!/enhance': 'enhanceAction',
+            '!/enhance/base': 'enhanceBaseAction',
+            '!/sell': 'sellAction'
         },
 
         initialize: function() {
-            var rootView = App.rootView;
+            // The collection that hold all the cards of the user
+            this.cardCollection = new Backbone.Collection(null, {
+                model: Card
+            });
 
             // Card List and Detail
-            this.listView = new App.views.CrewListView();
-            this.detailView = new App.views.CrewDetailView();
+            this.listPage = new App.views.CardListPage({
+                el: '#card-list',
+                collection: this.cardCollection
+            });
 
-            // Merge cards
-            this.mergeListView = new App.views.CrewMergeListView();
-            this.mergeSelectView = new App.views.CrewMergeSelectView();
+            this.enhanceListPage = new App.views.CardEnhanceListPage({
+                el: '#card-enhance-list',
+                collection: this.cardCollection
+            });
+
+            this.enhanceListBasePage = new App.views.CardEnhanceBaseListPage({
+                el: '#card-base-select-list',
+                collection: this.cardCollection
+            });
 
             // Sell cards
-            this.sellListView = new App.views.CrewSellListView();
-            this.sellConfirmView = new App.views.CrewSellView();
+            this.sellListPage = new App.views.CardSellListPage({
+                el: '#card-sell-list',
+                collection: this.cardCollection
+            });
         },
 
         defaultAction: function() {
-            this.listView.render();
-            this.rootView.showMenuTab();
+            this.listPage.render();
+            this.maybeFetch();
         },
 
-        mergeAction: function() {
+        enhanceAction: function() {
             var mergeBaseId = App.localStorage.cardMergeBaseId;
             var player = App.getPlayer();
+            /*
             var items = player.getCrews();
             var mergeBase = items.get(mergeBaseId);
             if (!mergeBase) {
                 App.redirect('card/merge_select');
-            }
-
-            this.mergeListView.dataBind({
-                base: mergeBase,
-                items: items
-            });
-            this.mergeListView.render();
-            this.rootView.showMenuTab();
+            }*/
+            this.enhanceListPage.render();
+            this.maybeFetch();
         },
 
-        mergeSelectAction: function() {
-            this.mergeSelectView.render();
-            this.rootView.showMenuTab();
+        enhanceBaseAction: function() {
+            this.enhanceListBasePage.render();
+            this.maybeFetch();
         },
 
         sellAction: function() {
-            this.sellListView.render();
-            this.rootView.showMenuTab();
+            this.sellListPage.render();
+            this.maybeFetch();
         },
 
         sellConfirmAction: function() {
             this.sellConfirmView.render();
-            this.rootView.showMenuTab();
         },
 
         detailAction: function(id) {
@@ -64,7 +78,15 @@
             var card = player.getCrews().get(id);
             this.detailView.item = card;
             this.detailView.render();
-            this.rootView.showMenuTab();
+        },
+
+        // private methods
+        maybeFetch: function() {
+            this.cardCollection.fetch({
+                url: App.net.resolve('card_list', {
+                    user_id: App.uid
+                })
+            });
         }
     });
 }(App));

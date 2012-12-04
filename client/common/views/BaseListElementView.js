@@ -1,4 +1,3 @@
-// -*- jsconcat: 100 -*-
 (function(App) {
     App.views.BaseListElementView = Backbone.View.extend({
         tagName: 'li',

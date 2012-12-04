@@ -15,35 +15,35 @@
          * Get image URL used in list views
          */
         getSquarePictureURL: function() {
-            return ASSET_URL + '/images/character/' + this.cardId + '/48x48.png';
+            return ASSET_URL + 'images/character/' + this.cardId + '/48x48.png';
         },
 
         /**
          * Get the smaller image URL
          */
         getSmallPictureURL: function() {
-            return ASSET_URL + '/images/character/' + this.cardId + '/80x107.png';
+            return ASSET_URL + 'images/character/' + this.cardId + '/80x107.png';
         },
 
         /**
          * Get the biggest image URL which used in the detail view
          */
         getLargePictureURL: function() {
-            return ASSET_URL + '/images/character/' + this.cardId + '/320x427.jpg';
+            return ASSET_URL + 'images/character/' + this.cardId + '/320x427.jpg';
         },
 
         /**
          * Get landscape image URL which used in mission views.
          */
         getLandscapePictureURL: function() {
-            return ASSET_URL + '/images/character/' + this.cardId + '/320x64.jpg';
+            return ASSET_URL + 'images/character/' + this.cardId + '/320x64.jpg';
         },
 
         /**
          * Get portrait image URL which used in home views.
          */
         getPortraitPictureURL: function() {
-            return ASSET_URL + '/images/character/' + this.cardId + '/64x128.jpg';
+            return ASSET_URL + 'images/character/' + this.cardId + '/64x128.jpg';
         },
 
         getSkillLevelStarClass: function() {
