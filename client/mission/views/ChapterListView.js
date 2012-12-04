@@ -2,13 +2,10 @@
     "use strict";
 
     app.views.ChapterListView = Backbone.View.extend({
-        el: "#content",
-
         render: function() {
             var tmpl = app.template('chapter/index');
-            var items = app.data.chapter;
             var content = tmpl({
-                items: items
+                items: this.collection.models
             });
             $(this.el).html(content);
             return this;

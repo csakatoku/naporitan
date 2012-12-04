@@ -25,6 +25,7 @@ app.use(express.static(PUBLIC_DIR));
 // Load controllers
 require(__dirname + '/server/controllers/bootstrap.js')(app);
 require(__dirname + '/server/controllers/gacha.js')(app);
+require(__dirname + '/server/controllers/mission.js')(app);
 
 var port = process.env.port || 3000;
 app.listen(port, function() {

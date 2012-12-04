@@ -1,18 +1,17 @@
-<h2><%= chapter.get("name") %></h2>
 <% missions.forEach(function(mission) { %>
 <div class="job">
-  <a href="<%= _path('mission/execute', { id: mission.get('id') }) %>">
-    <div><%= mission.get("name") %></div>
+  <a href="<%- _path('mission/execute', { id: mission.get('id') }) %>">
+    <div><%- mission.get("name") %></div>
     <ul>
-      <li><%= _tr('Const:') %><%= mission.get("energy") %></li>
-      <li><%= _tr('Reward XP:') %><%= mission.get("xp") %></li>
-      <li><%= _tr('Reward Coins:') %><%= mission.get("minCoins") %> 〜 <%= mission.get("maxCoins") %></li>
+      <li><%- _tr('Const:') %><%- mission.get("energy") %></li>
+      <li><%- _tr('Reward XP:') %><%- mission.get("xp") %></li>
+      <li><%- _tr('Reward Coins:') %><%- mission.get("minCoins") %> 〜 <%- mission.get("maxCoins") %></li>
     </ul>
   </a>
 </div>
 <% }); %>
 <nav>
   <ul>
-    <li><a href="<%= _path('chapter/default') %>"><%= _tr('To chapter list') %></a></li>
+    <li><a href="<%- _path('mission/chapter') %>"><%- _tr('To chapter list') %></a></li>
   </ul>
 </nav>

@@ -4,28 +4,48 @@
     app.routers.MissionRouter = Backbone.Router.extend({
         routes: {
             '': 'defaultAction',
-            '!/execute': 'executeAction'
+            '!/execute': 'executeAction',
+            '!/chapter': 'chapterAction',
+            '!/chapter/:id': 'defaultAction'
         },
 
         initialize: function() {
-            this.listView = new app.views.MissionListView();
+            this.missionCollection = new Backbone.Collection(null, {
+                model: app.models.Mission
+            });
+            this.chapterCollection = new Backbone.Collection(null, {
+                model: app.models.Chapter
+            });
 
             this.executeView = new app.views.MissionExecuteView();
             this.executeView.on('execute', this.onExecute, this);
         },
 
-        defaultAction: function(args) {
-            var chapterId = ~~(args.id || 1);
+        defaultAction: function(chapterId) {
+            chapterId = chapterId ? chapterId : 1;
 
-            this.listView.dataBind({
-                chapter: app.chapters.get(chapterId),
-                missions: app.missions.filter(function(x) {
-                    return x.get("chapterId") === chapterId;
-                })
+            this.listView = new app.views.MissionListView({
+                el: '#content',
+                collection: this.missionCollection
             });
-            this.listView.render();
+            this.missionCollection.bind('all', this.listView.render, this.listView);
+            this.missionCollection.fetch({
+                url: '/api/users/1/missions'
+            });
 
             app.rootView.showMenuTab();
+        },
+
+        chapterAction: function() {
+            this.listView = new app.views.ChapterListView({
+                el: '#content',
+                collection: this.chapterCollection
+            });
+
+            this.chapterCollection.bind('all', this.listView.render, this.listView);
+            this.chapterCollection.fetch({
+                url: '/api/users/1/chapters'
+            });
         },
 
         executeAction: function(args) {

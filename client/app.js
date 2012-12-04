@@ -113,11 +113,29 @@
             // Helper functions
             args = args || {};
             args._path = function(name, args) {
-                var components = name.split('/');
-                var router = components[0];
-                var action = (components[1] === 'default') ? null : components[1];
-                if (action) {
-                    return '/' + router + '/#!/' + action;
+                var components, router, buf;
+
+                if (args) {
+                    Object.keys(args).forEach(function(k) {
+                        var needle = ':' + k;
+                        name = name.replace(needle, args[k]);
+                    });
+                }
+
+                components = name.split('/');
+                router = components[0];
+
+                buf = [];
+                if (components[1] !== 'default') {
+                    buf.push(components[1]);
+                }
+
+                if (components.length >= 2) {
+                    buf.push.apply(buf, components.slice(2));
+                }
+
+                if (buf.length > 0) {
+                    return '/' + router + '/#!/' + (buf.join('/'));
                 } else {
                     return '/' + router + '/';
                 }
