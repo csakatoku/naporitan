@@ -1,4 +1,4 @@
-(function(App, undef) {
+(function(App, undefined) {
     "use strict";
 
     var ListElementView = App.views.BaseListElementView.extend({
@@ -9,7 +9,15 @@
         ListElementView: ListElementView,
 
         onSubViewClick: function(evt, view) {
-            //
+            new App.views.CardDetailView({
+                el: '#card-detail',
+                model: view.model
+            })
+                .render()
+                .show()
+                .done(function(modal) {
+                    modal.hide();
+                });
         }
     });
 }(App));

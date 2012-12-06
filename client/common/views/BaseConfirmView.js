@@ -11,7 +11,10 @@
 
         render: function() {
             var tmpl = App.template(this.templateName);
-            $(this.el).html(tmpl({}));
+            $(this.el).html(tmpl({
+                model: this.model,
+                collection: this.collection
+            }));
             this.$el.hide();
             return this;
         },
