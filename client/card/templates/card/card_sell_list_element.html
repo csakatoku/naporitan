@@ -1,0 +1,7 @@
+<a class="card">
+  <div><img src="<%= model.getSquarePictureURL() %>" /></div>
+  <div>
+    <div><span><%- model.get("category") %></span> <%- model.get("name") %></div>
+    <div><span><%- _tr("AT") %></span><%- model.get("attack") %> <span><%- _tr("DF") %></span><%- model.get("defense") %></div>
+  </div>
+</a>

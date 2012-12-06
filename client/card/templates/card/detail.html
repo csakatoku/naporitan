@@ -1,0 +1,18 @@
+<h2><%= _tr("Card Detail") %></h2>
+<h3><%= model.get("name") %></h3>
+<div>
+  <img src="<%= model.getLargePictureURL() %>" />
+  <ul>
+    <li><%= _tr("Attack") %>: <%= model.get("attack") %></li>
+    <li><%= _tr("Defense") %>: <%= model.get("defence") %></li>
+    <li><%= _tr("Cost") %>: <%= model.get("cost") %></li>
+    <li>
+      <%= _tr("SK") %><span class="<%= model.getSkillLevelStarClass() %>"><%= model.getSkillLevelStars() %></span>
+    </li>
+  </ul>
+</div>
+<nav>
+  <ul>
+    <li><button data-confirm="yes"><%= _tr("Close") %></button></li>
+  </ul>
+</nav>

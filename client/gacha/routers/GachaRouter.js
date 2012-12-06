@@ -1,3 +1,5 @@
+// load: client/common/models/Card.js
+// load: client/common/models/GachaBoxItem.js
 (function(App, undef) {
     "use strict";
 

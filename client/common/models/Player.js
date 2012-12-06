@@ -1,6 +1,9 @@
 /*global setInterval:true */
+//load: client/common/models/Card.js
 (function(app, undef) {
     "use strict";
+
+    var Card = app.models.Card;
 
     app.models.Player = Backbone.Model.extend({
         defaults: {
@@ -14,6 +17,11 @@
 
         initialize: function() {
             this.set(this.defaults);
+
+            // The collection that hold all the cards of this user
+            this.cards = new Backbone.Collection(null, {
+                model: Card
+            });
         },
 
         getEnergy: function() {
@@ -154,10 +162,7 @@
         },
 
         getCrews: function() {
-            if (this.__crews === undefined) {
-                this.__crews = new app.collections.CardCollection();
-            }
-            return this.__crews;
+            return this.cards;
         },
 
         onGameBooted: function() {

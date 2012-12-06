@@ -1,21 +1,20 @@
-// -*- jsconcat: 100 -*-
 (function(App) {
+    "use strict";
+
     App.views.BaseListElementView = Backbone.View.extend({
         tagName: 'li',
 
-        events: {
-            'click a': 'onClick'
+        templateContext: function(params) {
+            return params;
         },
 
         render: function() {
-            this.$el.html(this.template({
-                element: this.options.model
-            }));
+            var model = this.options.model;
+            var context = {
+                model: model
+            };
+            this.$el.html(this.template(this.templateContext(context)));
             return this;
-        },
-
-        onClick: function(e) {
-            this.trigger('click', e, this.element, this);
         }
     });
 }(App));

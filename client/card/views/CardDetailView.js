@@ -1,20 +1,8 @@
-(function(app, undef) {
+//load: client/common/views/BaseConfirmView.js
+(function(App) {
     "use strict";
 
-    app.views.CrewDetailView = Backbone.View.extend({
-        el: "#content",
-
-        template: app.template('crew/detail'),
-
-        initialize: function() {
-            //
-        },
-
-        render: function() {
-            $(this.el).html(this.template({
-                item: this.item
-            }));
-            return this;
-        }
+    var Klass = App.views.CardDetailView = App.views.BaseConfirmView.extend({
+        templateName: 'card/detail'
     });
 }(App));

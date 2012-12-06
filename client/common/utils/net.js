@@ -33,6 +33,8 @@
             return '/api/users/' + args.user_id + '/gacha/box/' + args.box_id;
         } else if ('gacha_execute' === routeName) {
             return '/api/users/' + args.user_id + '/gacha/box/' + args.box_id;
+        } else if ('card_list' === routeName) {
+            return '/api/users/' + args.user_id + '/cards';
         } else {
             return routeName;
         }

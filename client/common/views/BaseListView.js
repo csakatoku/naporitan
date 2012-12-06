@@ -1,67 +1,64 @@
-// -*- jsconcat: 100 -*-
 (function(App) {
     App.views.BaseListView = Backbone.View.extend({
-        el: "#content",
+        tagName: 'ul',
 
-        initialize: function() {
-            this.sortType = 0;
-            this.filterCategory = 0;
-
-            this._elements = {};
-
-            this._data = [];
-
-            this.tabView = new App.views.CardTabView();
-            this.tabView.render();
-            this.tabView.on('change', this.onChangeFilter, this);
-
-            this.selectView = new App.views.CardSortSelectView();
-            this.selectView.render();
-            this.selectView.on('change', this.onChangeSort, this);
-
-            this.subMenuView = new App.views.CardSubMenuView();
-            this.subMenuView.render();
-
-            var events = _.extend({}, this.events);
-            var eventName = 'click [data-list-view-id="' + this.cid  + '"] li';
-            events[eventName] = 'onClick';
-            this.delegateEvents(events);
+        events: {
+            'click li': 'onClick'
         },
 
-        dataBind: function(data) {
-            this._data = data || {};
+        
+
+        onClick: function(evt) {
+            var target = evt.currentTarget;
+            var modelId = $(target).data('model-id');
+            var view = this._elements[modelId];
+            return this.onSubViewClick(evt, view);
         },
 
-        render: function() {
-            this.$el.html(this.template(this._data));
-            this.$list = this.$('#card-list');
-            this.$list.attr('data-list-view-id', this.cid);
+        onSubViewClick: function(evt, view) {
+            var id = view.model.get('id');
+            view.$el.toggleClass("selected");
 
-            this.renderElements();
+            this.toggleSelected(id);
 
-            this.$('#sort-placeholder').html(this.selectView.el);
-            this.$('#card-tab').html(this.tabView.el);
-            this.$('#card-sub-menu').html(this.subMenuView.el);
+            var values = this.selectedValues();
+            this.trigger('change', values);
 
-            return this;
+            return false;
         },
 
-        renderElements: function() {
+        filterModels: function(models) {
+            return models;
+        },
+
+        toggleSelected: function(id) {
+            if (this._selected === undefined) {
+                this._selected = {};
+            }
+
+            var exist = (id in this._selected);
+            if (exist) {
+                delete this._selected[id];
+            } else {
+                this._selected[id] = id;
+            }
+            return exist;
+        },
+
+        selectedValues: function() {
+            return (this._selected === undefined) ? [] : Object.keys(this._selected);
+        },
+
+        renderElements: function(collection) {
             var self = this;
-            var crews = App.getPlayer().getCrews()
-                .filterByCategory(this.filterCategory)
-                .sortByType(this.sortType);
-
-            _.values(this._elements).forEach(function(el) {
-                el.remove();
-            });
-
-            var $list = this.$list;
+            var $list = this.$el;
             var ElementView = this.ListElementView;
 
             var elements = {};
 
-            crews.forEach(function(model) {
+            $list.empty();
+
+            collection.forEach(function(model) {
                 var id = model.get('id');
                 var view = new ElementView({
                     attributes: {
@@ -78,31 +75,6 @@
             this._elements = elements;
 
             return this;
-        },
-
-        onClick: function(evt) {
-            var id = $(evt.currentTarget).data('model-id');
-            var view = this._elements[id];
-            if (view) {
-                this.onElementClick(evt, view.model);
-            }
-        },
-
-        onElementClick: function(evt, element) {
-            // Override this function
-        },
-
-        onChangeFilter: function(value) {
-            value = ~~value;
-            if (this.filterCategory !== value) {
-                this.filterCategory = value;
-                this.renderElements();
-            }
-        },
-
-        onChangeSort: function(value) {
-            this.sortType = ~~value;
-            this.renderElements();
         }
     });
 }(App));
