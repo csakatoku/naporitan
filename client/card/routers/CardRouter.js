@@ -13,31 +13,28 @@
         },
 
         initialize: function() {
-            // The collection that hold all the cards of the user
-            this.cardCollection = new Backbone.Collection(null, {
-                model: Card
-            });
+            var collection = App.getPlayer().cards;
 
             // Card List and Detail
             this.listPage = new App.views.CardListPage({
                 el: '#card-list',
-                collection: this.cardCollection
+                collection: collection
             });
 
             this.enhanceListPage = new App.views.CardEnhanceListPage({
                 el: '#card-enhance-list',
-                collection: this.cardCollection
+                collection: collection
             });
 
             this.enhanceListBasePage = new App.views.CardEnhanceBaseListPage({
                 el: '#card-base-select-list',
-                collection: this.cardCollection
+                collection: collection
             });
 
             // Sell cards
             this.sellListPage = new App.views.CardSellListPage({
                 el: '#card-sell-list',
-                collection: this.cardCollection
+                collection: collection
             });
         },
 
@@ -82,11 +79,19 @@
 
         // private methods
         maybeFetch: function() {
-            this.cardCollection.fetch({
-                url: App.net.resolve('card_list', {
-                    user_id: App.uid
-                })
-            });
+            var collection = App.getPlayer().cards;
+
+            // カードを1枚も保持していないという状態はありえないので
+            // 1枚以上あればデータ取得済みということである(最新ではないかもしれないが)
+            if (collection.length > 0) {
+                collection.trigger('reset', collection, {});
+            } else {
+                collection.fetch({
+                    url: App.net.resolve('card_list', {
+                        user_id: App.uid
+                    })
+                });
+            }
         }
     });
 }(App));

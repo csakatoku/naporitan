@@ -170,9 +170,8 @@
     };
 
     p.redirect = function(name, params, options) {
-        var hash = this.resolveRoute(name, params);
-        Backbone.history.navigate(hash, options);
-        return Backbone.history.loadUrl(hash);
+        var path = this.resolveRoute(name, params);
+        globals.location.href = path;
     };
 
     p.resolveRoute = function(name, args) {
