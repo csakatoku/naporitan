@@ -17,6 +17,10 @@
             return false;
         },
 
+        filterModels: function(models) {
+            return models;
+        },
+
         renderElements: function(collection) {
             var self = this;
             var $list = this.$el;

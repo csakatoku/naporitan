@@ -59,9 +59,16 @@
 
         renderElements: function() {
             if (this.listView) {
-                this.listView.renderElements(new App.collections.CardCollection(
-                    this.collection.models
-                ));
+                var collection = new App.collections.CardCollection(
+                    this.listView.filterModels(this.collection.models)
+                );
+
+                var filtered = collection
+                    .filterByCategory(this.filterCategory)
+                    .sortByType(this.sortType)
+                ;
+
+                this.listView.renderElements(filtered);
             }
         },
 
