@@ -6,11 +6,6 @@
     });
 
     App.views.CardSellListView = App.views.BaseListView.extend({
-        ListElementView: ListElementView,
-
-        onSubViewClick: function(evt, view) {
-            var id = view.model.get('id');
-            view.$el.toggleClass("selected");
-        }
+        ListElementView: ListElementView
     });
 }(App));

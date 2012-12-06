@@ -37,12 +37,15 @@
                 gachaId: gachaId,
                 boxId: boxId,
                 times: times
-            });
-
-            this.confirmView.off(null, null, this);
-            this.confirmView.on('yes', function() {
-                self.execute(gachaId, boxId, times);
-            }, this);
+            })
+                .fail(function(modal) {
+                    modal.hide();
+                })
+                .done(function(modal) {
+                    modal.hide();
+                    self.execute(gachaId, boxId, times);
+                })
+            ;
         },
 
         execute: function(gachaId, boxId, times) {

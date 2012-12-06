@@ -72,7 +72,8 @@ module.exports = function(grunt) {
                     paths: ['client/common/stylesheets']
                 },
                 files: {
-                    'server/public/css/app.css': 'client/common/stylesheets/app.less'
+                    'server/public/css/app.css': 'client/common/stylesheets/app.less',
+                    'server/public/css/card.css': 'client/card/stylesheets/card.less'
                 }
             }
         },

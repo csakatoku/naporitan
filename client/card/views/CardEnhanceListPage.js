@@ -20,8 +20,31 @@
     });
 
     var Klass = App.views.CardEnhanceListPage = App.views.CardBaseListPage.extend({
+        events: {
+            'click [data-action="confirm"]': 'onConfirm'
+        },
+
         templateName: 'card/enhance_list',
+
         ListViewClassName: 'CardEnhanceListView',
+
+        onConfirm: function(evt) {
+            var values = this.listView.selectedValues();
+            var view = new App.views.CardEnhanceConfirmView({
+                el: '#card-enhance-confirm'
+            }).render();
+
+            view.show()
+                .fail(function(modal) {
+                    console.log("CANCEL");
+                    modal.hide();
+                })
+                .done(function(modal) {
+                    console.log(values);
+                    modal.hide();
+                })
+            ;
+        },
 
         renderElements: function() {
             var player = App.getPlayer();

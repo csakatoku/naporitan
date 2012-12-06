@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ ASSET_URL }}css/card.css" type="text/css" />
+{% endblock %}
+
 {% block content %}
 <!-- カード情報 -->
 <div id="card-list" class="page"></div>
@@ -7,8 +11,10 @@
 
 <!-- 合成 -->
 <div id="card-enhance-list" class="page"></div>
+<div id="card-enhance-confirm" class="modal"></div>
 <div id="card-base-select-list" class="page"></div>
 
 <!-- 売却 -->
 <div id="card-sell-list" class="page"></div>
+<div id="card-sell-confirm" class="modal"></div>
 {% endblock %}

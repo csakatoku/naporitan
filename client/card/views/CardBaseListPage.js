@@ -53,6 +53,7 @@
 
             this.listView = new ListView();
             this.listView.render().$el.appendTo(this.$('.card-list-placeholder'));
+            this.listView.on('change', this.onSelectionChange, this);
 
             return this;
         },
@@ -70,6 +71,10 @@
 
                 this.listView.renderElements(filtered);
             }
+        },
+
+        onSelectionChange: function(values) {
+            // Override
         },
 
         onChangeFilter: function(value) {

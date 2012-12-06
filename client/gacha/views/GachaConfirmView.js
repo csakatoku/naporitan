@@ -1,40 +1,18 @@
-(function(app) {
+//load: client/common/views/BaseConfirmView.js
+(function(App) {
     "use strict";
 
-    app.views.GachaConfirmView = Backbone.View.extend({
-        events: {
-            "click [data-confirm='yes']": "onYes",
-            "click [data-confirm='no']": "onNo"
-        },
-
-        render: function() {
-            var tmpl = app.template('gacha/confirm');
-            $(this.el).html(tmpl({}));
-            this.$el.hide();
-            return this;
-        },
+    var Klass = App.views.GachaConfirmView = App.views.BaseConfirmView.extend({
+        templateName: 'gacha/confirm',
 
         show: function(options) {
-            var message = app.utils.sprintf('ガチャ%sを%s回実行しますか？', [
+            var message = App.utils.sprintf('ガチャ%sを%s回実行しますか？', [
                 options.gachaId,
                 options.times
             ]);
             this.$('.confirm-message').text(message);
-            this.$el.show();
-        },
 
-        hide: function() {
-            this.$el.hide();
-        },
-
-        onYes: function() {
-            this.hide();
-            this.trigger('yes');
-        },
-
-        onNo: function() {
-            this.hide();
-            this.trigger('no');
+            return Klass.__super__.show.call(this, options);
         }
     });
 }(App));

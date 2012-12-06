@@ -14,11 +14,6 @@
             return models.filter(function(model) {
                 return model.get('id') !== baseId;
             });
-        },
-
-        onSubViewClick: function(evt, view) {
-            var id = view.model.get('id');
-            view.$el.toggleClass("selected");
         }
     });
 }(App));
