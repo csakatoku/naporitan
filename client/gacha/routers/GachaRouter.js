@@ -1,18 +1,19 @@
 // load: client/common/models/Card.js
 // load: client/common/models/GachaBoxItem.js
+// load: client/common/routers/Router.js
 (function(App, undef) {
     "use strict";
 
     var Card = App.models.Card;
     var GachaBoxItem = App.models.GachaBoxItem;
 
-    App.routers.GachaRouter = Backbone.Router.extend({
+    var Klass = App.routers.GachaRouter = App.routers.Router.extend({
         routes: {
             '': 'defaultAction',
             '!/box/:box_id': 'boxListAction'
         },
 
-        initialize: function() {
+        initializeViews: function() {
             // Gacha Top Page
             this.listView = new App.views.GachaListView({
                 el: '#gacha-index'
@@ -41,18 +42,12 @@
         },
 
         defaultAction: function() {
-            // TODO: こんなテキトーな画面切り替えでいいのか?
-            var _a = this.boxListView && this.boxListView.$el.empty();
-            var _b = this.resultView && this.resultView.$el.empty();
-
+            this.listView.active();
             this.listView.render();
         },
 
         boxListAction: function(boxId) {
-            // TODO: こんなテキトーな画面切り替えでいいのか?
-            var _a = this.listView &&  this.listView.$el.empty();
-            var _b = this.resultView && this.resultView.$el.empty();
-
+            this.boxCollection.active();
             this.boxCollection.fetch({
                 url: App.net.resolve('gacha_box_list', {
                     user_id: App.uid,
@@ -64,9 +59,6 @@
         onCardsAdded: function(res) {
             App.rootView.stopIndicator();
 
-            // TODO: こんなテキトーな画面切り替えでいいのか?
-            var _a = this.listView && this.listView.$el.empty();
-
             var items = [];
 
             res.items.forEach(function(args) {
@@ -74,6 +66,7 @@
                 items.push(instance);
             });
 
+            this.resultView.active();
             this.resultView.setResult(items);
             this.resultView.render();
         }
