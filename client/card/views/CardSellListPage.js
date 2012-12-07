@@ -11,21 +11,23 @@
         ListViewClassName: 'CardSellListView',
 
         onConfirm: function(evt) {
+            var player = App.getPlayer();
             var values = this.listView.selectedValues();
+            var models = player.cards.filter(function(m) {
+                return (values.indexOf(m.get('id') + "") >= 0);
+            });
+
             var view = new App.views.CardSellConfirmView({
                 el: '#card-sell-confirm'
-            }).render();
-
-            view.show()
-                .fail(function(modal) {
-                    console.log("CANCEL");
-                    modal.hide();
-                })
-                .done(function(modal) {
-                    console.log(values);
-                    modal.hide();
-                })
-            ;
+            }).show({
+                collection: new Backbone.Collection(models)
+            }).fail(function(view) {
+                console.log("CANCEL");
+                view.hide();
+            }).done(function(view) {
+                console.log(values);
+                view.hide();
+            });
         },
 
         onSelectionChange: function(values) {

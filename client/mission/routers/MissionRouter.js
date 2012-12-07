@@ -1,3 +1,4 @@
+/*global alert:true */
 (function(App) {
     "use strict";
 
@@ -35,6 +36,9 @@
                 collection: this.missionCollection
             });
             this.missionCollection.bind('all', this.executeView.render, this.executeView);
+
+            this.executeView.on('success', this.onMissionSuccess, this);
+            this.executeView.on('fail', this.onMissionFail, this);
         },
 
         defaultAction: function(chapterId) {
@@ -57,6 +61,41 @@
             this.executeView.missionId = ~~(id || 1);
             this.missionCollection.fetch({
                 url: '/api/users/1/missions'
+            });
+        },
+
+        onMissionSuccess: function(sender, args) {
+            var view;
+            view = new App.views.MissionObstructionPopupView({
+                el: '#mission-popup'
+            });
+            App.popupQueue.push(view);
+
+            view = new App.views.MissionCompletePopupView({
+                el: '#mission-popup'
+            });
+            App.popupQueue.push(view);
+
+            view = new App.views.LevelupPopupView({
+                el: '#mission-popup'
+            });
+            App.popupQueue.push(view);
+
+            App.rootView.showOverlay();
+            App.popupQueue
+                .start()
+                .done(function() {
+                    App.rootView.hideOverlay();
+                });
+        },
+
+        onMissionFail: function(sender, args) {
+            new App.views.ErrorModalView({
+                el: '#mission-popup'
+            }).show({
+                message: '大変です！ミッションに失敗しました!'
+            }).done(function(view) {
+                view.hide();
             });
         }
     });

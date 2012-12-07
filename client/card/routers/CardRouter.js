@@ -71,11 +71,6 @@
             this.maybeFetch();
         },
 
-        sellConfirmAction: function() {
-            this.sellConfirmView.active();
-            this.sellConfirmView.render();
-        },
-
         // private methods
         maybeFetch: function() {
             var collection = App.getPlayer().cards;

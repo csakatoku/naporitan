@@ -29,21 +29,23 @@
         ListViewClassName: 'CardEnhanceListView',
 
         onConfirm: function(evt) {
+            var player = App.getPlayer();
             var values = this.listView.selectedValues();
-            var view = new App.views.CardEnhanceConfirmView({
-                el: '#card-enhance-confirm'
-            }).render();
+            var models = player.cards.filter(function(m) {
+                return (values.indexOf(m.get('id') + "") >= 0);
+            });
 
-            view.show()
-                .fail(function(modal) {
-                    console.log("CANCEL");
-                    modal.hide();
-                })
-                .done(function(modal) {
-                    console.log(values);
-                    modal.hide();
-                })
-            ;
+            new App.views.CardEnhanceConfirmView({
+                el: '#card-enhance-confirm'
+            }).show({
+                collection: new Backbone.Collection(models)
+            }).fail(function(view) {
+                console.log("CANCEL");
+                view.hide();
+            }).done(function(view) {
+                console.log(values);
+                view.hide();
+            });
         },
 
         renderElements: function() {

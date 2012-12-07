@@ -1,4 +1,3 @@
-/*global alert:true */
 (function(App) {
     "use strict";
 
@@ -31,31 +30,9 @@
             App.net.post('/api/users/1/missions/1', {
                 id: mission.id
             }).done(function(data) {
-                var view;
-                view = new App.views.MissionObstructionPopupView({
-                    el: '#mission-popup'
-                });
-                App.popupQueue.push(view);
-
-                view = new App.views.MissionCompletePopupView({
-                    el: '#mission-popup'
-                });
-                App.popupQueue.push(view);
-
-                view = new App.views.LevelupPopupView({
-                    el: '#mission-popup'
-                });
-                App.popupQueue.push(view);
-
-                App.rootView.showOverlay();
-                App.popupQueue
-                    .start()
-                    .done(function() {
-                        App.rootView.hideOverlay();
-                    });
-
+                self.trigger('success', self, data);
             }).fail(function(data) {
-                alert("大変です！ミッションに失敗しました!");
+                self.trigger('fail', self, {});
             });
         }
     });

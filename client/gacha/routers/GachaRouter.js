@@ -25,7 +25,7 @@
 
             this.listView.confirmView = new App.views.GachaConfirmView({
                 el: '#gacha-confirm'
-            }).render();
+            });
 
             // Gacha Animation
             this.animationView = new App.views.GachaExecuteView({
