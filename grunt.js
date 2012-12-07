@@ -73,6 +73,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'server/public/css/app.css': 'client/common/stylesheets/app.less',
+                    'server/public/css/mission.css': 'client/mission/stylesheets/mission.less',
                     'server/public/css/card.css': 'client/card/stylesheets/card.less'
                 }
             }

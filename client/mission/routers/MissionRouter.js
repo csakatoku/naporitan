@@ -13,6 +13,7 @@
             this.missionCollection = new Backbone.Collection(null, {
                 model: App.models.Mission
             });
+
             this.chapterCollection = new Backbone.Collection(null, {
                 model: App.models.Chapter
             });
@@ -29,13 +30,16 @@
             });
             this.chapterCollection.bind('all', this.chapterListView.render, this.chapterListView);
 
-            this.executeView = new App.views.MissionExecuteView();
-            this.executeView.on('execute', this.onExecute, this);
+            this.executeView = new App.views.MissionExecuteView({
+                el: '#mission-execute',
+                collection: this.missionCollection
+            });
+            this.missionCollection.bind('all', this.executeView.render, this.executeView);
         },
 
         defaultAction: function(chapterId) {
-            chapterId = chapterId ? chapterId : 1;
             this.missionListView.active();
+            this.missionListView.chapterId = ~~(chapterId || 1);
             this.missionCollection.fetch({
                 url: '/api/users/1/missions'
             });
@@ -49,18 +53,11 @@
         },
 
         executeAction: function(id) {
-            var missionId = ~~(id || 1);
-            var mission = App.missions.get(missionId);
-            var player = App.getPlayer();
-            var cards = player.getCrews();
-            var card = cards.length ? cards[0] : null;
-
-            this.executeView.dataBind({
-                player: player,
-                mission: mission,
-                card: card
+            this.executeView.active();
+            this.executeView.missionId = ~~(id || 1);
+            this.missionCollection.fetch({
+                url: '/api/users/1/missions'
             });
-            this.executeView.render();
         }
     });
 }(App));

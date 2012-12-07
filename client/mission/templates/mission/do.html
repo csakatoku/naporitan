@@ -1,3 +1,4 @@
+<% if (mission) { %>
 <div class="job">
   <h2><%= mission.get("name") %></h2>
   <div>
@@ -15,10 +16,9 @@
     <li><%= _tr('Reward XP: %s', mission.get("xp")) %></li>
     <li><%= _tr('Reward Coins: %(min)s - %(max)s', { min: mission.get("minCoins"), max: mission.get("maxCoins") }) %></li>
   </ul>
-  <button id="mission-execute">DO JOB</button>
+  <button data-action="execute">DO JOB</button>
 </div>
+<% } %>
 <nav>
-  <a href="<%= _path('mission') %>"><%= _tr('Back to mission list') %></a>
+  <a href="<%= _path('mission/default') %>"><%= _tr('Back to mission list') %></a>
 </nav>
-<div id="levelup-popup"></div>
-<div id="mission-complete-popup"></div>

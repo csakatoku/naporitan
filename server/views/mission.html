@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ ASSET_URL }}css/mission.css" type="text/css" />
+{% endblock %}
+
 {% block content %}
 <div id="mission-list" class="page"></div>
 <div id="chapter-list" class="page"></div>
+<div id="mission-execute" class="page"></div>
+<div id="mission-popup" class="fullscreen"></div>
 {% endblock %}

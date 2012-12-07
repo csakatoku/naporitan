@@ -146,44 +146,6 @@ ul.menu li {
     }
 }
 
-//レベルアップ, ミッション完了
-@-webkit-keyframes levelup-animation-keyframes {
-    from {
-        top: -5em;
-    }
-    to {
-        top: 5em;
-    }
-}
-
-.levelup-popup-animation,
-.mission-complete-popup-animation {
-    -webkit-animation-name: levelup-animation-keyframes;
-    -webkit-animation-duration: 0.5s;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: 1;
-}
-
-.levelup-popup,
-.mission-complete-popup {
-    position: absolute;
-    top: -10em;
-    left: 0px;
-    display: none;
-    z-index: 2000;
-
-    h2 {
-        font-size: 5em;
-        margin: 0px;
-        padding: 0px;
-    }
-
-    a {
-        font-size: 5em;
-        display: none;
-    }
-}
-
 // カードのスキルレベルの星の色
 .skill-level-0 {
 
@@ -229,6 +191,6 @@ ul.menu li {
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 100;
+    z-index: 200;
     background: #000;
 }
