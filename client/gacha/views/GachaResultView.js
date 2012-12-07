@@ -1,9 +1,9 @@
 (function(app, undef) {
     "use strict";
 
-    app.views.GachaExecuteView = Backbone.View.extend({
+    app.views.GachaResultView = Backbone.View.extend({
         events: {
-            'click [data-action="next"]': 'onNext'
+            'click [data-action="reload"]': 'onReload'
         },
 
         setResult: function(items) {
@@ -12,15 +12,15 @@
 
         render: function() {
             var result = this.result || [];
-            var tmpl = app.template('gacha/do_many');
+            var tmpl = app.template('gacha/result_many');
             $(this.el).html(tmpl({
                 items: result
             }));
             return this;
         },
 
-        onNext: function() {
-            this.trigger('next', this);
+        onReload: function() {
+            this.trigger('reload', this);
             return false;
         }
     });

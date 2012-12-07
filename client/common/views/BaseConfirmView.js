@@ -20,6 +20,7 @@
         },
 
         show: function(options) {
+            App.rootView.showOverlay();
             this.$el.show();
             this._dfd = $.Deferred();
             return this._dfd;
@@ -27,6 +28,7 @@
 
         hide: function() {
             this.$el.hide();
+            App.rootView.hideOverlay();
         },
 
         onYes: function() {

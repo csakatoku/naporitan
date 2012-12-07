@@ -31,6 +31,14 @@
             $('#loading-indicator').removeClass('on');
         },
 
+        showOverlay: function() {
+            $('#modal-overlay').show();
+        },
+
+        hideOverlay: function() {
+            $('#modal-overlay').hide();
+        },
+
         hideMenuTab: function() {
             this.menuTabFooter.hide();
         },
@@ -40,12 +48,12 @@
         },
 
         showMenu: function() {
-            $('#modal-overlay').show();
+            this.showOverlay();
             this.menu.show();
         },
 
         hideMenu: function() {
-            $('#modal-overlay').hide();
+            this.hideOverlay();
             this.menu.hide();
         },
 

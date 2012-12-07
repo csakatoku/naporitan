@@ -10,25 +10,40 @@
     var Klass = App.routers.GachaRouter = App.routers.Router.extend({
         routes: {
             '': 'defaultAction',
-            '!/box/:box_id': 'boxListAction'
+            '!/box/:box_id': 'boxListAction',
+            '!/result': 'resultAction'
         },
 
         initializeViews: function() {
+            this._lastResult = [];
+
             // Gacha Top Page
             this.listView = new App.views.GachaListView({
                 el: '#gacha-index'
             });
             this.listView.on('onCardsAdded', this.onCardsAdded, this);
 
-            this.confirmView = this.listView.confirmView = new App.views.GachaConfirmView({
+            this.listView.confirmView = new App.views.GachaConfirmView({
                 el: '#gacha-confirm'
             }).render();
 
             // Gacha Animation
-            this.resultView = new App.views.GachaExecuteView({
+            this.animationView = new App.views.GachaExecuteView({
                 el: '#gacha-animation'
-            });
-            this.resultView.on('onGachaReload', this.defaultAction, this);
+            }).render();
+
+            this.animationView.on('next', function() {
+                App.redirect('gacha/result');
+            }, this);
+
+            // Gacha Result Page
+            this.resultView = new App.views.GachaResultView({
+                el: '#gacha-result'
+            }).render();
+
+            this.resultView.on('reload', function() {
+                App.redirect('gacha/default');
+            }, this);
 
             // Gacha Box List Page
             this.boxCollection = new Backbone.Collection(null, {
@@ -56,19 +71,24 @@
             });
         },
 
+        resultAction: function(resultId) {
+            this.resultView.active();
+            this.resultView.setResult(this._lastResult);
+            this.resultView.render();
+        },
+
         onCardsAdded: function(res) {
             App.rootView.stopIndicator();
 
-            var items = [];
-
+            this._lastResult = [];
             res.items.forEach(function(args) {
                 var instance = new Card(args);
-                items.push(instance);
-            });
+                this._lastResult.push(instance);
+            }, this);
 
-            this.resultView.active();
-            this.resultView.setResult(items);
-            this.resultView.render();
+            this.animationView.active();
+            this.animationView.setResult(this._lastResult);
+            this.animationView.render();
         }
     });
 }(App));
