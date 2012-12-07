@@ -1,4 +1,4 @@
-/*global alert:true */
+//load: client/common/routers/Router.js
 (function(App) {
     "use strict";
 
