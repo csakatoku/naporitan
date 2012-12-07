@@ -163,6 +163,7 @@
         var name = this.utils.snakeToPascal(module) + "Router";
         var RouterClass = this.routers[name];
         if (RouterClass) {
+            this.popupQueue = new this.utils.PopupQueue();
             this.rootView = new this.views.RootView().render();
             var router = this.router = new RouterClass();
             Backbone.history.start();

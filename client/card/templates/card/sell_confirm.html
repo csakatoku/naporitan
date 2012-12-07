@@ -1,7 +1,13 @@
 <h2><%- _tr("売却確認") %></h2>
 <p>
-  X名の仲間を売却します。
+  <%- collection.length %>名の仲間を売却します。
 </p>
+
+<ul>
+<% collection.forEach(function(model) { %>
+  <li><%- model.get('name') %></li>
+<% }) %>
+</ul>
 
 <nav>
   <ul>

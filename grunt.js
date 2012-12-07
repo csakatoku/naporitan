@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     ['top', 'home', 'gacha', 'item', 'card', 'mission', 'cash'].forEach(function(mod) {
         depconcat[mod] = {
             src: [
-                'client/common/{models,collections,views}/*.js',
+                'client/common/{models,collections,views,routers}/*.js',
                 'client/'+ mod + '/**/*.js'
             ],
             dest: 'server/public/js/dist/app.' + mod + '.js'
@@ -73,6 +73,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'server/public/css/app.css': 'client/common/stylesheets/app.less',
+                    'server/public/css/mission.css': 'client/mission/stylesheets/mission.less',
                     'server/public/css/card.css': 'client/card/stylesheets/card.less'
                 }
             }

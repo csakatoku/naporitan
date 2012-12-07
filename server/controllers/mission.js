@@ -65,4 +65,12 @@ module.exports = function(app) {
         ];
         res.send(JSON.stringify(data));
     });
+
+    app.post('/api/users/:user_id/missions/:mission_id', function(req, res) {
+        var missionId = req.params.mission_id;
+        var data = [{
+            id: missionId
+        }];
+        res.send(JSON.stringify(data));
+    });
 };

@@ -1,9 +1,10 @@
-(function(App, undef) {
+// load: client/common/routers/Router.js
+(function(App) {
     "use strict";
 
     var Card = App.models.Card;
 
-    App.routers.CardRouter = Backbone.Router.extend({
+    App.routers.CardRouter = App.routers.Router.extend({
         routes: {
             '': 'defaultAction',
             '!/': 'defaultAction',
@@ -12,7 +13,7 @@
             '!/sell': 'sellAction'
         },
 
-        initialize: function() {
+        initializeViews: function() {
             var collection = App.getPlayer().cards;
 
             // Card List and Detail
@@ -39,6 +40,7 @@
         },
 
         defaultAction: function() {
+            this.listPage.active();
             this.listPage.render();
             this.maybeFetch();
         },
@@ -52,29 +54,21 @@
             if (!mergeBase) {
                 App.redirect('card/merge_select');
             }*/
+            this.enhanceListPage.active();
             this.enhanceListPage.render();
             this.maybeFetch();
         },
 
         enhanceBaseAction: function() {
+            this.enhanceListBasePage.active();
             this.enhanceListBasePage.render();
             this.maybeFetch();
         },
 
         sellAction: function() {
+            this.sellListPage.active();
             this.sellListPage.render();
             this.maybeFetch();
-        },
-
-        sellConfirmAction: function() {
-            this.sellConfirmView.render();
-        },
-
-        detailAction: function(id) {
-            var player = App.getPlayer();
-            var card = player.getCrews().get(id);
-            this.detailView.item = card;
-            this.detailView.render();
         },
 
         // private methods

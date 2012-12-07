@@ -1,6 +1,6 @@
 <% missions.forEach(function(mission) { %>
 <div class="job">
-  <a href="<%- _path('mission/execute', { id: mission.get('id') }) %>">
+  <a href="<%- _path('mission/execute/:id', { id: mission.get('id') }) %>">
     <div><%- mission.get("name") %></div>
     <ul>
       <li><%- _tr('Const:') %><%- mission.get("energy") %></li>

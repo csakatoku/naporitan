@@ -32,20 +32,21 @@
 
         confirm: function(gachaId, boxId, times) {
             var self = this;
+            var gachaName = "ガチャ" + gachaId;
 
-            this.confirmView.show({
+            new app.views.ConfirmView({
+                templateName: 'gacha/confirm'
+            }).show({
                 gachaId: gachaId,
                 boxId: boxId,
-                times: times
-            })
-                .fail(function(modal) {
-                    modal.hide();
-                })
-                .done(function(modal) {
-                    modal.hide();
-                    self.execute(gachaId, boxId, times);
-                })
-            ;
+                times: times,
+                gachaName: gachaName
+            }).fail(function(view) {
+                view.hide();
+            }).done(function(view) {
+                view.hide();
+                self.execute(gachaId, boxId, times);
+            });
         },
 
         execute: function(gachaId, boxId, times) {

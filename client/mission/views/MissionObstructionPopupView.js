@@ -3,21 +3,22 @@
 
     var animationEnd = App.ANIMATION_END;
 
-    App.views.MissionCompletePopupView = Backbone.View.extend({
+    App.views.MissionObstructionPopupView = Backbone.View.extend({
         events: {
             'click .close-popup': 'close'
         },
 
         render: function() {
-            var tmpl = App.template('mission/mission_complete');
-            this.$el.html(tmpl());
+            var tmpl = App.template('mission/obstruction');
+            $(this.el).html(tmpl());
             return this;
         },
 
         show: function() {
-            this.$('.mission-popup')
+            var self = this;
+            self.$('.mission-popup')
                 .one(animationEnd, function() {
-                    $('.mission-popup .close-popup').show();
+                    self.$('.close-popup').show();
                 })
                 .addClass('mission-complete-popup-animation')
                 .show()

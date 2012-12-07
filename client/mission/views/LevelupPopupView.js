@@ -8,21 +8,16 @@
             'click .close-popup': 'close'
         },
 
-        initialize: function(options) {
-            this.el = options.el;
-        },
-
         render: function() {
-            var tmpl = App.template('_popup/levelup');
-            $(this.el).html(tmpl());
+            var tmpl = App.template('mission/levelup');
+            this.$el.html(tmpl());
             return this;
         },
 
         show: function() {
-            $('#modal_overlay').show();
-            $('.levelup-popup')
+            this.$('.mission-popup')
                 .one(animationEnd, function() {
-                    $('.levelup-popup .close-popup').show();
+                    $('.mission-popup .close-popup').show();
                 })
                 .addClass('levelup-popup-animation')
                 .show()
@@ -30,12 +25,13 @@
         },
 
         close: function() {
-            $('#modal_overlay').hide();
-            $('.levelup-popup')
+            this.$('.mission-popup')
                 .removeClass('levelup-popup-animation')
                 .hide()
             ;
-            $('.close-popup').hide();
+            this.$('.close-popup').hide();
+
+            this.trigger('close', this);
         }
     });
 }(App));

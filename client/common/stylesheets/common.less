@@ -61,7 +61,7 @@ ul.menu li {
     clear: both;
 }
 
-#modal_overlay {
+#modal-overlay {
     background: black;
     position: fixed;
     top: 0;
@@ -86,7 +86,7 @@ ul.menu li {
 }
 
 // ヘッダーとフッターのタブ
-.menu_tab {
+.menu-tab {
     clear: both;
 
     ul.tab {
@@ -108,7 +108,7 @@ ul.menu li {
 }
 
 // その他のメニュー
-#menu_dial {
+#menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -117,12 +117,21 @@ ul.menu li {
     display: none;
     z-index: 200;
 
+    h2 {
+        font-size: 1em;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        width: 280px;
+        height: 320px;
+    }
+
     ul {
         list-style: none;
         padding: 0;
         margin: 0;
-        width: 280px;
-        height: 320px;
 
         li {
             float: left;
@@ -134,44 +143,6 @@ ul.menu li {
                 border: 1px solid blue;
             }
         }
-    }
-}
-
-//レベルアップ, ミッション完了
-@-webkit-keyframes levelup-animation-keyframes {
-    from {
-        top: -5em;
-    }
-    to {
-        top: 5em;
-    }
-}
-
-.levelup-popup-animation,
-.mission-complete-popup-animation {
-    -webkit-animation-name: levelup-animation-keyframes;
-    -webkit-animation-duration: 0.5s;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: 1;
-}
-
-.levelup-popup,
-.mission-complete-popup {
-    position: absolute;
-    top: -10em;
-    left: 0px;
-    display: none;
-    z-index: 2000;
-
-    h2 {
-        font-size: 5em;
-        margin: 0px;
-        padding: 0px;
-    }
-
-    a {
-        font-size: 5em;
-        display: none;
     }
 }
 
@@ -206,10 +177,20 @@ ul.menu li {
 
 // Modal Dialog
 .modal {
-    position: absolute;
+    position: fixed;
     top: 15px;
     left: 15px;
     border: blue 1px solid;
     color: black;
+    z-index: 150;
     background: #aaaaaa;
+}
+
+// Fullscreen Anmation
+.fullscreen {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 200;
+    background: #000;
 }

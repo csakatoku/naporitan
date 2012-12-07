@@ -9,7 +9,6 @@
         defaultAction: function() {
             var view = new app.views.CashView();
             view.render();
-            app.rootView.showMenuTab();
         }
     });
 }(App));

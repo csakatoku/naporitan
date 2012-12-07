@@ -1,33 +1,45 @@
 // load: client/common/models/Card.js
 // load: client/common/models/GachaBoxItem.js
+// load: client/common/routers/Router.js
 (function(App, undef) {
     "use strict";
 
     var Card = App.models.Card;
     var GachaBoxItem = App.models.GachaBoxItem;
 
-    App.routers.GachaRouter = Backbone.Router.extend({
+    var Klass = App.routers.GachaRouter = App.routers.Router.extend({
         routes: {
             '': 'defaultAction',
-            '!/box/:box_id': 'boxListAction'
+            '!/box/:box_id': 'boxListAction',
+            '!/result': 'resultAction'
         },
 
-        initialize: function() {
+        initializeViews: function() {
+            this._lastResult = [];
+
             // Gacha Top Page
             this.listView = new App.views.GachaListView({
                 el: '#gacha-index'
             });
             this.listView.on('onCardsAdded', this.onCardsAdded, this);
 
-            this.confirmView = this.listView.confirmView = new App.views.GachaConfirmView({
-                el: '#gacha-confirm'
+            // Gacha Animation
+            this.animationView = new App.views.GachaExecuteView({
+                el: '#gacha-animation'
             }).render();
 
-            // Gacha Animation
-            this.resultView = new App.views.GachaExecuteView({
-                el: '#gacha-animation'
-            });
-            this.resultView.on('onGachaReload', this.defaultAction, this);
+            this.animationView.on('next', function() {
+                App.redirect('gacha/result');
+            }, this);
+
+            // Gacha Result Page
+            this.resultView = new App.views.GachaResultView({
+                el: '#gacha-result'
+            }).render();
+
+            this.resultView.on('reload', function() {
+                App.redirect('gacha/default');
+            }, this);
 
             // Gacha Box List Page
             this.boxCollection = new Backbone.Collection(null, {
@@ -41,18 +53,12 @@
         },
 
         defaultAction: function() {
-            // TODO: こんなテキトーな画面切り替えでいいのか?
-            var _a = this.boxListView && this.boxListView.$el.empty();
-            var _b = this.resultView && this.resultView.$el.empty();
-
+            this.listView.active();
             this.listView.render();
         },
 
         boxListAction: function(boxId) {
-            // TODO: こんなテキトーな画面切り替えでいいのか?
-            var _a = this.listView &&  this.listView.$el.empty();
-            var _b = this.resultView && this.resultView.$el.empty();
-
+            this.boxListView.active();
             this.boxCollection.fetch({
                 url: App.net.resolve('gacha_box_list', {
                     user_id: App.uid,
@@ -61,21 +67,24 @@
             });
         },
 
+        resultAction: function(resultId) {
+            this.resultView.active();
+            this.resultView.setResult(this._lastResult);
+            this.resultView.render();
+        },
+
         onCardsAdded: function(res) {
             App.rootView.stopIndicator();
 
-            // TODO: こんなテキトーな画面切り替えでいいのか?
-            var _a = this.listView && this.listView.$el.empty();
-
-            var items = [];
-
+            this._lastResult = [];
             res.items.forEach(function(args) {
                 var instance = new Card(args);
-                items.push(instance);
-            });
+                this._lastResult.push(instance);
+            }, this);
 
-            this.resultView.setResult(items);
-            this.resultView.render();
+            this.animationView.active();
+            this.animationView.setResult(this._lastResult);
+            this.animationView.render();
         }
     });
 }(App));

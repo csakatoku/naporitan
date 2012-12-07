@@ -11,7 +11,6 @@
                 el: "#content"
             });
             view.render();
-            app.rootView.hideMenuTab();
         }
     });
 }(App));

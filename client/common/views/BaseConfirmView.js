@@ -9,24 +9,47 @@
 
         templateName: '',
 
-        render: function() {
+        _render: function(options, show) {
             var tmpl = App.template(this.templateName);
-            $(this.el).html(tmpl({
-                model: this.model,
+            var ctxt = _.clone(options);
+
+            this.$el.html(tmpl(_.extend({
+                model     : this.model,
                 collection: this.collection
-            }));
-            this.$el.hide();
+            }, ctxt)));
+
+            if (show !== true) {
+                this.$el.hide();
+            }
+
+            this._rendered = true;
+
+            App.rootView.presentModalView(this);
+
+            return this;
+        },
+
+        render: function() {
+            this._render({});
             return this;
         },
 
         show: function(options) {
+            App.rootView.showOverlay();
+
+            if (this._rendered !== true) {
+                this._render(options, true);
+            }
+
             this.$el.show();
+
             this._dfd = $.Deferred();
             return this._dfd;
         },
 
         hide: function() {
-            this.$el.hide();
+            App.rootView.hideOverlay();
+            this.$el.remove();
         },
 
         onYes: function() {
