@@ -61,7 +61,7 @@ ul.menu li {
     clear: both;
 }
 
-#modal_overlay {
+#modal-overlay {
     background: black;
     position: fixed;
     top: 0;
@@ -86,7 +86,7 @@ ul.menu li {
 }
 
 // ヘッダーとフッターのタブ
-.menu_tab {
+.menu-tab {
     clear: both;
 
     ul.tab {
@@ -108,7 +108,7 @@ ul.menu li {
 }
 
 // その他のメニュー
-#menu_dial {
+#menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -117,12 +117,21 @@ ul.menu li {
     display: none;
     z-index: 200;
 
+    h2 {
+        font-size: 1em;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        width: 280px;
+        height: 320px;
+    }
+
     ul {
         list-style: none;
         padding: 0;
         margin: 0;
-        width: 280px;
-        height: 320px;
 
         li {
             float: left;

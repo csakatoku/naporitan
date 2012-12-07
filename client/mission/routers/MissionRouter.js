@@ -1,57 +1,57 @@
-(function(app, undef) {
+(function(App) {
     "use strict";
 
-    app.routers.MissionRouter = Backbone.Router.extend({
+    App.routers.MissionRouter = App.routers.Router.extend({
         routes: {
             '': 'defaultAction',
-            '!/execute': 'executeAction',
+            '!/execute/:id': 'executeAction',
             '!/chapter': 'chapterAction',
             '!/chapter/:id': 'defaultAction'
         },
 
-        initialize: function() {
+        initializeViews: function() {
             this.missionCollection = new Backbone.Collection(null, {
-                model: app.models.Mission
+                model: App.models.Mission
             });
             this.chapterCollection = new Backbone.Collection(null, {
-                model: app.models.Chapter
+                model: App.models.Chapter
             });
 
-            this.executeView = new app.views.MissionExecuteView();
+            this.missionListView = new App.views.MissionListView({
+                el: '#mission-list',
+                collection: this.missionCollection
+            });
+            this.missionCollection.bind('all', this.missionListView.render, this.missionListView);
+
+            this.chapterListView = new App.views.ChapterListView({
+                el: '#chapter-list',
+                collection: this.chapterCollection
+            });
+            this.chapterCollection.bind('all', this.chapterListView.render, this.chapterListView);
+
+            this.executeView = new App.views.MissionExecuteView();
             this.executeView.on('execute', this.onExecute, this);
         },
 
         defaultAction: function(chapterId) {
             chapterId = chapterId ? chapterId : 1;
-
-            this.listView = new app.views.MissionListView({
-                el: '#content',
-                collection: this.missionCollection
-            });
-            this.missionCollection.bind('all', this.listView.render, this.listView);
+            this.missionListView.active();
             this.missionCollection.fetch({
                 url: '/api/users/1/missions'
             });
-
-            app.rootView.showMenuTab();
         },
 
         chapterAction: function() {
-            this.listView = new app.views.ChapterListView({
-                el: '#content',
-                collection: this.chapterCollection
-            });
-
-            this.chapterCollection.bind('all', this.listView.render, this.listView);
+            this.chapterListView.active();
             this.chapterCollection.fetch({
                 url: '/api/users/1/chapters'
             });
         },
 
-        executeAction: function(args) {
-            var missionId = ~~(args.id || 1);
-            var mission = app.missions.get(missionId);
-            var player = app.getPlayer();
+        executeAction: function(id) {
+            var missionId = ~~(id || 1);
+            var mission = App.missions.get(missionId);
+            var player = App.getPlayer();
             var cards = player.getCrews();
             var card = cards.length ? cards[0] : null;
 
@@ -61,8 +61,6 @@
                 card: card
             });
             this.executeView.render();
-
-            app.rootView.showMenuTab();
         }
     });
 }(App));

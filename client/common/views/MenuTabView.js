@@ -7,16 +7,16 @@
         },
 
         onTabOtherClicked: function() {
-            app.rootView.showMenuDial();
+            app.rootView.showMenu();
             return false;
         },
 
         hide: function() {
-            $(".menu_tab").hide();
+            this.$el.hide();
         },
 
         show: function() {
-            $(".menu_tab").show();
+            this.$el.show();
         },
 
         render: function() {

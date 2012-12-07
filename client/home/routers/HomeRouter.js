@@ -3,7 +3,8 @@
 
     app.routers.HomeRouter = Backbone.Router.extend({
         routes: {
-            '': 'defaultAction'
+            '': 'defaultAction',
+            '!/': 'defaultAction'
         },
 
         defaultAction: function() {
@@ -11,7 +12,6 @@
                 el: '#content'
             });
             view.render();
-            app.rootView.showMenuTab();
         }
     });
 }(App));

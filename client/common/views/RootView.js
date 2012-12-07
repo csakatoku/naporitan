@@ -3,9 +3,18 @@
     "use strict";
 
     app.views.RootView = Backbone.View.extend({
-        events: {
-            'click #menu_dial': 'onMenuDialClicked',
-            'click #menu_dial .menu_dial_element': 'onMenuDialClicked'
+        initialize: function(options) {
+            this.menuTabFooter = new app.views.MenuTabView({
+                el: '#menu-tab-footer'
+            });
+
+            this.menu = new app.views.MenuView({
+                el: '#menu'
+            });
+
+            this.menu.on('close', function(view) {
+                this.hideMenu();
+            }, this);
         },
 
         scrollToTop: function() {
@@ -23,31 +32,26 @@
         },
 
         hideMenuTab: function() {
-            this.menuTab.hide();
+            this.menuTabFooter.hide();
         },
 
         showMenuTab: function() {
-            this.menuTab.show();
+            this.menuTabFooter.show();
         },
 
-        showMenuDial: function() {
-            $('#modal_overlay').show();
-            $('#menu_dial').show();
+        showMenu: function() {
+            $('#modal-overlay').show();
+            this.menu.show();
         },
 
-        hideMenuDial: function() {
-            $('#modal_overlay').hide();
-            $('#menu_dial').hide();
-        },
-
-        onMenuDialClicked: function(e) {
-            var href = $(e.target).attr('href');
-            this.hideMenuDial();
-            return (href && href.length) ? true : false;
+        hideMenu: function() {
+            $('#modal-overlay').hide();
+            this.menu.hide();
         },
 
         render: function() {
-            this.menuTab = new app.views.MenuTabView().render();
+            this.menuTabFooter.render();
+            this.menu.render();
             return this;
         }
     });
