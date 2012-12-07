@@ -1,18 +1,20 @@
 // load: client/app.js
 (function(App) {
     var request = function(path, method, args) {
-        var deferred = $.Deferred();
+        var deferred = _.Deferred();
 
         $.ajax({
             url: path,
             type: method,
             data: args,
             dataType: 'json',
-            cache: false
-        }).success(function(data) {
-            deferred.resolve(data);
-        }).fail(function() {
-            deferred.reject();
+            cache: false,
+            success: function(data) {
+                deferred.resolve(data);
+            },
+            error: function() {
+                deferred.reject();
+            }
         });
 
         return deferred.promise();

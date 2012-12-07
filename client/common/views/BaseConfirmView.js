@@ -43,7 +43,7 @@
 
             this.$el.show();
 
-            this._dfd = $.Deferred();
+            this._dfd = _.Deferred();
             return this._dfd;
         },
 
