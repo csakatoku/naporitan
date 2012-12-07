@@ -9,15 +9,11 @@
         ListElementView: ListElementView,
 
         onSubViewClick: function(evt, view) {
-            new App.views.CardDetailView({
-                el: '#card-detail',
+            new App.views.CardDetailView({}).show({
                 model: view.model
-            })
-                .render()
-                .show()
-                .done(function(modal) {
-                    modal.hide();
-                });
+            }).done(function(view) {
+                view.hide();
+            });
         }
     });
 }(App));

@@ -34,7 +34,9 @@
             var self = this;
             var gachaName = "ガチャ" + gachaId;
 
-            this.confirmView.show({
+            new app.views.ConfirmView({
+                templateName: 'gacha/confirm'
+            }).show({
                 gachaId: gachaId,
                 boxId: boxId,
                 times: times,

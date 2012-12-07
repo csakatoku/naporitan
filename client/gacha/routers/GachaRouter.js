@@ -23,10 +23,6 @@
             });
             this.listView.on('onCardsAdded', this.onCardsAdded, this);
 
-            this.listView.confirmView = new App.views.GachaConfirmView({
-                el: '#gacha-confirm'
-            });
-
             // Gacha Animation
             this.animationView = new App.views.GachaExecuteView({
                 el: '#gacha-animation'

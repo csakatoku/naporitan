@@ -24,6 +24,8 @@
 
             this._rendered = true;
 
+            App.rootView.presentModalView(this);
+
             return this;
         },
 
@@ -40,15 +42,14 @@
             }
 
             this.$el.show();
+
             this._dfd = $.Deferred();
             return this._dfd;
         },
 
         hide: function() {
-            this.$el.hide();
             App.rootView.hideOverlay();
-
-            this._rendered = false;
+            this.$el.remove();
         },
 
         onYes: function() {

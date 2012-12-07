@@ -39,6 +39,10 @@
             $('#modal-overlay').hide();
         },
 
+        presentModalView: function(view) {
+            $('#modal').append(view.$el);
+        },
+
         hideMenuTab: function() {
             this.menuTabFooter.hide();
         },

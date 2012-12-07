@@ -35,8 +35,8 @@
                 return (values.indexOf(m.get('id') + "") >= 0);
             });
 
-            new App.views.CardEnhanceConfirmView({
-                el: '#card-enhance-confirm'
+            new App.views.ConfirmView({
+                templateName: 'card/enhance_confirm'
             }).show({
                 collection: new Backbone.Collection(models)
             }).fail(function(view) {

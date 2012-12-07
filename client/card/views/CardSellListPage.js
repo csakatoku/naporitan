@@ -17,8 +17,8 @@
                 return (values.indexOf(m.get('id') + "") >= 0);
             });
 
-            var view = new App.views.CardSellConfirmView({
-                el: '#card-sell-confirm'
+            new App.views.ConfirmView({
+                templateName: 'card/sell_confirm'
             }).show({
                 collection: new Backbone.Collection(models)
             }).fail(function(view) {
