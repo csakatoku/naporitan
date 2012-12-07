@@ -47,7 +47,7 @@
         },
 
         boxListAction: function(boxId) {
-            this.boxCollection.active();
+            this.boxListView.active();
             this.boxCollection.fetch({
                 url: App.net.resolve('gacha_box_list', {
                     user_id: App.uid,
