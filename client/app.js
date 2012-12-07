@@ -1,4 +1,4 @@
-/*global Deferred:true, FB:true */
+/*global FB:true */
 (function(globals, undef) {
     "use strict";
 
@@ -22,7 +22,7 @@
 
     p.fbinit = function(options) {
         var self = this;
-        var deferred = new Deferred();
+        var deferred = new _.Deferred();
         var url;
 
         if (__DEBUG__) {
@@ -43,61 +43,11 @@
                 }
             });
 
-            deferred.call();
+            deferred.resolve();
         };
 
         self.utils.loadScript(url);
         return deferred;
-    };
-
-    p.i18ninit = function() {
-        var self = this;
-        var deferred = new Deferred();
-        var url = 'js/ja.json';
-
-        $.ajax({
-            url: url,
-            dataType: 'json',
-            success: function(data) {
-                _.keys(data).forEach(function(key) {
-                    var msg = data[key];
-                    self.I18N[key] = msg || key;
-                });
-                deferred.call();
-            }
-        });
-        return deferred;
-    };
-
-    p.protoinit = function(options) {
-        var self = this;
-        var proto_get = function(url) {
-            var deferred = new Deferred();
-            $.ajax({
-                url: url,
-                dataType: 'json',
-                success: function(res) {
-                    var type = res.type;
-                    var data = res.data;
-                    var seq = self.data[type] || [];
-                    data.forEach(function(datum) {
-                        var frozen = Object.freeze(datum);
-                        seq.push(frozen);
-                    });
-
-                    seq.sort(function(a, b) {
-                        return a.id - b.id;
-                    });
-                    self.data[type] = seq;
-
-                    deferred.call();
-                }
-            });
-            return deferred;
-        };
-
-        var configs = options.configs || [];
-        return Deferred.parallel(configs.map(proto_get));
     };
 
     p.template =  function(name) {
@@ -141,13 +91,10 @@
             globals[k] = options.constants[k];
         });
 
-        Deferred.parallel([
-            app.fbinit(options)
-            //app.i18ninit(options),
-            //app.protoinit(options)
-        ]).next(function() {
-            app.onFacebookInit(module);
-        });
+        app.fbinit(options)
+            .done(function() {
+                app.onFacebookInit(module);
+            });
     };
 
     p.onFacebookInit = function(module) {
