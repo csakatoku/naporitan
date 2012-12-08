@@ -15,7 +15,7 @@
 
     p._start = function(first) {
         if (first === true) {
-            this._dfd = new $.Deferred();
+            this._dfd = new _.Deferred();
         }
 
         if (this._views.length) {

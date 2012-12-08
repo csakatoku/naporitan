@@ -1,12 +1,12 @@
 (function(App) {
+    "use strict";
+
     App.views.BaseListView = Backbone.View.extend({
         tagName: 'ul',
 
         events: {
-            'click li': 'onClick'
+            'tap li': 'onClick'
         },
-
-        
 
         onClick: function(evt) {
             var target = evt.currentTarget;
