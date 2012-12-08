@@ -5,13 +5,43 @@
     app.views.GachaListView = Backbone.View.extend({
         events: {
             'click a[data-action="gacha-execute"]': 'onExecute',
-            'click a[data-action="gacha-execute-many"]': 'onExecuteMany'
+            'click a[data-action="gacha-execute-many"]': 'onExecuteMany',
+            'click [data-action="next"]': 'onSwipeLeft',
+            'click [data-action="prev"]': 'onSwipeRight',
+            'swipeLeft': 'onSwipeLeft',
+            'swipeRight': 'onSwipeRight'
+        },
+
+        initialize: function(options) {
+            this._index = 0;
         },
 
         render: function() {
             var tmpl = app.template('gacha/index');
             $(this.el).html(tmpl());
             return this;
+        },
+
+        onSwipeLeft: function(evt) {
+            if (this._index < 4) {
+                this._index += 1;
+                this._swipe();
+            }
+        },
+
+        onSwipeRight: function(evt) {
+            if (this._index > 0) {
+                this._index -= 1;
+                this._swipe();
+            }
+        },
+
+        _swipe: function() {
+            var dx = this._index * -300;
+            this.$('.slide').css({
+                '-webkit-transition': 'all 0.5s ease-in',
+                '-webkit-transform': 'translate3d(' + dx + 'px, 0, 0)'
+            });
         },
 
         onExecute: function(e) {

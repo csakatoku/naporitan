@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ ASSET_URL }}css/gacha.css" type="text/css" />
+{% endblock %}
+
 {% block content %}
 <div id="gacha-index" class="page"></div>
 <div id="gacha-animation" class="fullscreen"></div>
